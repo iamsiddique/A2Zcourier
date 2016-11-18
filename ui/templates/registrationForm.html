@@ -1,0 +1,155 @@
+<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div class="margin-t-b clear"></div>
+<div class="container">
+	<form class="form-horizontal">
+		<fieldset>
+
+			<!-- Form Name -->
+
+			<legend>Registration</legend>
+
+			<div class="col-md-12 margin-t-b">
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+			</div>
+			<div class="margin-t-b clear"></div>
+			<!-- Select Basic -->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="firstname">First Name</label>
+					<div class="col-md-8">
+						<input  name="firstName" type="text" placeholder="First Name" class="form-control input-md" required="">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>  
+					<div class="col-md-8">
+						<input  name="mobileNumber" type="text" placeholder="Mobile Number" class="form-control input-md" required="">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="permanentAddress">Permanent Address</label>  
+					<div class="col-md-8">
+						<textarea placeholder="Permanent Address" class="form-control input-md" required=""></textarea> 
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="vtype">Vehicle Type</label>
+					<div class="col-md-8">
+						<select id="Country" name="Country" class="form-control">
+							<option value="t1">Type 1</option>
+							<option value="t2">Type 2</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="dlnumber">DL Number</label>  
+					<div class="col-md-8">
+						<input  name="dlNumber" type="text" placeholder="DL Number" class="form-control input-md" required="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>  
+					<div class="input-group custom-pad col-md-8">
+						<input type="text" class="form-control" ng-bind="drivingLicence" readonly>
+						<label class="input-group-btn">
+							<span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  ng-model="drivingLicence" multiple>
+							</span>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Insurance</label>  
+					<div class="input-group custom-pad col-md-8">
+						<input type="text" class="form-control" ng-bind="insurance" readonly>
+						<label class="input-group-btn">
+							<span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  ng-model="insurance" multiple>
+							</span>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Photo</label>  
+					<div class="input-group custom-pad col-md-8">
+						<input type="text" class="form-control" ng-bind="photo" readonly>
+						<label class="input-group-btn">
+							<span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  ng-model="photo" multiple>
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="firstname">Last Name</label>
+					<div class="col-md-8">
+						<input  name="lastName" type="text" placeholder="Last Name" class="form-control input-md" required="">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>  
+					<div class="col-md-8">
+						<input  name="alternateNumber" type="text" placeholder="Alternate Number" class="form-control input-md" required="">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="currentAddress">Current Address</label>  
+					<div class="col-md-8">
+						<textarea placeholder="Current Address" class="form-control input-md" required=""></textarea> 
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="vehicleName">Vehicle Name</label>  
+					<div class="col-md-8">
+						<input  name="vehicleName" type="text" placeholder="vehicle Name" class="form-control input-md" required=""> 
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Batch Number</label>  
+					<div class="col-md-8">
+						<input  name="batchNumber" type="text" placeholder="Batch Number" class="form-control input-md" required="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">RC Book</label>  
+					<div class="input-group custom-pad col-md-8">
+						<input type="text" class="form-control" ng-bind="rcBook" readonly>
+						<label class="input-group-btn">
+							<span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  ng-model="rcBook" multiple>
+							</span>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Road Tax</label>  
+					<div class="input-group custom-pad col-md-8">
+						<input type="text" class="form-control" ng-bind="roadTax" readonly>
+						<label class="input-group-btn">
+							<span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  ng-model="roadTax" multiple>
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 text-center">
+				<input type="button" class="btn btn-success" name="submit" value="Submit"/>
+			</div>
+		</fieldset>
+	</form>
+<div class="margin-t-b clear"></div>
+</div>
+
+</div>
