@@ -7,7 +7,7 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		                "username" : emailid,
 		                "password" : password
 		        };
-		        console.log(data);
+		       
 		        mainService.postLogin(data).success(function(response) {
 		            callback(response);
 		        }).error(function(response){
