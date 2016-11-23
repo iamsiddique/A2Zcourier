@@ -7,7 +7,12 @@ courierApp.config(function($routeProvider) {
         templateUrl : "ui/templates/login.html"
     })
     .when("/registration", {
+        controller: 'authenticationController',
         templateUrl : "ui/templates/registrationForm.html"
+    })
+    .when("/list", {
+        controller: 'authenticationController',
+        templateUrl : "ui/templates/listofboys.html"
     })
     .when("/", {
     	controller: 'authenticationController',

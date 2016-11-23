@@ -1,13 +1,13 @@
 courierApp.controller("authenticationController",['$scope','$location','intermediateService','logCheck','$timeout',
  function ($scope,$location,intermediateService,logCheck,$timeout) {
 
-
+ 	$rootScope.loginPage;
 	$scope.login = function (){
 
 
 		intermediateService.login($scope.emailid, $scope.password, function(response) {
 			if(response.statusCode == 1){
-				$location.path('/registration')
+				$location.path('/list')
 				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
 				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
 			}
@@ -17,15 +17,20 @@ courierApp.controller("authenticationController",['$scope','$location','intermed
 					$scope.credError = false;
 				},2000);
 			}
-		});
+		});		
 	}
 	$scope.checking = function(){
 		
 		logCheck.checkUser(function(response) {
 			console.log(response);
-			$location.path('/registration')
+			$location.path('/list');
 		});
-		//console.log(logCheck.checkUser());
+		
+	}
+	$scope.logout = function(){
+		
+		localStorage.removeItem('userLoggedin');
+		$location.path('/login');
 	}
 	
 }]);
