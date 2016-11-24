@@ -11,13 +11,8 @@ courierApp.config(function($httpProvider) {
 
 		dataFetch.postLogin = function(data) {
 
-		    //return $http.post('http://localhost:8080/SpringRestCrud/admin/login', data, $rootScope.header);
-		    if(data.username == 'admin' && data.password == 'admin'){
-		    	return $http.get('ui/json/cred.json');
-		    }
-		    else{
-		    	return $http.get('ui/json/ncred.json');
-		    }
+		    return $http.post('https://166.62.40.162:8080/a2z/user/login', data, $rootScope.header);
+		    
 		    
 		};
 		return dataFetch;

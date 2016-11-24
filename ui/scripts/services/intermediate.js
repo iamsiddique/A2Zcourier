@@ -9,6 +9,7 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		        };
 		       
 		        mainService.postLogin(data).success(function(response) {
+		        	console.log(response);
 		            callback(response);
 		        }).error(function(response){
 		            callback(response);
