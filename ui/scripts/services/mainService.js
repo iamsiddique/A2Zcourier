@@ -11,8 +11,14 @@ courierApp.config(function($httpProvider) {
 
 		dataFetch.postLogin = function(data) {
 
-		    return $http.post('https://166.62.40.162:8080/a2z/user/login', data, $rootScope.header);
-		    
+		   // return $http.post('http://166.62.40.162:8080/a2z/user/login', data, $rootScope.header);
+		    //return $http.get('http://166.62.40.162:8080/a2z/courierboy/list');
+		    if(data.username == 'admin' && data.password == 'admin'){
+		    	return $http.get('ui/json/cred.json');
+		    }
+		    else{
+		    	return $http.get('ui/json/ncred.json');
+		    }
 		    
 		};
 		return dataFetch;
