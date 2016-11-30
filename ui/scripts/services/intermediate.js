@@ -16,6 +16,27 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		        });
 		    };
 
+		serviceObject.saveBoys = function(courierboyData, callback) {
+		        var data = courierboyData;
+		       
+		        mainService.postBoys(data).success(function(response) {
+		        	console.log(response);
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
+		serviceObject.listBoys = function(callback) {
+		        
+		        mainService.getBoys().success(function(response) {
+		        	console.log(response);
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
+
+
 		return serviceObject;
 
 }]);

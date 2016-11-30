@@ -17,7 +17,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="firstname">First Name</label>
 					<div class="col-md-8">
-						<input  name="firstName" type="text" placeholder="First Name" class="form-control input-md" required="">
+						<input  name="firstName" type="text" ng-model="courierBoy.firstName" placeholder="First Name" class="form-control input-md" required="">
 					</div>
 				</div>
 
@@ -25,7 +25,15 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>  
 					<div class="col-md-8">
-						<input  name="mobileNumber" type="text" placeholder="Mobile Number" class="form-control input-md" required="">
+						<input  name="mobileNumber" type="text" ng-model="courierBoy.mobileNumber" placeholder="Mobile Number" class="form-control input-md" required="">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="username">User Name</label>
+					<div class="col-md-8">
+						<input  name="userName" type="text" ng-model="courierBoy.user.username" placeholder="User Name" class="form-control input-md" required="">
 					</div>
 				</div>
 
@@ -33,22 +41,34 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="permanentAddress">Permanent Address</label>  
 					<div class="col-md-8">
-						<textarea placeholder="Permanent Address" class="form-control input-md" required=""></textarea> 
+						<textarea placeholder="Permanent Address" ng-model="courierBoy.permanentAddress" class="form-control input-md" required=""></textarea> 
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="vtype">Vehicle Type</label>
 					<div class="col-md-8">
-						<select id="Country" name="Country" class="form-control">
-							<option value="t1">Type 1</option>
-							<option value="t2">Type 2</option>
+						<select id="Country" name="Country" ng-model="courierBoy.vehicleType" class="form-control">
+							<option value="t1">Two Wheeler</option>
+							<option value="t2">Four Wheeler</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="dlnumber">DL Number</label>  
 					<div class="col-md-8">
-						<input  name="dlNumber" type="text" placeholder="DL Number" class="form-control input-md" required="">
+						<input  name="dlNumber" type="text" ng-model="courierBoy.dlNumber" placeholder="DL Number" class="form-control input-md" required="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="bankname">Bank Name</label>  
+					<div class="col-md-8">
+						<input  name="bankName" type="text" ng-model="courierBoy.bankName" placeholder="Bank Name" class="form-control input-md" required="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="accountnumber">Account Number</label>  
+					<div class="col-md-8">
+						<input  name="accountNumber" type="text" ng-model="courierBoy.bankAccountNumber" placeholder="Bank Name" class="form-control input-md" required="">
 					</div>
 				</div>
 				<div class="form-group">
@@ -90,7 +110,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="firstname">Last Name</label>
 					<div class="col-md-8">
-						<input  name="lastName" type="text" placeholder="Last Name" class="form-control input-md" required="">
+						<input  name="lastName" type="text" ng-model="courierBoy.lastName" placeholder="Last Name" class="form-control input-md" required="">
 					</div>
 				</div>
 
@@ -98,7 +118,15 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>  
 					<div class="col-md-8">
-						<input  name="alternateNumber" type="text" placeholder="Alternate Number" class="form-control input-md" required="">
+						<input  name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md" required="">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Password</label>
+					<div class="col-md-8">
+						<input  name="password" type="text" ng-model="courierBoy.user.password" placeholder="Password" class="form-control input-md" required="">
 					</div>
 				</div>
 
@@ -106,19 +134,31 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="currentAddress">Current Address</label>  
 					<div class="col-md-8">
-						<textarea placeholder="Current Address" class="form-control input-md" required=""></textarea> 
+						<textarea placeholder="Current Address" ng-model="courierBoy.currentAddress" class="form-control input-md" required=""></textarea> 
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="vehicleName">Vehicle Name</label>  
 					<div class="col-md-8">
-						<input  name="vehicleName" type="text" placeholder="vehicle Name" class="form-control input-md" required=""> 
+						<input  name="vehicleName" type="text" ng-model="courierBoy.vehicleName" placeholder="vehicle Name" class="form-control input-md" required=""> 
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Batch Number</label>  
 					<div class="col-md-8">
-						<input  name="batchNumber" type="text" placeholder="Batch Number" class="form-control input-md" required="">
+						<input  name="batchNumber" type="text" ng-model="courierBoy.batchNumber" placeholder="Batch Number" class="form-control input-md" required="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="accntname">Bank Account Holder Name</label>  
+					<div class="col-md-8">
+						<input  name="accntName" type="text" ng-model="courierBoy.bankAccountHolderName" placeholder="Bank Account Holder Name" class="form-control input-md" required="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="ifsccode">IFSC Code</label>  
+					<div class="col-md-8">
+						<input  name="ifscCode" type="text" ng-model="courierBoy.bankIfscCode" placeholder="IFSC Code" class="form-control input-md" required="">
 					</div>
 				</div>
 				<div class="form-group">
@@ -145,8 +185,12 @@
 				</div>
 			</div>
 			<div class="col-md-12 text-center">
-				<input type="button" class="btn btn-success" name="submit" value="Submit"/>
+				<input type="button" class="btn btn-success" name="submit" ng-click="save()" value="Submit"/>
 				<a href="#/list" class="btn btn-primary">Cancel</a>
+			</div>
+			<div class="col-md-12 text-center">
+				<p ng-if="regSuccess" class="text-success">User successfully registered</p>
+				<p ng-if="regError" class="text-danger">User registration failed</p>
 			</div>
 		</fieldset>
 	</form>

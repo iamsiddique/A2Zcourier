@@ -7,11 +7,11 @@ courierApp.config(function($routeProvider) {
         templateUrl : "ui/templates/login.html"
     })
     .when("/registration", {
-        controller: 'authenticationController',
+        controller: 'registrationController',
         templateUrl : "ui/templates/registrationForm.html"
     })
     .when("/list", {
-        controller: 'authenticationController',
+        controller: 'listingController',
         templateUrl : "ui/templates/listofboys.html"
     })
     .when("/", {

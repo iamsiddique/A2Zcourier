@@ -4,7 +4,6 @@ courierApp.controller("authenticationController",['$scope','$location','intermed
  	
 	$scope.login = function (){
 
-
 		intermediateService.login($scope.emailid, $scope.password, function(response) {
 			if(response.statusCode == 1){
 				$location.path('/list')
@@ -19,16 +18,13 @@ courierApp.controller("authenticationController",['$scope','$location','intermed
 			}
 		});		
 	}
-	$scope.checking = function(){
-		
+	$scope.checking = function(){		
 		logCheck.checkUser(function(response) {
-			console.log(response);
 			$location.path('/list');
 		});
 		
 	}
-	$scope.logout = function(){
-		
+	$scope.logout = function(){		
 		localStorage.removeItem('userLoggedin');
 		$location.path('/login');
 	}
