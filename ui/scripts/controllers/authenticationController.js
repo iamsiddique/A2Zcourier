@@ -24,9 +24,6 @@ courierApp.controller("authenticationController",['$scope','$location','intermed
 		});
 		
 	}
-	$scope.logout = function(){		
-		localStorage.removeItem('userLoggedin');
-		$location.path('/login');
-	}
+	
 	
 }]);

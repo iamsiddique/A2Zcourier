@@ -54,5 +54,9 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
 
 		return '';
 	}
+	$scope.logout = function(){		
+		localStorage.removeItem('userLoggedin');
+		$location.path('/login');
+	}
 		
 }]);

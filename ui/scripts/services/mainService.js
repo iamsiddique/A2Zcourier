@@ -11,17 +11,17 @@ courierApp.config(function($httpProvider) {
 
 		dataFetch.postLogin = function(data) {
 
-		    return $http.post('http://166.62.40.162:8080/a2z/user/login', data, $rootScope.header);		    
+		    return $http.post('//166.62.40.162:8080/a2z/user/login', data, $rootScope.header);		    
 		    
 		};
 		dataFetch.postBoys = function(data) {
 
-		    return $http.post('http://166.62.40.162:8080/a2z/courierboy/save', data, $rootScope.header);		    
+		    return $http.post('//166.62.40.162:8080/a2z/courierboy/save', data, $rootScope.header);		    
 		    
 		};
 		dataFetch.getBoys = function() {
 
-		    return $http.get('http://166.62.40.162:8080/a2z/courierboy/list', $rootScope.header);		    
+		    return $http.get('//166.62.40.162:8080/a2z/courierboy/list', $rootScope.header);		    
 		    
 		};
 		return dataFetch;
