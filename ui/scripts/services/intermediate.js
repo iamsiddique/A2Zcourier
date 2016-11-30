@@ -9,8 +9,7 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		        };
 		       
 		        mainService.postLogin(data).success(function(response) {
-		        	console.log(response);
-		            callback(response);
+		        	callback(response);
 		        }).error(function(response){
 		            callback(response);
 		        });
@@ -19,8 +18,7 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		serviceObject.saveBoys = function(courierboyData, callback) {
 		        var data = courierboyData;
 		       
-		        mainService.postBoys(data).success(function(response) {
-		        	console.log(response);
+		        mainService.postBoys(data).success(function(response) {		        	
 		            callback(response);
 		        }).error(function(response){
 		            callback(response);
@@ -28,8 +26,7 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		    };
 		serviceObject.listBoys = function(callback) {
 		        
-		        mainService.getBoys().success(function(response) {
-		        	console.log(response);
+		        mainService.getBoys().success(function(response) {		        	
 		            callback(response);
 		        }).error(function(response){
 		            callback(response);

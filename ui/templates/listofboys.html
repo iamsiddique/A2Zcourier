@@ -40,8 +40,7 @@
 						<th>Delete</th>
 					</thead>
 					<tbody>
-
-						<tr ng-repeat="list in listofBoys | filter:searchTable | limitTo:pageSize | orderBy:sortColumn:reverseSort" ng-if="!retrivalerr">
+						<tr ng-repeat="list in listofBoys | limitTo: pageSize : listofBoysss | orderBy:sortColumn:reverseSort | filter:searchTable " ng-if="!retrivalerr">
 							
 							<td>{{list.firstName}}&nbsp;{{list.lastName}}</td>
 							<td ng-bind="list.mobileNumber"></td>
