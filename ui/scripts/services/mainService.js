@@ -4,24 +4,24 @@ courierApp.config(function($httpProvider) {
 })
 .factory('mainService',['$http','$rootScope',function($http, $rootScope) {
 
-		$rootScope.urlBase = '';
+		$rootScope.urlBase = 'http://166.62.40.162:8080/';
 		$rootScope.header = { headers : { "Content-type" : "application/json","Accept" : "application/json" } };
 
 		var dataFetch = {};
 
 		dataFetch.postLogin = function(data) {
 
-		    return $http.post('http://166.62.40.162:8080/a2z/user/login', data, $rootScope.header);		    
+		    return $http.post($rootScope.urlBase+'a2z/user/login', data, $rootScope.header);		    
 		    
 		};
 		dataFetch.postBoys = function(data) {
 
-		    return $http.post('http://166.62.40.162:8080/a2z/courierboy/save', data, $rootScope.header);		    
+		    return $http.post($rootScope.urlBase+'a2z/courierboy/save', data, $rootScope.header);		    
 		    
 		};
 		dataFetch.getBoys = function() {
 
-		    return $http.get('http://166.62.40.162:8080/a2z/courierboy/list', $rootScope.header);		    
+		    return $http.get($rootScope.urlBase+'a2z/courierboy/list', $rootScope.header);		    
 		    
 		};
 		return dataFetch;
