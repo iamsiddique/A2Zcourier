@@ -18,7 +18,7 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
     			}
     			$scope.setPage = function () {
     				$scope.selectedPage = this.$index;
-    				$scope.listofBoysss = ($scope.selectedPage*$scope.pageSize);
+    				$scope.listofBoyss = ($scope.selectedPage*$scope.pageSize);
     			};
     			$scope.pageButtonDisabled = function(dir) {
     				if (dir == -1) {
@@ -28,7 +28,7 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
     			}
     			$scope.paginate = function(nextPrevMultiplier) {
     				$scope.currentPage += (nextPrevMultiplier * 1);
-    				$scope.listofBoysss = ($scope.currentPage*$scope.pageSize);
+    				$scope.listofBoyss = ($scope.currentPage*$scope.pageSize);
     			}
 
 			}

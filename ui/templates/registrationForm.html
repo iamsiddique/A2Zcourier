@@ -1,7 +1,7 @@
 <div ng-include src="'ui/templates/shared/header.html'"></div>
 <div class="margin-t-b clear"></div>
 <div class="container">
-	<form class="form-horizontal">
+	<form class="form-horizontal" name="registrationform" novalidate>
 		<fieldset>
 
 			<!-- Form Name -->
@@ -18,59 +18,189 @@
 					<label class="col-md-4 control-label" for="firstname">First Name</label>
 					<div class="col-md-8">
 						<input  name="firstName" type="text" ng-model="courierBoy.firstName" placeholder="First Name" class="form-control input-md" required="">
+						<div ng-messages="registrationform.firstName.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="firstname">Last Name</label>
+					<div class="col-md-8">
+						<input  name="lastName" type="text" ng-model="courierBoy.lastName" placeholder="Last Name" class="form-control input-md" required="">
 					</div>
 				</div>
-
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>  
 					<div class="col-md-8">
 						<input  name="mobileNumber" type="text" ng-model="courierBoy.mobileNumber" placeholder="Mobile Number" class="form-control input-md" required="">
+						<div ng-messages="registrationform.mobileNumber.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
 					</div>
 				</div>
-
+			</div>
+			<div class="col-md-6">
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>  
+					<div class="col-md-8">
+						<input  name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md" required="">
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="username">User Name</label>
 					<div class="col-md-8">
 						<input  name="userName" type="text" ng-model="courierBoy.user.username" placeholder="User Name" class="form-control input-md" required="">
+						<div ng-messages="registrationform.password.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
 					</div>
 				</div>
-
+			</div>
+			<div class="col-md-6">
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="password">Password</label>
+					<div class="col-md-8">
+						<input  name="password" type="password" ng-model="courierBoy.user.password" placeholder="Password" class="form-control input-md" required="">
+						<div ng-messages="registrationform.password.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="permanentAddress">Permanent Address</label>  
 					<div class="col-md-8">
-						<textarea placeholder="Permanent Address" ng-model="courierBoy.permanentAddress" class="form-control input-md" required=""></textarea> 
+						<textarea placeholder="Permanent Address" name="permanentAddress" ng-model="courierBoy.permanentAddress" class="form-control input-md" required=""></textarea> 
+						<div ng-messages="registrationform.permanentAddress.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-md-6">
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="currentAddress">Current Address</label>  
+					<div class="col-md-8">
+						<textarea placeholder="Current Address" name="currentAddress" ng-model="courierBoy.currentAddress" class="form-control input-md" required=""></textarea> 
+						<div ng-messages="registrationform.currentAddress.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="vtype">Vehicle Type</label>
 					<div class="col-md-8">
-						<select id="Country" name="Country" ng-model="courierBoy.vehicleType" class="form-control">
+						<select id="" name="vehicleType" ng-model="courierBoy.vehicleType" class="form-control">
 							<option value="t1">Two Wheeler</option>
 							<option value="t2">Four Wheeler</option>
 						</select>
+						<div ng-messages="registrationform.vehicleType.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="vehicleName">Vehicle Name</label>  
+					<div class="col-md-8">
+						<input  name="vehicleName" type="text" ng-model="courierBoy.vehicleName" placeholder="vehicle Name" class="form-control input-md" required=""> 
+						<div ng-messages="registrationform.vehicleName.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="dlnumber">DL Number</label>  
 					<div class="col-md-8">
 						<input  name="dlNumber" type="text" ng-model="courierBoy.dlNumber" placeholder="DL Number" class="form-control input-md" required="">
+						<div ng-messages="registrationform.dlNumber.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Batch Number</label>  
+					<div class="col-md-8">
+						<input  name="batchNumber" type="text" ng-model="courierBoy.batchNumber" placeholder="Batch Number" class="form-control input-md" required="">
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="bankname">Bank Name</label>  
 					<div class="col-md-8">
-						<input  name="bankName" type="text" ng-model="courierBoy.bankName" placeholder="Bank Name" class="form-control input-md" required="">
+						<input  name="bankName" type="text" ng-model="courierBoy.bankName" placeholder="Bank Name" class="form-control input-md" required>
+						<div ng-messages="registrationform.bankName.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+					</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="accntname">Bank Account Holder Name</label>  
+					<div class="col-md-8">
+						<input  name="accntName" type="text" ng-model="courierBoy.bankAccountHolderName" placeholder="Bank Account Holder Name" class="form-control input-md" required="">
+						<div ng-messages="registrationform.accntName.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="accountnumber">Account Number</label>  
 					<div class="col-md-8">
 						<input  name="accountNumber" type="text" ng-model="courierBoy.bankAccountNumber" placeholder="Bank Name" class="form-control input-md" required="">
+						<div ng-messages="registrationform.accountNumber.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="ifsccode">IFSC Code</label>  
+					<div class="col-md-8">
+						<input  name="ifscCode" type="text" ng-model="courierBoy.bankIfscCode" placeholder="IFSC Code" class="form-control input-md" required="">
+						<div ng-messages="registrationform.ifscCode.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>  
 					<div class="input-group custom-pad col-md-8">
@@ -82,85 +212,8 @@
 						</label>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="batchnumber">Insurance</label>  
-					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="insurance" readonly>
-						<label class="input-group-btn">
-							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="insurance" multiple>
-							</span>
-						</label>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="batchnumber">Photo</label>  
-					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="photo" readonly>
-						<label class="input-group-btn">
-							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="photo" multiple>
-							</span>
-						</label>
-					</div>
-				</div>
 			</div>
-			<!-- Text input-->
 			<div class="col-md-6">
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="firstname">Last Name</label>
-					<div class="col-md-8">
-						<input  name="lastName" type="text" ng-model="courierBoy.lastName" placeholder="Last Name" class="form-control input-md" required="">
-					</div>
-				</div>
-
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>  
-					<div class="col-md-8">
-						<input  name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md" required="">
-					</div>
-				</div>
-
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="password">Password</label>
-					<div class="col-md-8">
-						<input  name="password" type="text" ng-model="courierBoy.user.password" placeholder="Password" class="form-control input-md" required="">
-					</div>
-				</div>
-
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="currentAddress">Current Address</label>  
-					<div class="col-md-8">
-						<textarea placeholder="Current Address" ng-model="courierBoy.currentAddress" class="form-control input-md" required=""></textarea> 
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="vehicleName">Vehicle Name</label>  
-					<div class="col-md-8">
-						<input  name="vehicleName" type="text" ng-model="courierBoy.vehicleName" placeholder="vehicle Name" class="form-control input-md" required=""> 
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="batchnumber">Batch Number</label>  
-					<div class="col-md-8">
-						<input  name="batchNumber" type="text" ng-model="courierBoy.batchNumber" placeholder="Batch Number" class="form-control input-md" required="">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="accntname">Bank Account Holder Name</label>  
-					<div class="col-md-8">
-						<input  name="accntName" type="text" ng-model="courierBoy.bankAccountHolderName" placeholder="Bank Account Holder Name" class="form-control input-md" required="">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-4 control-label" for="ifsccode">IFSC Code</label>  
-					<div class="col-md-8">
-						<input  name="ifscCode" type="text" ng-model="courierBoy.bankIfscCode" placeholder="IFSC Code" class="form-control input-md" required="">
-					</div>
-				</div>
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">RC Book</label>  
 					<div class="input-group custom-pad col-md-8">
@@ -172,6 +225,22 @@
 						</label>
 					</div>
 				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Insurance</label>  
+					<div class="input-group custom-pad col-md-8">
+						<input type="text" class="form-control" ng-bind="insurance" readonly>
+						<label class="input-group-btn">
+							<span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  ng-model="insurance" multiple>
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Road Tax</label>  
 					<div class="input-group custom-pad col-md-8">
@@ -184,8 +253,23 @@
 					</div>
 				</div>
 			</div>
+			<div class="clear"></div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label class="col-md-4 control-label" for="batchnumber">Photo</label>  
+					<div class="input-group custom-pad col-md-8">
+						<input type="text" class="form-control" ng-bind="photo" readonly>
+						<label class="input-group-btn">
+							<span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  ng-model="photo" multiple>
+							</span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
 			<div class="col-md-12 text-center">
-				<input type="button" class="btn btn-success" name="submit" ng-click="save()" value="Submit"/>
+				<input type="submit" class="btn btn-success" name="submit" ng-click="save();submitted=true" value="Submit"/>
 				<a href="#/list" class="btn btn-primary">Cancel</a>
 			</div>
 			<div class="col-md-12 text-center">

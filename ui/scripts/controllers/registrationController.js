@@ -1,5 +1,5 @@
-courierApp.controller("registrationController",['$scope','$location','intermediateService','$timeout',
- function ($scope,$location,intermediateService,$timeout) {
+courierApp.controller("registrationController",['$rootScope','$scope','$location','intermediateService','$timeout',
+ function ($rootScope,$scope,$location,intermediateService,$timeout) {
 
  	$scope.courierBoy = {};
 	$scope.save = function (){

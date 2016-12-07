@@ -26,7 +26,8 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		    };
 		serviceObject.listBoys = function(callback) {
 		        
-		        mainService.getBoys().success(function(response) {		        	
+		        mainService.getBoys().success(function(response) {	
+		        console.log(response);	        	
 		            callback(response);
 		        }).error(function(response){
 		            callback(response);

@@ -1,4 +1,4 @@
-var courierApp = angular.module("a2zCouriers",["ngRoute"]);
+var courierApp = angular.module("a2zCouriers",["ngRoute","ngMessages"]);
 
 courierApp.config(function($routeProvider) {
     $routeProvider
