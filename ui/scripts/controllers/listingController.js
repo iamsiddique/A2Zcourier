@@ -56,5 +56,9 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
 		localStorage.removeItem('userLoggedin');
 		$location.path('/login');
 	}
-		
+	$scope.checkIndex = function (data) {
+		console.log(data);		 
+		$scope.courierBoy = data;
+		console.log($scope.courierBoy);
+	}
 }]);

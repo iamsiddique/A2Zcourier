@@ -112,8 +112,8 @@
 					<label class="col-md-4 control-label" for="vtype">Vehicle Type</label>
 					<div class="col-md-8">
 						<select id="" name="vehicleType" ng-model="courierBoy.vehicleType" class="form-control">
-							<option value="t1">Two Wheeler</option>
-							<option value="t2">Four Wheeler</option>
+							<option value="2W">Two Wheeler</option>
+							<option value="4W">Four Wheeler</option>
 						</select>
 						<div ng-messages="registrationform.vehicleType.$error" ng-if='submitted' class="text-danger">
 						<p ng-message="required">This field is required</p>	
@@ -241,13 +241,13 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="form-group">
+				<div class="form-group">{{courierBoy.roadTax}}
 					<label class="col-md-4 control-label" for="batchnumber">Road Tax</label>  
 					<div class="input-group custom-pad col-md-8">
 						<input type="text" class="form-control" ng-bind="roadTax" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="roadTax" multiple>
+								Browse <input type="file" style="display: none;"  onchange="angular.element(this).scope().loadit()" ng-model="roadTax" multiple>
 							</span>
 						</label>
 					</div>

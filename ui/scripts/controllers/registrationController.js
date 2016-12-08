@@ -3,7 +3,11 @@ courierApp.controller("registrationController",['$rootScope','$scope','$location
 
  	$scope.courierBoy = {};
 	$scope.save = function (){
-		intermediateService.saveBoys($scope.courierBoy, function(response) {
+		var fd = new FormData();
+		//fd.append('file', $scope.rddoc);
+		fd.append('user',angular.toJson($scope.courierBoy,true));
+		console.log(fd);
+		intermediateService.saveBoys(fd, function(response) {
 			if(response.statusCode == 1){
 				$scope.regSuccess = true;
 				$timeout(function(){
@@ -20,6 +24,12 @@ courierApp.controller("registrationController",['$rootScope','$scope','$location
 				},2000);
 			}
 		});		
+	}
+	$scope.loadit = function(){
+		var filename = event.target.files[0].name;
+		console.log(filename);
+		$scope.rddoc = event.target.files;
+		console.log(event.target.files);
 	}
 	
 }]);
