@@ -4,7 +4,11 @@ courierApp.controller("registrationController",['$rootScope','$scope','$location
  	$scope.courierBoy = {};
 	$scope.save = function (){
 		var fd = new FormData();
-		//fd.append('file', $scope.rddoc);
+		fd.append('dl', $scope.drivingLicense);
+		fd.append('rc', $scope.rcdoc);
+		fd.append('insurance', $scope.insurance);
+		fd.append('rt', $scope.roadTax);
+		fd.append('photo', $scope.photo);
 		fd.append('user',angular.toJson($scope.courierBoy,true));
 		console.log(fd);
 		intermediateService.saveBoys(fd, function(response) {
@@ -28,8 +32,14 @@ courierApp.controller("registrationController",['$rootScope','$scope','$location
 	$scope.loadit = function(){
 		var filename = event.target.files[0].name;
 		console.log(filename);
-		$scope.rddoc = event.target.files;
-		console.log(event.target.files);
+		$scope.rddoc = event.target.files[0];
+		console.log(event.target.files[0]);
+	}
+	$scope.loaditt = function(){
+		var filename = event.target.files[0].name;
+		console.log(filename);
+		$scope.rcdoc = event.target.files[0];
+		console.log(event.target.files[0]);
 	}
 	
 }]);

@@ -19,7 +19,6 @@ courierApp.config(function($routeProvider) {
         templateUrl : "ui/templates/login.html"
     });
 })
-
 courierApp.run(['logCheck','$rootScope', function(logCheck, $rootScope) {
 	/*console.log('first called');
 	var currentUser = logCheck.checkUser();

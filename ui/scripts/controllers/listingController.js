@@ -61,4 +61,13 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
 		$scope.courierBoy = data;
 		console.log($scope.courierBoy);
 	}
+	$scope.delete = function (data) {
+		intermediateService.deleteBoys(data, function(response) {
+			console.log('success');	
+
+		});
+		console.log(data);		 
+		$scope.courierBoy = data;
+		console.log($scope.courierBoy);
+	}
 }]);

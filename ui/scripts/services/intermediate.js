@@ -33,6 +33,15 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		            callback(response);
 		        });
 		    };
+		serviceObject.deleteBoys = function(id,callback) {
+		        data = id;
+		        mainService.deleteBoys(data).success(function(response) {	
+		        console.log(response);	        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
 
 
 		return serviceObject;

@@ -204,10 +204,10 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="drivingLicence" readonly>
+						<input type="text" class="form-control" ng-model="drivingLicense.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="drivingLicence" multiple>
+								Browse <input type="file" style="display: none;"  file-upload="drivingLicense" multiple>
 							</span>
 						</label>
 					</div>
@@ -217,10 +217,10 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">RC Book</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="rcBook" readonly>
+						<input type="text" class="form-control" ng-model="rcdoc.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="rcBook" multiple>
+								Browse <input type="file" style="display: none;"   file-upload="rcdoc" multiple>
 							</span>
 						</label>
 					</div>
@@ -231,10 +231,10 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Insurance</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="insurance" readonly>
+						<input type="text" class="form-control" ng-model="insurance.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="insurance" multiple>
+								Browse <input type="file" style="display: none;"  file-upload="insurance" multiple>
 							</span>
 						</label>
 					</div>
@@ -244,10 +244,10 @@
 				<div class="form-group">{{courierBoy.roadTax}}
 					<label class="col-md-4 control-label" for="batchnumber">Road Tax</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="roadTax" readonly>
+						<input type="text" class="form-control" ng-model="roadTax.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  onchange="angular.element(this).scope().loadit()" ng-model="roadTax" multiple>
+								Browse <input type="file" style="display: none;"   file-upload="roadTax" multiple>
 							</span>
 						</label>
 					</div>
@@ -258,10 +258,10 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Photo</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="photo" readonly>
+						<input type="text" class="form-control" ng-model="photo.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="photo" multiple>
+								Browse <input type="file" style="display: none;"  file-upload="photo" multiple>
 							</span>
 						</label>
 					</div>

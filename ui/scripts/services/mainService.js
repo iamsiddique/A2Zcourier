@@ -5,7 +5,8 @@ courierApp.config(function($httpProvider) {
 .factory('mainService',['$http','$rootScope',function($http, $rootScope) {
 
 		$rootScope.urlBase = 'http://166.62.40.162:8080/a2z/';
-		$rootScope.header = { headers : { 'Content-Type' : undefined } };
+		$rootScope.header = {header: { "Content-type" : "application/json","Accept" : "application/json" }};
+		$rootScope.uploadheader = { headers : { 'Content-Type' : undefined } };
 
 		var dataFetch = {};
 
@@ -16,12 +17,17 @@ courierApp.config(function($httpProvider) {
 		};
 		dataFetch.postBoys = function(data) {
 
-		    return $http.post('http://192.168.1.101/SpringRestCrud/courierboy/save', data, $rootScope.header);		    
+		    return $http.post($rootScope.urlBase+ 'courierboy/save', data, $rootScope.uploadheader);		    
 		    
 		};
 		dataFetch.getBoys = function() {
 
-		    return $http.get($rootScope.urlBase+'courierboy/list', $rootScope.header);		    
+		    return $http.get($rootScope.urlBase +'courierboy/list', $rootScope.header);		    
+		    
+		};
+		dataFetch.deleteBoys = function(id) {
+
+		    return $http.get($rootScope.urlBase +'courierboy/deactivate/'+ id, $rootScope.header);		    
 		    
 		};
 		return dataFetch;
