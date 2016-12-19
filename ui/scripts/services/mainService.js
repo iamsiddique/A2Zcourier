@@ -30,7 +30,13 @@ courierApp.config(function($httpProvider) {
 		    return $http.get($rootScope.urlBase +'courierboy/deactivate/'+ id, $rootScope.header);		    
 		    
 		};
+		dataFetch.getArea = function(pin) {
+
+		    return $http.get('https://www.whizapi.com/api/v2/util/ui/in/indian-city-by-postal-code?project-app-key=84icfal4d8ad42v8o8jdw8fe&pin='+ pin, $rootScope.header);		    
+		    
+		};
 		return dataFetch;
+		
 }])
 .factory('logCheck',['$http','$rootScope',function($http, $rootScope) {
 

@@ -48,3 +48,25 @@ th {
   border-top: 10px solid black;
   display:inline-block;
 }
+hr{
+  margin-top:50px;
+  border-top:1px solid #bbbbbb !important;
+}
+.hiden{
+  visibility: hidden;
+}
+.thumbnail{
+  border-radius: 2px;
+  margin-bottom: 0px;
+  border-bottom: none;
+}
+.thumbnail:last-child{
+  border-bottom: 1px solid #ddd;
+}
+.del-btn{
+  padding: 1px 4px;
+  font-size: 8px;
+}
+li[disabled] {
+    pointer-events: none;
+}

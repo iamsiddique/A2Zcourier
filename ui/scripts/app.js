@@ -14,6 +14,10 @@ courierApp.config(function($routeProvider) {
         controller: 'listingController',
         templateUrl : "ui/templates/listofboys.html"
     })
+    .when("/center", {
+        controller: 'centerRegController',
+        templateUrl : "ui/templates/centerRegistration.html"
+    })
     .when("/", {
     	controller: 'authenticationController',
         templateUrl : "ui/templates/login.html"

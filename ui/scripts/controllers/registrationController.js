@@ -29,17 +29,11 @@ courierApp.controller("registrationController",['$rootScope','$scope','$location
 			}
 		});		
 	}
-	$scope.loadit = function(){
+	/*$scope.loadit = function(){
 		var filename = event.target.files[0].name;
 		console.log(filename);
 		$scope.rddoc = event.target.files[0];
 		console.log(event.target.files[0]);
-	}
-	$scope.loaditt = function(){
-		var filename = event.target.files[0].name;
-		console.log(filename);
-		$scope.rcdoc = event.target.files[0];
-		console.log(event.target.files[0]);
-	}
+	}*/
 	
 }]);

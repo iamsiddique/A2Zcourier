@@ -11,6 +11,7 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
 				$scope.retrivalerr = false;
 				$scope.currentPage = 0;
     			$scope.pageSize = 6;
+    			$scope.selectedPage = 0;
     			
     			$scope.totalPages = Math.ceil(response.data.length/$scope.pageSize);
     			$scope.getNumber = function(num) {
@@ -61,13 +62,25 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
 		$scope.courierBoy = data;
 		console.log($scope.courierBoy);
 	}
-	$scope.delete = function (data) {
-		intermediateService.deleteBoys(data, function(response) {
+	$scope.checkingit = function(data){
+		
+		$scope.delId = data;
+		
+	}
+	$scope.delete = function () {
+		
+		intermediateService.deleteBoys($scope.delId, function(response) {
 			console.log('success');	
+			intermediateService.listBoys(function(response) {
+				if(response.statusCode == 1){
+					$scope.listofBoys = response.data;
+				}
+				console.log('refreshed');
+			});
 
 		});
-		console.log(data);		 
-		$scope.courierBoy = data;
-		console.log($scope.courierBoy);
+		console.log($scope.delId);		 
+		/*$scope.courierBoy = data;
+		console.log($scope.courierBoy);*/
 	}
 }]);
