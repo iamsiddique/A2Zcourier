@@ -10,6 +10,7 @@
 	<div class="margin-t-b ">
 		
 		<a href="" class="btn btn-primary pull-right margin-btn" ng-click="logout()">Logout</a>
+		<a href="#/center" class="btn btn-primary pull-right margin-btn" >List of center</a>
 		<a href="#/registration" class="btn btn-primary pull-right margin-btn">Add new</a>
 		<div class="margin-t-b clear"></div>
 	
@@ -143,7 +144,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="username">User Name</label>
 					<div class="col-md-8">
-						<input  name="userName" type="text" ng-model="courierBoy.user.username" placeholder="User Name" class="form-control input-md" required="">
+						<input  name="userName" type="text" ng-model="courierBoy.user.username" placeholder="User Name" class="form-control input-md" required="" readonly>
 						<div ng-messages="registrationform.password.$error" ng-if='submitted' class="text-danger">
 						<p ng-message="required">This field is required</p>	
 						</div>
@@ -285,12 +286,15 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="drivingLicence" readonly>
+						<input type="text" class="form-control" ng-model="drivingLicense.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="drivingLicence" multiple>
+								Browse <input type="file" style="display: none;"  file-upload="drivingLicense" multiple>
 							</span>
 						</label>
+					</div>
+					<div class="col-md-8 pull-right">
+						<a href={{dlDownload}} download>Download - <span ng-bind="courierBoy.dlFileName"></span></a>
 					</div>
 				</div>
 			</div>
@@ -298,12 +302,15 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">RC Book</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="rcBook" readonly>
+						<input type="text" class="form-control" ng-model="rcdoc.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="rcBook" multiple>
+								Browse <input type="file" style="display: none;"  file-upload="rcdoc" multiple>
 							</span>
 						</label>
+					</div>
+					<div class="col-md-8 pull-right">
+						<a href={{rcDownload}} download>Download - <span ng-bind="courierBoy.rcFileName"></span></a>
 					</div>
 				</div>
 			</div>
@@ -312,25 +319,35 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Insurance</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="insurance" readonly>
+						<input type="text" class="form-control" ng-model="insurance.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="insurance" multiple>
+								Browse <input type="file" style="display: none;"  file-upload="insurance" multiple>
 							</span>
 						</label>
+						
 					</div>
+					<div class="col-md-8 pull-right">
+						<a href={{insuranceDownload}} download>Download - <span ng-bind="courierBoy.insuranceFileName"></span></a>
+					</div>
+
 				</div>
+
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Road Tax</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="roadTax" readonly>
+						<input type="text" class="form-control" ng-model="roadTax.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="roadTax" multiple>
+								Browse <input type="file" style="display: none;" file-upload="roadTax" multiple>
 							</span>
 						</label>
+						
+					</div>
+					<div class="col-md-8 pull-right">
+						<a href={{rtDownload}} download>Download - <span ng-bind="courierBoy.roadtaxFileName"></span></a>
 					</div>
 				</div>
 			</div>
@@ -339,12 +356,15 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Photo</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-bind="photo" readonly>
+						<input type="text" class="form-control" ng-model="photo.name" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  ng-model="photo" multiple>
+								Browse <input type="file" style="display: none;"  file-upload="photo"  multiple>
 							</span>
 						</label>
+					</div>
+					<div class="col-md-8 pull-right">
+						<a href={{photoDownload}} download>Download - <span ng-bind="courierBoy.photoFileName"></span></a>
 					</div>
 				</div>
 			</div>
@@ -353,7 +373,7 @@
 	</form>
 			</div>
 			<div class="modal-footer ">
-				<input type="button" class="btn btn-success" name="submit" value="Submit"/>
+				<input type="button" class="btn btn-success" ng-click="update()" name="submit" value="Submit"/>
 				<a class="btn btn-primary" data-dismiss="modal">Cancel</a>
 			</div>
 		</div>

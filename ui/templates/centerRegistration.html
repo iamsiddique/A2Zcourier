@@ -1,6 +1,6 @@
 <div ng-include src="'ui/templates/shared/header.html'"></div>
 <div class="margin-t-b clear"></div>
-<div class="container">
+<div class="container" ng-init="listit()">
 	<legend>Courier Center Registration</legend>
 	<div class="col-md-12 margin-t-b clear">
 		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
@@ -14,6 +14,7 @@
 		</div>
 		<div class="col-md-9">			
 			<a href="" class="btn btn-primary" ng-click="addArea()">Add</a>
+			<a href="#/list" class="btn btn-primary" >Back</a>
 		</div>
 		<div class="col-md-12" ng-if="pinError">
 			<p ng-bind="pinFail" class="text-danger"></p>
@@ -22,25 +23,12 @@
 		<hr class="hiden" />
 		<legend>List of Centers</legend>
 		<div class="col-md-12">			 
-			<div class="thumbnail">            
+			<div class="thumbnail" ng-repeat="center in listOfcenter">            
 				<div class="caption">
-					<h4>Thumbnail label <a class="btn btn-danger btn-xs pull-right del-btn" data-title="Delete" data-toggle="modal" data-target="#delete" role="button">X</a></h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta, eligendi doloribus sunt minus amet sit debitis repellat. Consectetur, culpa itaque odio similique suscipit</p>
-					<p> </p>
-				</div>
-			</div>
-			<div class="thumbnail">            
-				<div class="caption">
-					<h4>Thumbnail label <a href="#" class="btn btn-danger btn-xs pull-right del-btn" role="button">X</a></h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta, eligendi doloribus sunt minus amet sit debitis repellat. Consectetur, culpa itaque odio similique suscipit</p>
-					<p> </p>
-				</div>
-			</div>
-			<div class="thumbnail">            
-				<div class="caption">
-					<h4>Thumbnail label <a href="#" class="btn btn-danger btn-xs pull-right del-btn" role="button">X</a></h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, soluta, eligendi doloribus sunt minus amet sit debitis repellat. Consectetur, culpa itaque odio similique suscipit</p>
-					<p> </p>
+					<h4>{{center.pincode}} <a class="btn btn-danger btn-xs pull-right del-btn" data-title="Delete" data-toggle="modal" data-target="#delete" role="button" ng-click="deleteC(center.id)">X</a></h4>
+					<p ng-bind="center.address"></p>
+					<p ng-bind="center.city"></p>
+					<p ng-bind="center.state"></p>
 				</div>
 			</div>        
 		</div>
@@ -59,7 +47,7 @@
 
 			</div>
 			<div class="modal-footer ">
-				<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+				<button type="button" class="btn btn-success" ng-click="deletecenter()"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
 			</div>
 		</div>
@@ -67,4 +55,5 @@
 	</div>
 
 </div>
+
 </div>

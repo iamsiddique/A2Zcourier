@@ -18,6 +18,17 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
 				}
 				pinDetails.address = myarray.toString();
 				console.log(pinDetails);
+				intermediateService.postArea(pinDetails, function(response) {
+				if(response.statusCode == 1){
+					intermediateService.centerlist(function(response) {
+						console.log(response);
+						$scope.listOfcenter = response.data;
+					})
+					
+				}
+				
+				console.log(response);
+			});
 
 			}
 			else if (response.ResponseCode == 20) {
@@ -31,6 +42,28 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
 				
 			}
 		});		
+	}
+	$scope.listit = function (){
+		intermediateService.centerlist(function(response) {
+			console.log(response);
+			$scope.listOfcenter = response.data;
+		})
+	}
+	$scope.deleteC = function(data){
+		
+		$scope.delId = data;
+		console.log($scope.delId);
+		
+	}
+	$scope.deletecenter = function (){
+		console.log('called');
+		intermediateService.centerDelete($scope.delId, function(response) {
+			console.log(response);
+			intermediateService.centerlist(function(response) {
+			console.log(response);
+			$scope.listOfcenter = response.data;
+		});
+	});
 	}
 	
 	

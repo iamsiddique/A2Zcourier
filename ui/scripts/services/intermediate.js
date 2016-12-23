@@ -24,6 +24,15 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		            callback(response);
 		        });
 		    };
+		serviceObject.updateBoys = function(courierboyData, callback) {
+		        var data = courierboyData;
+		       
+		        mainService.postUpdate(data).success(function(response) {		        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
 		serviceObject.listBoys = function(callback) {
 		        
 		        mainService.getBoys().success(function(response) {	
@@ -45,6 +54,30 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		serviceObject.getArea = function(pin,callback) {
 		        data = pin;
 		        mainService.getArea(data).success(function(response) {	
+		        console.log(response);	        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
+		serviceObject.postArea = function(data,callback) {
+		        mainService.postCenter(data).success(function(response) {	
+		        console.log(response);	        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
+		serviceObject.centerlist = function(callback) {
+		        mainService.getCenterlist().success(function(response) {	
+		        console.log(response);	        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
+		 serviceObject.centerDelete = function(id,callback) {
+		        mainService.deleteCenter(id).success(function(response) {	
 		        console.log(response);	        	
 		            callback(response);
 		        }).error(function(response){

@@ -60,6 +60,11 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
 	$scope.checkIndex = function (data) {
 		console.log(data);		 
 		$scope.courierBoy = data;
+		$scope.rtDownload = "http://166.62.40.162:8080/a2z/courierboy/download/rt/" + data.id;
+		$scope.rcDownload = "http://166.62.40.162:8080/a2z/courierboy/download/rc/" + data.id;
+		$scope.insuranceDownload = "http://166.62.40.162:8080/a2z/courierboy/download/insurance/" + data.id;
+		$scope.dlDownload = "http://166.62.40.162:8080/a2z/courierboy/download/dl/" + data.id;
+		$scope.photoDownload = "http://166.62.40.162:8080/a2z/courierboy/download/dl/" + data.id;
 		console.log($scope.courierBoy);
 	}
 	$scope.checkingit = function(data){
@@ -79,8 +84,20 @@ courierApp.controller("listingController",['$scope','$location','intermediateSer
 			});
 
 		});
-		console.log($scope.delId);		 
-		/*$scope.courierBoy = data;
-		console.log($scope.courierBoy);*/
+				
+	}
+	$scope.update = function () {
+		var fd = new FormData();
+		fd.append('dl', $scope.drivingLicense);
+		fd.append('rc', $scope.rcdoc);
+		fd.append('insurance', $scope.insurance);
+		fd.append('rt', $scope.roadTax);
+		fd.append('photo', $scope.photo);
+		fd.append('user',angular.toJson($scope.courierBoy,true));
+		intermediateService.updateBoys(fd, function(response) {
+			console.log('success');	
+			
+
+		});		
 	}
 }]);

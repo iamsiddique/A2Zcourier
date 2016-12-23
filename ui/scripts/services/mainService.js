@@ -20,6 +20,11 @@ courierApp.config(function($httpProvider) {
 		    return $http.post($rootScope.urlBase+ 'courierboy/save', data, $rootScope.uploadheader);		    
 		    
 		};
+		dataFetch.postUpdate = function(data) {
+
+		    return $http.post($rootScope.urlBase+ 'courierboy/update', data, $rootScope.uploadheader);		    
+		    
+		};
 		dataFetch.getBoys = function() {
 
 		    return $http.get($rootScope.urlBase +'courierboy/list', $rootScope.header);		    
@@ -33,6 +38,21 @@ courierApp.config(function($httpProvider) {
 		dataFetch.getArea = function(pin) {
 
 		    return $http.get('https://www.whizapi.com/api/v2/util/ui/in/indian-city-by-postal-code?project-app-key=84icfal4d8ad42v8o8jdw8fe&pin='+ pin, $rootScope.header);		    
+		    
+		};
+		dataFetch.postCenter = function(data) {
+
+		    return $http.post($rootScope.urlBase + 'couriercenter/save',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.getCenterlist = function() {
+
+		    return $http.get($rootScope.urlBase + 'couriercenter/list', $rootScope.header);		    
+		    
+		};
+		dataFetch.deleteCenter= function(id) {
+
+		    return $http.get($rootScope.urlBase + 'couriercenter/delete/' + id, $rootScope.header);		    
 		    
 		};
 		return dataFetch;
