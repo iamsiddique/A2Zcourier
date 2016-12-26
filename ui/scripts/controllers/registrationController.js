@@ -2,7 +2,13 @@ courierApp.controller("registrationController",['$rootScope','$scope','$location
  function ($rootScope,$scope,$location,intermediateService,$timeout) {
 
  	$scope.courierBoy = {};
+ 	$scope.courierBoy.vehicleType = '2W';
+ 	$rootScope.loginPage=true;
 	$scope.save = function (){
+		console.log('save called');
+	if($scope.registrationform.$valid){
+		$scope.submitted = false;
+		console.log('valid called');
 		var fd = new FormData();
 		fd.append('dl', $scope.drivingLicense);
 		fd.append('rc', $scope.rcdoc);
@@ -27,7 +33,14 @@ courierApp.controller("registrationController",['$rootScope','$scope','$location
 					$scope.regError = false;
 				},2000);
 			}
-		});		
+		});	
+ 	}
+ 	else{
+ 		console.log('invalid called');
+ 		$scope.submitted = true; 
+ 	}
+		
+			
 	}
 	/*$scope.loadit = function(){
 		var filename = event.target.files[0].name;

@@ -1,7 +1,8 @@
-courierApp.controller("listingController",['$scope','$location','intermediateService','$timeout',
- function ($scope,$location,intermediateService,$timeout) {
+courierApp.controller("listingController",['$scope','$location','$rootScope','intermediateService','$timeout',
+ function ($scope,$location,$rootScope,intermediateService,$timeout) {
 
  	$scope.listofBoys;
+ 	$rootScope.loginPage=true;
  	$scope.totalPages = 0;
 	$scope.listit = function (){
 		intermediateService.listBoys(function(response) {

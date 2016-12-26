@@ -25,5 +25,5 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 		logCheck.checkUser(function(response) {
 			$location.path('/list');
 		});		
-	}		
+	}	
 }]);

@@ -7,14 +7,13 @@
 	</div>
 </div>
 <div class="container">
-	<div class="row">
+	<div class="">
 		<div class="col-md-3">
 			<input  name="pincode" type="text" ng-model="pinCode" placeholder="Enter pincode" class="form-control input-md">
 			
 		</div>
 		<div class="col-md-9">			
 			<a href="" class="btn btn-primary" ng-click="addArea()">Add</a>
-			<a href="#/list" class="btn btn-primary" >Back</a>
 		</div>
 		<div class="col-md-12" ng-if="pinError">
 			<p ng-bind="pinFail" class="text-danger"></p>

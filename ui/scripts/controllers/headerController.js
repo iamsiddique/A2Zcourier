@@ -1,12 +1,25 @@
 courierApp.controller("headerController",['$rootScope','$scope','$location',
  function ($rootScope,$location,$scope) {
  	
-	$rootScope.loginPage;	
+	//$rootScope.loginPage = true;	
 	//console.log($rootScope.loginPage);
-	$rootScope.logout = function(){		
+	$scope.logout = function(){		
 		localStorage.removeItem('userLoggedin');
 		$location.path('/login');
- 		$rootScope.loginPage=false;
+ 		$rootScope.loginPage= false;
 
 	}
+}]);
+courierApp.controller("LogoutController",['$location','$rootScope','$scope',
+ function ($location,$rootScope,$scope) {
+ 	
+	$rootScope.loginPage = true;	
+	//console.log($rootScope.loginPage);
+	
+	$scope.logout = function () {		
+		localStorage.removeItem('userLoggedin');
+		$location.path('/login');
+ 		$rootScope.loginPage= false;
+	}
+	$scope.logout();
 }]);

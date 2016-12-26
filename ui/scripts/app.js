@@ -18,6 +18,11 @@ courierApp.config(function($routeProvider) {
         controller: 'centerRegController',
         templateUrl : "ui/templates/centerRegistration.html"
     })
+    .when('/logout', {
+    controller: 'LogoutController',
+    template: '<h1>hi</h1>' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
+    
+    })
     .when("/", {
     	controller: 'authenticationController',
         templateUrl : "ui/templates/login.html"

@@ -2,6 +2,7 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
  function ($rootScope,$scope,$location,intermediateService,$timeout) {
 
  	$scope.pinCode;
+ 	$rootScope.loginPage=true;
 	$scope.addArea = function (){
 		
 		intermediateService.getArea($scope.pinCode, function(response) {

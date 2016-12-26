@@ -30,7 +30,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="firstname">Last Name</label>
 					<div class="col-md-8">
-						<input  name="lastName" type="text" ng-model="courierBoy.lastName" placeholder="Last Name" class="form-control input-md" required="">
+						<input  name="lastName" type="text" ng-model="courierBoy.lastName" placeholder="Last Name" class="form-control input-md">
 					</div>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>  
 					<div class="col-md-8">
-						<input  name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md" required="">
+						<input  name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md" >
 					</div>
 				</div>
 			</div>
@@ -112,7 +112,7 @@
 					<label class="col-md-4 control-label" for="vtype">Vehicle Type</label>
 					<div class="col-md-8">
 						<select id="" name="vehicleType" ng-model="courierBoy.vehicleType" class="form-control">
-							<option value="2W">Two Wheeler</option>
+							<option value="2W" >Two Wheeler</option>
 							<option value="4W">Four Wheeler</option>
 						</select>
 						<div ng-messages="registrationform.vehicleType.$error" ng-if='submitted' class="text-danger">
@@ -204,12 +204,17 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-model="drivingLicense.name" readonly>
+						<input type="text" class="form-control" name="dl" ng-model="drivingLicense.name"  readonly required="">
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  file-upload="drivingLicense" multiple>
+								Browse <input type="file" style="display: none;" name="dl" file-upload="drivingLicense" multiple required="">
 							</span>
-						</label>
+						</label>				
+					</div>
+					<div class="pull-right col-md-8">
+						<div ng-messages="registrationform.dl.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+					</div>
 					</div>
 				</div>
 			</div>
@@ -217,12 +222,17 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">RC Book</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-model="rcdoc.name" readonly>
+						<input type="text" class="form-control" name="rc" ng-model="rcdoc.name" readonly required="">
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
 								Browse <input type="file" style="display: none;"   file-upload="rcdoc" multiple>
 							</span>
 						</label>
+					</div>
+					<div class="pull-right col-md-8">
+						<div ng-messages="registrationform.rc.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+					</div>
 					</div>
 				</div>
 			</div>
@@ -231,25 +241,35 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Insurance</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-model="insurance.name" readonly>
+						<input type="text" class="form-control" name="ins" ng-model="insurance.name" required="" readonly>
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
 								Browse <input type="file" style="display: none;"  file-upload="insurance" multiple>
 							</span>
 						</label>
 					</div>
+					<div class="pull-right col-md-8">
+						<div ng-messages="registrationform.ins.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+					</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="form-group">{{courierBoy.roadTax}}
+				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Road Tax</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-model="roadTax.name" readonly>
+						<input type="text" class="form-control" name="rt" ng-model="roadTax.name" readonly required="">
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
 								Browse <input type="file" style="display: none;"   file-upload="roadTax" multiple>
 							</span>
 						</label>
+					</div>
+					<div class="pull-right col-md-8">
+						<div ng-messages="registrationform.rt.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+					</div>
 					</div>
 				</div>
 			</div>
@@ -258,18 +278,23 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="batchnumber">Photo</label>  
 					<div class="input-group custom-pad col-md-8">
-						<input type="text" class="form-control" ng-model="photo.name" readonly>
+						<input type="text" class="form-control" name="photo" ng-model="photo.name" readonly required="">
 						<label class="input-group-btn">
 							<span class="btn btn-primary">
 								Browse <input type="file" style="display: none;"  file-upload="photo" multiple>
 							</span>
 						</label>
 					</div>
+					<div class="pull-right col-md-8">
+						<div ng-messages="registrationform.photo.$error" ng-if='submitted' class="text-danger">
+						<p ng-message="required">This field is required</p>	
+					</div>
+					</div>
 				</div>
 			</div>
 			<div class="clear"></div>
 			<div class="col-md-12 text-center">
-				<input type="submit" class="btn btn-success" name="submit" ng-click="save();submitted=true" value="Submit"/>
+				<input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit"/>
 				<a href="#/list" class="btn btn-primary">Cancel</a>
 			</div>
 			<div class="col-md-12 text-center">
