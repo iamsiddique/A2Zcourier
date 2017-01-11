@@ -5,7 +5,23 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
  	$rootScope.loginPage=true;
 	$scope.addArea = function (){
 		$scope.streetAddress;
-		intermediateService.getArea($scope.pinCode, function(response) {
+		var pinDetails = {};
+				pinDetails.pincode = $scope.pinCode;	
+				pinDetails.address = $scope.streetAddress;			
+				pinDetails.city = 'Bangalore';
+				pinDetails.country = 'India';
+				pinDetails.state = 'Karnataka';
+				console.log(pinDetails);
+				intermediateService.postArea(pinDetails, function(response) {
+				if(response.statusCode == 1){
+					intermediateService.centerlist(function(response) {
+						console.log(response);
+						$scope.listOfcenter = response.data;
+					})
+					
+				}
+
+		/*intermediateService.getArea($scope.pinCode, function(response) {
 			if(response.ResponseCode == 0){
 				var centers = response.Data;
 				var myarray = [];
@@ -14,9 +30,9 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
 				pinDetails.city = centers[0].City;
 				pinDetails.country = centers[0].Country;
 				pinDetails.state = centers[0].State;
-				/*for(i in centers){
-					myarray.push(centers[i].Address);
-				}*/
+				//for(i in centers){
+					//myarray.push(centers[i].Address);
+				//}
 				//pinDetails.address = myarray.toString();
 				pinDetails.address = $scope.streetAddress;
 				console.log(pinDetails);
@@ -42,7 +58,7 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
 				},2000);
 				
 				
-			}
+			}*/
 		});		
 	}
 	$scope.listit = function (){
