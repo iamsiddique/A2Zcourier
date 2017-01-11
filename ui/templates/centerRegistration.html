@@ -9,10 +9,13 @@
 <div class="container">
 	<div class="">
 		<div class="col-md-3">
-			<input  name="pincode" type="text" ng-model="pinCode" placeholder="Enter pincode" class="form-control input-md">
+			<input  name="pincode" type="text" ng-model="pinCode" placeholder="Enter pincode" class="form-control input-md">			
+		</div>
+		<div class="col-md-3">
+			<input  name="address" type="text" ng-model="streetAddress" placeholder="Enter street address" class="form-control input-md">
 			
 		</div>
-		<div class="col-md-9">			
+		<div class="col-md-6">			
 			<a href="" class="btn btn-primary" ng-click="addArea()">Add</a>
 		</div>
 		<div class="col-md-12" ng-if="pinError">
@@ -46,7 +49,7 @@
 
 			</div>
 			<div class="modal-footer ">
-				<button type="button" class="btn btn-success" ng-click="deletecenter()"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+				<button type="button" class="btn btn-success" ng-click="deletecenter()" data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
 			</div>
 		</div>
