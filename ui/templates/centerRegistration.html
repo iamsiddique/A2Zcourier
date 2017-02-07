@@ -17,6 +17,7 @@
         <div class="col-md-6">
             <a href="" class="btn btn-primary" ng-click="addArea()">Add</a>
         </div>
+        
         <div class="col-md-12" ng-if="pinError">
             <p ng-bind="pinFail" class="text-danger"></p>
         </div>
@@ -27,8 +28,12 @@
             <p ng-if="regSuccess" class="text-success">Center successfully added</p>
             <p ng-if="regError" class="text-danger">Center registration failed</p>
         </div>
+        <div class="col-md-3 pull-right">
+                <input name="search" type="text" ng-model="searchCenter" placeholder="Search" class="form-control input-md">
+                <div class="margin-t-b clear"></div>
+        </div>
         <div class="col-md-12">
-            <div class="thumbnail" ng-repeat="center in listOfcenter">
+            <div class="thumbnail" ng-repeat="center in listOfcenter | filter:searchCenter">
                 <div class="caption">
                     <h4>{{center.pincode}} <a class="btn btn-danger btn-xs pull-right del-btn" data-title="Delete" data-toggle="modal" data-target="#delete" role="button" ng-click="deleteC(center.id)">X</a></h4>
                     <p ng-bind="center.address"></p>
