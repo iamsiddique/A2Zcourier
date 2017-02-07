@@ -84,6 +84,30 @@ courierApp.factory('intermediateService',['$rootScope','mainService'  ,function(
 		            callback(response);
 		        });
 		    };
+		serviceObject.saveProduct = function(data,callback) {
+		        mainService.saveProduct(data).success(function(response) {	
+		        console.log(response);	        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
+		serviceObject.productlist = function(callback) {
+		        mainService.getProduct().success(function(response) {	
+		        console.log(response);	        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
+		serviceObject.stockEntry = function(data,callback) {
+		        mainService.stockEntry(data).success(function(response) {	
+		        console.log(response);	        	
+		            callback(response);
+		        }).error(function(response){
+		            callback(response);
+		        });
+		    };
 
 
 

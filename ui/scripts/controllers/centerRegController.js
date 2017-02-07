@@ -6,6 +6,11 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
 	$scope.addArea = function (){
 		$scope.streetAddress;
 		var pinDetails = {};
+		// for(i in $scope.listOfcenter){
+		// 	if($scope.pinCode == $scope.listOfcenter.pincode){
+		// 		console.log('yes');
+		// 	}
+		// }
 				pinDetails.pincode = $scope.pinCode;	
 				pinDetails.address = $scope.streetAddress;			
 				pinDetails.city = 'Bangalore';
@@ -14,51 +19,24 @@ courierApp.controller("centerRegController",['$rootScope','$scope','$location','
 				console.log(pinDetails);
 				intermediateService.postArea(pinDetails, function(response) {
 				if(response.statusCode == 1){
+					$scope.regSuccess = true;
 					intermediateService.centerlist(function(response) {
 						console.log(response);
+						$scope.pinCode="";
+						$scope.streetAddress="";
 						$scope.listOfcenter = response.data;
 					})
+					$timeout(function(){
+						$scope.regSuccess = false;
+					},2000);
 					
+				}else{
+					$scope.regError = true;
+					$timeout(function(){
+						$scope.regError = false;
+					},2000);
 				}
-
-		/*intermediateService.getArea($scope.pinCode, function(response) {
-			if(response.ResponseCode == 0){
-				var centers = response.Data;
-				var myarray = [];
-				var pinDetails = {};
-				pinDetails.pincode = centers[0].Pincode;				
-				pinDetails.city = centers[0].City;
-				pinDetails.country = centers[0].Country;
-				pinDetails.state = centers[0].State;
-				//for(i in centers){
-					//myarray.push(centers[i].Address);
-				//}
-				//pinDetails.address = myarray.toString();
-				pinDetails.address = $scope.streetAddress;
-				console.log(pinDetails);
-				intermediateService.postArea(pinDetails, function(response) {
-				if(response.statusCode == 1){
-					intermediateService.centerlist(function(response) {
-						console.log(response);
-						$scope.listOfcenter = response.data;
-					})
-					
-				}
-				
-				console.log(response);
-			});
-
-			}
-			else if (response.ResponseCode == 20) {
-				console.log('failed');
-				$scope.pinError = true;
-				$timeout(function(){
-					$scope.pinError = false;
-					$scope.pinFail = response.ResponseMessage;
-				},2000);
-				
-				
-			}*/
+		
 		});		
 	}
 	$scope.listit = function (){

@@ -1,0 +1,50 @@
+<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div class="margin-t-b clear"></div>
+<div class="container">
+    <form class="form-horizontal" name="productform" novalidate>
+        <fieldset>
+            <!-- Form Name -->
+            <legend>Product Entry</legend>
+            <div class="col-md-12 margin-t-b">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+            </div>
+            <div class="margin-t-b clear"></div>
+            <!-- Select Basic -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productname">Product Name</label>
+                    <div class="col-md-8">
+                        <input name="productname" type="text" ng-model="product.name" placeholder="Product Name" class="form-control input-md" required="">
+                        <div ng-messages="productform.productname.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productcode">Product Code</label>
+                    <div class="col-md-8">
+                        <input name="productcode" type="text" ng-model="product.code" placeholder="Product Code" class="form-control input-md" required="">
+                        <div ng-messages="productform.productcode.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="clear"></div>
+            <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
+                <a href="#/list" class="btn btn-primary">Cancel</a>
+            </div>
+            <div class="col-md-12 text-center">
+                <p ng-if="regSuccess" class="text-success">Product successfully entered</p>
+                <p ng-if="regError" class="text-danger">Product entry failed</p>
+            </div>
+        </fieldset>
+    </form>
+    <div class="margin-t-b clear"></div>
+</div>
+</div>

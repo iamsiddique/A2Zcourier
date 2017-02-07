@@ -4,7 +4,8 @@ courierApp.config(function($httpProvider) {
 })
 .factory('mainService',['$http','$rootScope',function($http, $rootScope) {
 
-		$rootScope.urlBase = 'http://166.62.40.162:8080/a2z/';
+		//$rootScope.urlBase = 'http://166.62.40.162:8080/a2z/';
+		$rootScope.urlBase = 'http://localhost:8080/SpringRestCrud/';
 		$rootScope.header = {header: { "Content-type" : "application/json","Accept" : "application/json" }};
 		$rootScope.uploadheader = { headers : { 'Content-Type' : undefined } };
 
@@ -53,6 +54,21 @@ courierApp.config(function($httpProvider) {
 		dataFetch.deleteCenter= function(id) {
 
 		    return $http.get($rootScope.urlBase + 'couriercenter/delete/' + id, $rootScope.header);		    
+		    
+		};
+		dataFetch.saveProduct= function(data) {
+
+		    return $http.post($rootScope.urlBase + 'product/save',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.getProduct= function() {
+
+		    return $http.get($rootScope.urlBase + 'product/list', $rootScope.header);		    
+		    
+		};
+		dataFetch.stockEntry= function(data) {
+
+		    return $http.post($rootScope.urlBase + 'stockentry/save',data, $rootScope.header);		    
 		    
 		};
 		return dataFetch;

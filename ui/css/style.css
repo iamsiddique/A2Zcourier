@@ -1,72 +1,87 @@
 body {
-  padding-top: 50px;
-  background: #f5f5f5;
+    padding-top: 50px;
+    background: #f5f5f5;
 }
-.clear{
-	clear:both;
+
+.clear {
+    clear: both;
 }
+
 .colorgraph {
-  height: 5px;
-  border-top: 0;
-  background: #c4e17f;
-  border-radius: 5px;
-  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    height: 5px;
+    border-top: 0;
+    background: #c4e17f;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
-.custom-pad{
-  padding-right: 15px !important;
-  padding-left: 15px !important;
+
+.custom-pad {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
 }
+
 .form-group {
     margin-bottom: 35px !important;
 }
-.margin-t-b{
-  margin-top:15px;
-  margin-bottom:15px;
+
+.margin-t-b {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
-.margin-btn{
-  margin:5px;
+
+.margin-btn {
+    margin: 5px;
 }
+
 th {
-  cursor: pointer;
+    cursor: pointer;
 }
-.arrow-up{
-  width:0;
-  height:0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 10px solid black;
-  display:inline-block;
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid black;
+    display: inline-block;
 }
-.arrow-down{
-  width:0;
-  height:0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 10px solid black;
-  display:inline-block;
+
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid black;
+    display: inline-block;
 }
-hr{
-  margin-top:50px;
-  border-top:1px solid #bbbbbb !important;
+
+hr {
+    margin-top: 50px;
+    border-top: 1px solid #bbbbbb !important;
 }
-.hiden{
-  visibility: hidden;
+
+.hiden {
+    visibility: hidden;
 }
-.thumbnail{
-  border-radius: 2px;
-  margin-bottom: 0px;
-  border-bottom: none;
+
+.thumbnail {
+    border-radius: 2px;
+    margin-bottom: 0px;
+    border-bottom: none;
 }
-.thumbnail:last-child{
-  border-bottom: 1px solid #ddd;
+
+.thumbnail:last-child {
+    border-bottom: 1px solid #ddd;
 }
-.del-btn{
-  padding: 1px 4px;
-  font-size: 8px;
+
+.del-btn {
+    padding: 1px 4px;
+    font-size: 8px;
 }
+
 li[disabled] {
     pointer-events: none;
 }

@@ -1,0 +1,171 @@
+courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$location', 'intermediateService','$timeout','$filter',
+    function($rootScope, $scope, $location, intermediateService,$timeout,$filter) {
+
+        $scope.stock = {};
+        $scope.stock.warehouse = undefined;
+        $scope.stock.productname = undefined;
+        $rootScope.loginPage = true;
+        $scope.countries = [];
+        $scope.products = [];
+        intermediateService.centerlist(function(response) {
+            console.log(response);
+            for (i in response.data)
+                if (response.data[i].pincode != null) {
+                    var pincode = {}
+                    pincode.name = response.data[i].pincode;
+                    pincode.id = response.data[i].id;
+                    $scope.countries.push(pincode);
+                    console.log('called');
+                }
+            console.log($scope.countries);
+        })
+        intermediateService.productlist(function(response) {
+            console.log(response);
+            for (i in response.data)
+                if (response.data[i].name != null) {
+                    var productlist = {}
+                    productlist.name = response.data[i].name;
+                    productlist.id = response.data[i].id;
+                    $scope.products.push(productlist);
+                    console.log('called');
+                }
+            console.log($scope.products);
+        })
+        $scope.save = function() {
+            console.log('save called');
+            if ($scope.stockform.$valid) {
+                $scope.submitted = false;
+                console.log($scope.stock);
+                var data = {};
+                data.product = {}
+                data.courierCenter = {};
+                data.expiryDate = $filter('date')($scope.stock.expDate, "yyyy-MM-dd");
+                data.manufactureDate = $filter('date')($scope.stock.manuDate, "yyyy-MM-dd");
+                console.log($scope.stock.quantity);
+                data.quantity = $scope.stock.quantity;
+                data.product.id = $scope.stock.product.id;
+                data.courierCenter.id = $scope.stock.courierCenter.id;
+                console.log(data);
+                console.log(JSON.stringify(data));
+                
+                intermediateService.stockEntry(data, function(response) {
+                    if (response.statusCode == 1) {
+                        $scope.regSuccess = true;
+                        $timeout(function() {
+                            $scope.regSuccess = false;
+                            //$location.path('/list');
+                        }, 2000);
+
+                    } else if (response.statusCode == 0) {
+                        console.log('failed');
+                        $scope.regError = true;
+                        $timeout(function() {
+                            $scope.regError = false;
+                        }, 2000);
+                    }
+                });
+            } else {
+                console.log('invalid called');
+                $scope.submitted = true;
+            }
+
+
+        }
+        $scope.today = function() {
+            $scope.stock.manuDate = new Date();
+            $scope.stock.expDate = new Date();
+            
+        };
+        $scope.today();
+
+        $scope.clear = function() {
+            $scope.stock.manuDate = null;
+            $scope.stock.expDate = null;
+        };
+
+        $scope.inlineOptions = {
+            customClass: getDayClass,
+            minDate: new Date(),
+            showWeeks: true
+        };
+
+        $scope.dateOptions = {
+            // dateDisabled: disabled,
+            formatYear: 'yy',
+            maxDate: new Date(2020, 5, 22),
+            minDate: new Date(),
+            startingDay: 1
+        };
+
+        // Disable weekend selection
+        function disabled(data) {
+            var date = data.date,
+                mode = data.mode;
+            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+        }
+
+        $scope.toggleMin = function() {
+            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+        };
+
+        $scope.toggleMin();
+
+        $scope.open1 = function() {
+            $scope.popup1.opened = true;
+        };
+
+        $scope.open2 = function() {
+            $scope.popup2.opened = true;
+        };
+
+        $scope.setDate = function(year, month, day) {
+            $scope.stock.manuDate = new Date(year, month, day);
+            $scope.stock.expDate = new Date(year, month, day);
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
+        $scope.altInputFormats = ['M!/d!/yyyy'];
+
+        $scope.popup1 = {
+            opened: false
+        };
+
+        $scope.popup2 = {
+            opened: false
+        };
+
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow = new Date();
+        afterTomorrow.setDate(tomorrow.getDate() + 1);
+        $scope.events = [{
+            date: tomorrow,
+            status: 'full'
+        }, {
+            date: afterTomorrow,
+            status: 'partially'
+        }];
+
+        function getDayClass(data) {
+            var date = data.date,
+                mode = data.mode;
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+                for (var i = 0; i < $scope.events.length; i++) {
+                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                    if (dayToCheck === currentDay) {
+                        return $scope.events[i].status;
+                    }
+                }
+            }
+
+            return '';
+        }
+
+
+    }
+]);
