@@ -1,5 +1,5 @@
-courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$location', 'intermediateService','$timeout','$filter',
-    function($rootScope, $scope, $location, intermediateService,$timeout,$filter) {
+courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout', '$filter',
+    function($rootScope, $scope, $location, intermediateService, $timeout, $filter) {
 
         $scope.stock = {};
         $scope.stock.warehouse = undefined;
@@ -39,6 +39,7 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
                 var data = {};
                 data.product = {}
                 data.courierCenter = {};
+                data.entryDate = $filter('date')($scope.stock.enterDate, "yyyy-MM-dd");
                 data.expiryDate = $filter('date')($scope.stock.expDate, "yyyy-MM-dd");
                 data.manufactureDate = $filter('date')($scope.stock.manuDate, "yyyy-MM-dd");
                 console.log($scope.stock.quantity);
@@ -47,7 +48,7 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
                 data.courierCenter.id = $scope.stock.courierCenter.id;
                 console.log(data);
                 console.log(JSON.stringify(data));
-                
+
                 intermediateService.stockEntry(data, function(response) {
                     if (response.statusCode == 1) {
                         $scope.regSuccess = true;
@@ -74,13 +75,15 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
         $scope.today = function() {
             $scope.stock.manuDate = new Date();
             $scope.stock.expDate = new Date();
-            
+            $scope.stock.enterDate = new Date();
+
         };
         $scope.today();
 
         $scope.clear = function() {
             $scope.stock.manuDate = null;
             $scope.stock.expDate = null;
+             $scope.stock.enterDate = null;
         };
 
         $scope.inlineOptions = {
@@ -118,10 +121,14 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
         $scope.open2 = function() {
             $scope.popup2.opened = true;
         };
+        $scope.open3 = function() {
+            $scope.popup2.opened = true;
+        };
 
         $scope.setDate = function(year, month, day) {
             $scope.stock.manuDate = new Date(year, month, day);
             $scope.stock.expDate = new Date(year, month, day);
+             $scope.stock.enterDate = new Date(year, month, day);
         };
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -133,6 +140,9 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
         };
 
         $scope.popup2 = {
+            opened: false
+        };
+         $scope.popup3 = {
             opened: false
         };
 

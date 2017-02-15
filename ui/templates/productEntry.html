@@ -33,6 +33,27 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productimage">Product Image</label>
+                    <div class="input-group custom-pad col-md-8">
+                        <input type="text" class="form-control" name="productimage" ng-model="productImage.name" readonly required="">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Browse <input type="file" style="display: none;"   file-upload="productImage" multiple>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pull-right col-md-8">
+                        <div ng-messages="productform.productimage.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img ng-src="{{ImageSrc ||'ui/images/product.png'}}" class="pull-right" style="width:200px;height:140px"/>
+            </div>
             <div class="clear"></div>
             <div class="clear"></div>
             <div class="col-md-12 text-center">
@@ -46,5 +67,19 @@
         </fieldset>
     </form>
     <div class="margin-t-b clear"></div>
+    <div class="col-md-12">
+        <div class="media block-update-card col-md-4" ng-repeat="product in products">
+            <a class="pull-left" href="#">
+                <img class="media-object update-card-MDimentions" ng-src="{{product.photo  ||'ui/images/product.png'}}" >
+            </a>
+            <div class="media-body update-card-body">
+            <a class="btn btn-danger btn-xs pull-right del-btn" data-title="Delete" data-toggle="modal" data-target="#delete" role="button" ng-click="">X</a>
+                <h4 class="media-heading" ng-bind="product.name"></h4>
+                <p ng-bind="product.code"></p>
+            </div>
+        </div>
+        
+        
+    </div>
 </div>
 </div>

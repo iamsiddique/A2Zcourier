@@ -61,11 +61,11 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 		$scope.checkIndex = function (data) {
 			console.log(data);		 
 			$scope.courierBoy = data;
-			$scope.rtDownload = "http://166.62.40.162:8080/a2z/courierboy/download/rt/" + data.id;
-			$scope.rcDownload = "http://166.62.40.162:8080/a2z/courierboy/download/rc/" + data.id;
-			$scope.insuranceDownload = "http://166.62.40.162:8080/a2z/courierboy/download/insurance/" + data.id;
-			$scope.dlDownload = "http://166.62.40.162:8080/a2z/courierboy/download/dl/" + data.id;
-			$scope.photoDownload = "http://166.62.40.162:8080/a2z/courierboy/download/dl/" + data.id;
+			$scope.rtDownload = $rootScope.urlBase +"courierboy/download/rt/" + data.id;
+			$scope.rcDownload = $rootScope.urlBase +"courierboy/download/rc/" + data.id;
+			$scope.insuranceDownload = $rootScope.urlBase +"courierboy/download/insurance/" + data.id;
+			$scope.dlDownload = $rootScope.urlBase +"courierboy/download/dl/" + data.id;
+			$scope.photoDownload = $rootScope.urlBase +"courierboy/download/photo/" + data.id;
 			console.log($scope.courierBoy);
 		}
 		$scope.checkingit = function(data){
@@ -118,4 +118,17 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 
 			});		
 		}
+		 $scope.setimage = function() {
+                console.log('called');
+                var file = $scope.photo;
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function(e) {
+                    $scope.$apply(function() {
+                        $scope.ImageSrc = e.target.result;
+                        
+                    });
+
+                }
+            }
 	}]);

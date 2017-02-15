@@ -6,8 +6,7 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
     </div>
     <div class="margin-t-b ">
-        <!-- <a href="" class="btn btn-primary pull-right margin-btn" ng-click="logout()">Logout</a>
-		<a href="#/center" class="btn btn-primary pull-right margin-btn" >List of center</a> -->
+        
         <a href="#/registration" class="btn btn-primary pull-right margin-btn">Add new</a>
         <div class="margin-t-b clear"></div>
     </div>
@@ -42,7 +41,8 @@
                                                                     <th>Delete</th>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="list in listofBoys | filter:searchTable | limitTo: pageSize : listofBoyss | orderBy:sortColumn:reverseSort  " ng-if="!retrivalerr">
+                            <tr ng-repeat="list in listofBoys | filter:searchTable
+ | limitTo: pageSize : listofBoyss | orderBy:sortColumn:reverseSort  " ng-if="!retrivalerr">
                                 <td>{{list.firstName}}&nbsp;{{list.lastName}}</td>
                                 <td ng-bind="list.mobileNumber"></td>
                                 <td ng-bind="list.currentAddress"></td>
@@ -342,7 +342,7 @@
                                             <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="batchnumber">Photo</label>
+                                                    <label class="col-md-4 control-label" for="batchnumber">User Photo</label>
                                                     <div class="input-group custom-pad col-md-8">
                                                         <input type="text" class="form-control" ng-model="photo.name" readonly>
                                                         <label class="input-group-btn">
@@ -354,8 +354,12 @@
                                                     <div class="col-md-8 pull-right">
                                                         <a href={{photoDownload}} download>Download - <span ng-bind="courierBoy.photoFileName"></span></a>
                                                     </div>
+                                                   
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                 <img ng-src="{{ImageSrc || photoDownload }}" class="pull-right" style="width:200px;height:140px"/>
+            </div>
                                         </fieldset>
                                     </form>
                                 </div>

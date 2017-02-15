@@ -45,6 +45,24 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
+                    <label class="col-md-4 control-label" for="enterdate">Enter Date</label>
+                    <div class="col-md-8">
+                        <p class="input-group">
+                            <input name="enterdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stock.enterDate" is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="open3()">
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                        <div ng-messages="stockform.enterdate.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
                     <label class="col-md-4 control-label" for="manudate">Manufacture Date</label>
                     <div class="col-md-8">
                         <p class="input-group">

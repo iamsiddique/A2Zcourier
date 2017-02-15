@@ -280,12 +280,16 @@
 							</span>
                         </label>
                     </div>
+                    
                     <div class="pull-right col-md-8">
                         <div ng-messages="registrationform.photo.$error" ng-if='submitted' class="text-danger">
                             <p ng-message="required">This field is required</p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6">
+                 <img ng-src="{{ImageSrc}}" class="pull-right" style="width:200px;height:140px"/>
             </div>
             <div class="clear"></div>
             <div class="col-md-12 text-center">

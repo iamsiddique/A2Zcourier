@@ -58,7 +58,7 @@ courierApp.config(function($httpProvider) {
 		};
 		dataFetch.saveProduct= function(data) {
 
-		    return $http.post($rootScope.urlBase + 'product/save',data, $rootScope.header);		    
+		    return $http.post($rootScope.urlBase + 'product/save',data, $rootScope.uploadheader);		    
 		    
 		};
 		dataFetch.getProduct= function() {
@@ -69,6 +69,11 @@ courierApp.config(function($httpProvider) {
 		dataFetch.stockEntry= function(data) {
 
 		    return $http.post($rootScope.urlBase + 'stockentry/save',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.centerStockData= function(id) {
+
+		    return $http.get($rootScope.urlBase + 'stockentry/couriercenterid/'+ id, $rootScope.header);		    
 		    
 		};
 		return dataFetch;

@@ -6,6 +6,11 @@ courierApp.config(function($routeProvider) {
             controller: 'authenticationController',
             templateUrl: "ui/templates/login.html"
         })
+        .when('/logout', {
+            controller: 'LogoutController',
+            template: '<h1>hi</h1>' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
+             
+        })
         .when("/registration", {
             controller: 'registrationController',
             templateUrl: "ui/templates/registrationForm.html"
@@ -19,7 +24,7 @@ courierApp.config(function($routeProvider) {
             templateUrl: "ui/templates/centerRegistration.html"
         })
 
-    .when('/productEntry', {
+       .when('/productEntry', {
             controller: 'productEntryController',
             templateUrl: 'ui/templates/productEntry.html' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
 
@@ -29,10 +34,16 @@ courierApp.config(function($routeProvider) {
             templateUrl: 'ui/templates/stockEntry.html' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
 
         })
+        .when("/centerStock", {
+            controller: 'centerStockController',
+            templateUrl: "ui/templates/centerStock.html"
+        })
         .when("/", {
             controller: 'authenticationController',
             templateUrl: "ui/templates/login.html"
         });
+        
+
 })
 courierApp.run(['logCheck', '$rootScope', function(logCheck, $rootScope) {
     /*console.log('first called');
