@@ -46,6 +46,8 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
                 data.quantity = $scope.stock.quantity;
                 data.product.id = $scope.stock.product.id;
                 data.courierCenter.id = $scope.stock.courierCenter.id;
+                data.invoiceNumber = $scope.stock.invoiceNumber;
+                data.shopName = $scope.stock.shopName;
                 console.log(data);
                 console.log(JSON.stringify(data));
 

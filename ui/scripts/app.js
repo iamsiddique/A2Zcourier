@@ -26,13 +26,16 @@ courierApp.config(function($routeProvider) {
 
        .when('/productEntry', {
             controller: 'productEntryController',
-            templateUrl: 'ui/templates/productEntry.html' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
+            templateUrl: 'ui/templates/productEntry.html' 
 
         })
         .when('/stockEntry', {
             controller: 'stockEntryController',
-            templateUrl: 'ui/templates/stockEntry.html' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
-
+            templateUrl: 'ui/templates/stockEntry.html' 
+        })
+        .when('/employeeDetails', {
+            controller: 'employeeDetailsController',
+            templateUrl: 'ui/templates/employeeDetails.html' 
         })
         .when("/centerStock", {
             controller: 'centerStockController',

@@ -14,7 +14,10 @@
         <div class="col-md-3">
             <input name="address" type="text" ng-model="streetAddress" placeholder="Enter street address" class="form-control input-md">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+            <input name="email" type="text" ng-model="email" placeholder="Enter email" class="form-control input-md">
+        </div>
+        <div class="col-md-3">
             <a href="" class="btn btn-primary" ng-click="addArea()">Add</a>
         </div>
         
@@ -39,6 +42,7 @@
                     <p ng-bind="center.address"></p>
                     <p ng-bind="center.city"></p>
                     <p ng-bind="center.state"></p>
+                    <p>Email :<span ng-bind="center.email"></span></p>
                     <a ng-click="centerStock(center.id)">List of available stock</a>
                 </div>
             </div>

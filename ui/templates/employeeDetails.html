@@ -1,0 +1,237 @@
+<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div class="margin-t-b clear"></div>
+<div class="container">
+    <form class="form-horizontal" name="empdetailsform" novalidate>
+        <fieldset>
+            <!-- Form Name -->
+            <legend>Employee Details</legend>
+            <div class="col-md-12 margin-t-b">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+            </div>
+            <div class="margin-t-b clear"></div>
+            <!-- Select Basic -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="warehousename">Ware house</label>
+                    <div class="col-md-8">
+                        <input name="warehousename" type="text" ng-model="employeeDetails.courierCenter" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}" placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0">
+                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="firstname">First Name</label>
+                    <div class="col-md-8">
+                        <input name="firstName" type="text" ng-model="employeeDetails.firstName" placeholder="First Name" class="form-control input-md" required="">
+                        <div ng-messages="empdetailsform.firstName.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="lastname">Last Name</label>
+                    <div class="col-md-8">
+                        <input name="lastName" type="text" ng-model="employeeDetails.lastName" placeholder="Last Name" class="form-control input-md">
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>
+                    <div class="col-md-8">
+                        <input name="mobileNumber" type="text" ng-model="employeeDetails.mobileNumber" placeholder="Mobile Number" class="form-control input-md" required="">
+                        <div ng-messages="empdetailsform.mobileNumber.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>
+                    <div class="col-md-8">
+                        <input name="alternateNumber" type="text" ng-model="employeeDetails.alternateNumber" placeholder="Alternate Number" class="form-control input-md">
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="username">User Name</label>
+                    <div class="col-md-8">
+                        <input name="userName" type="text" ng-model="employeeDetails.user.username" placeholder="User Name" class="form-control input-md" required="">
+                        <div ng-messages="empdetailsform.password.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="password">Password</label>
+                    <div class="col-md-8">
+                        <input name="password" type="password" ng-model="employeeDetails.user.password" placeholder="Password" class="form-control input-md" required="">
+                        <div ng-messages="empdetailsform.password.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="permanentAddress">Permanent Address</label>
+                    <div class="col-md-8">
+                        <textarea placeholder="Permanent Address" name="permanentAddress" ng-model="employeeDetails.permanentAddress" class="form-control input-md" required=""></textarea>
+                        <div ng-messages="empdetailsform.permanentAddress.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="currentAddress">Current Address</label>
+                    <div class="col-md-8">
+                        <textarea placeholder="Current Address" name="currentAddress" ng-model="employeeDetails.currentAddress" class="form-control input-md" required=""></textarea>
+                        <div ng-messages="empdetailsform.currentAddress.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="bankname">Bank Name</label>
+                    <div class="col-md-8">
+                        <input name="bankName" type="text" ng-model="employeeDetails.bankName" placeholder="Bank Name" class="form-control input-md" required>
+                        <div ng-messages="empdetailsform.bankName.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="accntname">Bank Account Holder Name</label>
+                    <div class="col-md-8">
+                        <input name="accntName" type="text" ng-model="employeeDetails.bankAccountHolderName" placeholder="Bank Account Holder Name" class="form-control input-md" required="">
+                        <div ng-messages="empdetailsform.accntName.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="accountnumber">Account Number</label>
+                    <div class="col-md-8">
+                        <input name="accountNumber" type="text" ng-model="employeeDetails.bankAccountNumber" placeholder="Bank Name" class="form-control input-md" required="">
+                        <div ng-messages="empdetailsform.accountNumber.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="ifsccode">IFSC Code</label>
+                    <div class="col-md-8">
+                        <input name="ifscCode" type="text" ng-model="employeeDetails.bankIfscCode" placeholder="IFSC Code" class="form-control input-md" required="">
+                        <div ng-messages="empdetailsform.ifscCode.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>
+                    <div class="input-group custom-pad col-md-8">
+                        <input type="text" class="form-control" name="dl" ng-model="drivingLicense.name" readonly required="">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Browse <input type="file" style="display: none;" name="dl" file-upload="drivingLicense" multiple required="">
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pull-right col-md-8">
+                        <div ng-messages="empdetailsform.dl.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="pancard">Pan Card</label>
+                    <div class="input-group custom-pad col-md-8">
+                        <input type="text" class="form-control" name="pancard" ng-model="pancard.name" readonly required="">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"   file-upload="pancard" multiple>
+							</span>
+                        </label>
+                    </div>
+                    <div class="pull-right col-md-8">
+                        <div ng-messages="empdetailsform.pancard.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="batchnumber">Photo</label>
+                    <div class="input-group custom-pad col-md-8">
+                        <input type="text" class="form-control" name="photo" ng-model="photo.name" readonly required="">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+								Browse <input type="file" style="display: none;"  file-upload="photo" multiple>
+							</span>
+                        </label>
+                    </div>
+                    
+                    <div class="pull-right col-md-8">
+                        <div ng-messages="empdetailsform.photo.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                 <img ng-src="{{ImageSrc || 'ui/images/avatar.jpg'}}" class="pull-right" style="width:145px;height:140px"/>
+            </div>
+            <div class="clear"></div>
+            <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
+                <a href="#/list" class="btn btn-primary">Cancel</a>
+            </div>
+            <div class="col-md-12 text-center">
+                <p ng-if="regSuccess" class="text-success">User successfully registered</p>
+                <p ng-if="regError" class="text-danger">User registration failed</p>
+            </div>
+        </fieldset>
+    </form>
+    <div class="margin-t-b clear"></div>
+</div>
+</div>

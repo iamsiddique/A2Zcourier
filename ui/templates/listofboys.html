@@ -6,7 +6,6 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
     </div>
     <div class="margin-t-b ">
-        
         <a href="#/registration" class="btn btn-primary pull-right margin-btn">Add new</a>
         <div class="margin-t-b clear"></div>
     </div>
@@ -89,6 +88,11 @@
                                         <fieldset>
                                             <div class="margin-t-b clear"></div>
                                             <!-- Select Basic -->
+                                             <div class="col-md-6"></div>
+                                            <div class="col-md-6">
+                                                <img ng-src="{{ImageSrc || photoDownload}}" class="pull-right" style="width:145px;height:140px" />
+                                            </div>
+                                            <div class="margin-t-b clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="firstname">First Name</label>
@@ -281,8 +285,8 @@
                                                         <input type="text" class="form-control" ng-model="drivingLicense.name" readonly>
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  file-upload="drivingLicense" multiple>
-							</span>
+                                Browse <input type="file" style="display: none;"  file-upload="drivingLicense" multiple>
+                            </span>
                                                         </label>
                                                     </div>
                                                     <div class="col-md-8 pull-right">
@@ -297,8 +301,8 @@
                                                         <input type="text" class="form-control" ng-model="rcdoc.name" readonly>
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  file-upload="rcdoc" multiple>
-							</span>
+                                Browse <input type="file" style="display: none;"  file-upload="rcdoc" multiple>
+                            </span>
                                                         </label>
                                                     </div>
                                                     <div class="col-md-8 pull-right">
@@ -314,8 +318,8 @@
                                                         <input type="text" class="form-control" ng-model="insurance.name" readonly>
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  file-upload="insurance" multiple>
-							</span>
+                                Browse <input type="file" style="display: none;"  file-upload="insurance" multiple>
+                            </span>
                                                         </label>
                                                     </div>
                                                     <div class="col-md-8 pull-right">
@@ -330,8 +334,8 @@
                                                         <input type="text" class="form-control" ng-model="roadTax.name" readonly>
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;" file-upload="roadTax" multiple>
-							</span>
+                                Browse <input type="file" style="display: none;" file-upload="roadTax" multiple>
+                            </span>
                                                         </label>
                                                     </div>
                                                     <div class="col-md-8 pull-right">
@@ -347,19 +351,15 @@
                                                         <input type="text" class="form-control" ng-model="photo.name" readonly>
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  file-upload="photo"  multiple>
-							</span>
+                                Browse <input type="file" style="display: none;"  file-upload="photo"  multiple>
+                            </span>
                                                         </label>
                                                     </div>
                                                     <div class="col-md-8 pull-right">
                                                         <a href={{photoDownload}} download>Download - <span ng-bind="courierBoy.photoFileName"></span></a>
                                                     </div>
-                                                   
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                 <img ng-src="{{ImageSrc || photoDownload }}" class="pull-right" style="width:200px;height:140px"/>
-            </div>
                                         </fieldset>
                                     </form>
                                 </div>

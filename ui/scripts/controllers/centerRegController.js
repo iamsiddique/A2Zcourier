@@ -9,6 +9,7 @@ courierApp.controller("centerRegController", ['$rootScope', '$scope', '$location
 
             pinDetails.pincode = $scope.pinCode;
             pinDetails.address = $scope.streetAddress;
+            pinDetails.email = $scope.email;
             pinDetails.city = 'Bangalore';
             pinDetails.country = 'India';
             pinDetails.state = 'Karnataka';

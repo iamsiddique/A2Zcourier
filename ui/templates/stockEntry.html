@@ -96,6 +96,30 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="quantity">Invoice Number</label>
+                    <div class="col-md-8">
+                        <input name="invoicenumber" type="number" ng-model="stock.invoiceNumber" placeholder="quantity" class="form-control  input-md" required="">
+                        <div ng-messages="stockform.invoicenumber.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="clear"></div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="quantity">Shop Name</label>
+                    <div class="col-md-8">
+                        <input name="shopName" type="number" ng-model="stock.shopName" placeholder="quantity" class="form-control  input-md" required="">
+                        <div ng-messages="stockform.shopName.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- <span ng-bind="dt | date: 'yyyy-MM-dd'"></span> -->
             <!--
