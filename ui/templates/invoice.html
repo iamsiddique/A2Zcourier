@@ -1,0 +1,51 @@
+<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div class="container">
+    <div class="margin-t-b clear"></div>
+    <legend>Invoice</legend>
+    <div class="col-md-12 margin-t-b">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+    </div>
+    <div class="col-md-12 margin-t-b">
+        <div class="panel panel-default" pdf-save-content="idOne">
+            <div class="panel-body">
+                <div class="margin-t-b clear"></div>
+                <!-- Select Basic -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="date">Date</label>
+                        <div class="col-md-8">
+                            <p class="input-group" ng-bind="invdata.invDate | date: 'dd/MM/yyyy'">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="toaddress">To Address</label>
+                        <div class="col-md-8">
+                            <p class="input-group" ng-bind="invdata.address">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <table id="stocktable" class="table table-bordred table-striped">
+                    <thead>
+                        <th>Product Name </th>
+                        <th>Quantity </th>
+                        <th>Invoice Code </th>
+                        
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in invdata.products">
+                        <td ng-bind="product.name"></td>
+                        <td ng-bind="product.quantity"></td>
+                        <td ng-bind="product.invoice"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+                <input type="button" class="btn btn-success" name="download"  value="Download" pdf-save-button="idOne" pdf-name="invoice.pdf"/>
+                <a href="#/invoice" class="btn btn-primary">Cancel</a>
+            </div>
+    </div>

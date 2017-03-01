@@ -1,0 +1,66 @@
+<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div class="margin-t-b clear"></div>
+<div class="container">
+    <form class="form-horizontal" name="stockform" novalidate>
+        <fieldset>
+            <!-- Form Name -->
+
+            <legend>Stock Dispatch</legend>
+            <div class="col-md-12 margin-t-b">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+            </div>
+            <div class="margin-t-b clear"></div>
+            <!-- Select Basic -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="warehousename">Date</label>
+                    <div class="col-md-8">
+                       <p class="input-group">
+                            <input name="enterdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="enterDate" is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="open3()">
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="Address">To Address</label>
+                    <div class="col-md-8">
+                        <textarea class="form-control input-md" ng-model="address"></textarea>
+                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <table id="stocktable" class="table table-bordred table-striped">
+                <thead>
+                    <th>Product Name </th>
+                    <th>Quantity </th>
+                    <th>Invoice Code </th>
+                    <th>Add New</th>
+                    <th>Delete</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="data in datalist" stockdispatch="data" addprod="addnew()" remprod="delete({product:data})">
+                    </tr>
+                </tbody>
+            </table>
+            <div class="clear"></div>
+            <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
+                <a href="#/list" class="btn btn-primary">Cancel</a>
+            </div>
+            <div class="col-md-12 text-center">
+                <p ng-if="regSuccess" class="text-success">Product successfully entered</p>
+                <p ng-if="regError" class="text-danger">Product entry failed</p>
+            </div>
+        </fieldset>
+    </form>
+    <div class="margin-t-b clear"></div>
+</div>
+<div class="container">
+</div>
