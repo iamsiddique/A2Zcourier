@@ -29,19 +29,23 @@
                 <div class="clear"></div>
                 <table id="stocktable" class="table table-bordred table-striped">
                     <thead>
-                        <th>Product Name </th>
-                        <th>Quantity </th>
-                        <th>Invoice Code </th>
+                        <th class="hideit">Product Name </th>
+                        <th class="hideit">Quantity </th>
+                        <th >Invoice Code </th>
                         
                     </thead>
                     <tbody>
                         <tr ng-repeat="product in invdata.products">
-                        <td ng-bind="product.name"></td>
-                        <td ng-bind="product.quantity"></td>
+                        <td ng-bind="product.name" class="hideit"></td>
+                        <td ng-bind="product.quantity" class="hideit"></td>
                         <td ng-bind="product.invoice"></td>
                         </tr>
                     </tbody>
                 </table>
+                <div class="clear"></div>
+                <qrcode data="HELLOE" size="200" class="hideit"></qrcode>
+                <div class="clear"></div>
+                
             </div>
         </div>
         <div class="col-md-12 text-center">

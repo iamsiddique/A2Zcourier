@@ -1,4 +1,5 @@
-var courierApp = angular.module("a2zCouriers", ["ngRoute", "ngMessages", 'ngAnimate', 'ngSanitize', 'ui.bootstrap','htmlToPdfSave']);
+var courierApp = angular.module("a2zCouriers", ["ngRoute", "ngMessages", 'ngAnimate', 'ngSanitize', 
+    'ui.bootstrap','htmlToPdfSave','qrScanner','monospaced.qrcode','webcam','bcQrReader']);
 
 courierApp.config(function($routeProvider) {
     $routeProvider
@@ -48,6 +49,10 @@ courierApp.config(function($routeProvider) {
         .when("/invoice", {
             controller: 'invoiceController',
             templateUrl: "ui/templates/invoice.html"
+        })
+        .when("/courierboy", {
+            controller: 'cboyController',
+            templateUrl: "ui/templates/cboy.html"
         })
         .when("/", {
             controller: 'authenticationController',

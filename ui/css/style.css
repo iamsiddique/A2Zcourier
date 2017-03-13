@@ -245,3 +245,8 @@ Creating a block for social media buttons
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
+@media print { 
+ .hideit{
+    display: none;
+ }
+}

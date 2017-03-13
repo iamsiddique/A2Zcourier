@@ -129,5 +129,6 @@ courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location',
 
        $scope.invdata = $rootScope.invoiceData;
        console.log($scope.invdata);
+       
     }
 ]);
