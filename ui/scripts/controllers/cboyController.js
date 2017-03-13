@@ -9,15 +9,15 @@ courierApp.controller("cboyController",['$rootScope','$scope','$location','inter
 			$location.path('/courierboy');
 		});		
 	}	
-	// $scope.onSuccess = function(data) {
- //        console.log(data);
- //    };
- //    $scope.onError = function(error) {
- //        console.log(error);
- //    };
- //    $scope.onVideoError = function(error) {
- //        console.log(error);
- //    };
+	$scope.onSuccess = function(data) {
+        console.log(data);
+    };
+    $scope.onError = function(error) {
+        console.log(error);
+    };
+    $scope.onVideoError = function(error) {
+        console.log(error);
+    };
   $scope.start = function() {
       $scope.cameraRequested = true;
   }
