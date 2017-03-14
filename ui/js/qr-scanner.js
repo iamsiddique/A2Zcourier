@@ -10,14 +10,32 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       ngVideoError: '&ngVideoError'
     },
     link: function(scope, element, attrs) {
-    
+//       alert('called');
+//       if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+//     // Not adding `{ audio: true }` since we only want video now
+//     alert('called');
+//     navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+//         video.src = window.URL.createObjectURL(stream);
+//         video.play();
+//     });
+// }
       window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-    
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.mediaDevices || navigator.mediaDevices.getUserMedia;
+//       function hasGetUserMedia() {
+//   return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+//             navigator.mozGetUserMedia || navigator.msGetUserMedia);
+// }
+
+// if (hasGetUserMedia()) {
+//   alert('yes');
+// } else {
+//   alert('getUserMedia() is not supported in your browser');
+// }
       var height = attrs.height || 300;
       var width = attrs.width || 250;
     
       var video = $window.document.createElement('video');
+      video.setAttribute('autoplay','');
       video.setAttribute('width', width);
       video.setAttribute('height', height);
       video.setAttribute('style', '-moz-transform:rotateY(-180deg);-webkit-transform:rotateY(-180deg);transform:rotateY(-180deg);');
@@ -26,7 +44,7 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       canvas.setAttribute('width', width);
       canvas.setAttribute('height', height);
       canvas.setAttribute('style', 'display:none;'); 
-    
+      
       angular.element(element).append(video);
       angular.element(element).append(canvas);
       var context = canvas.getContext('2d'); 

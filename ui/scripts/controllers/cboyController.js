@@ -3,12 +3,16 @@ courierApp.controller("cboyController",['$rootScope','$scope','$location','inter
 
  	
  	$rootScope.loginPage=false;
-
+ 	//alert('hi');
 	$scope.checking = function(){		
 		logCheck.checkUser(function(response) {
 			$location.path('/courierboy');
 		});		
 	}	
+	$scope.camActivate = false;
+	$scope.activate = function(){
+		$scope.camActivate = true;
+	}
 	$scope.onSuccess = function(data) {
         console.log(data);
     };
@@ -18,12 +22,5 @@ courierApp.controller("cboyController",['$rootScope','$scope','$location','inter
     $scope.onVideoError = function(error) {
         console.log(error);
     };
-  $scope.start = function() {
-      $scope.cameraRequested = true;
-  }
-  
-  $scope.processURLfromQR = function (url) {
-    $scope.url = url;
-    $scope.cameraRequested = false;
-  }
+ 
 }]);

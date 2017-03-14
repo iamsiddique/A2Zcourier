@@ -1,6 +1,6 @@
 var courierApp = angular.module("a2zCouriers", ["ngRoute", "ngMessages", 'ngAnimate', 'ngSanitize', 
-    'ui.bootstrap','htmlToPdfSave','qrScanner','monospaced.qrcode','webcam','bcQrReader']);
-
+    'ui.bootstrap','htmlToPdfSave','qrScanner','monospaced.qrcode']);
+//'webcam','bcQrReader'
 courierApp.config(function($routeProvider) {
     $routeProvider
         .when("/login", {
