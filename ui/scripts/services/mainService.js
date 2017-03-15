@@ -81,6 +81,16 @@ courierApp.config(function($httpProvider) {
 		    return $http.post($rootScope.urlBase + 'employee/save',data, $rootScope.uploadheader);		    
 		    
 		};
+		dataFetch.stockDispatch= function(data) {
+
+		    return $http.post($rootScope.urlBase + 'stockdispatch/save',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.invDetail= function(data) {
+
+		    return $http.get($rootScope.urlBase + 'stockdispatch/id/'+data, $rootScope.header);		    
+		    
+		};
 		return dataFetch;
 		
 }])

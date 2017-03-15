@@ -1,5 +1,5 @@
 var courierApp = angular.module("a2zCouriers", ["ngRoute", "ngMessages", 'ngAnimate', 'ngSanitize', 
-    'ui.bootstrap','htmlToPdfSave','qrScanner','monospaced.qrcode']);
+    'ui.bootstrap','htmlToPdfSave','monospaced.qrcode',]);
 //'webcam','bcQrReader'
 courierApp.config(function($routeProvider) {
     $routeProvider

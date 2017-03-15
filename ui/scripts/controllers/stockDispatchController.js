@@ -6,6 +6,32 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
         $scope.datalist = [{
             product: 'new' + counter
         }]
+        $scope.countries = [];
+        $scope.listofproduct = [];
+        intermediateService.centerlist(function(response) {
+            console.log(response);
+            for (i in response.data)
+                if (response.data[i].pincode != null) {
+                    var pincode = {}
+                    pincode.name = response.data[i].pincode;
+                    pincode.id = response.data[i].id;
+                    $scope.countries.push(pincode);
+                    console.log('called');
+                }
+            console.log($scope.countries);
+        })
+        intermediateService.productlist(function(response) {
+            console.log(response);
+            for (i in response.data)
+                if (response.data[i].name != null) {
+                    var productlist = {}
+                    productlist.name = response.data[i].name;
+                    productlist.id = response.data[i].id;
+                    $scope.listofproduct.push(productlist);
+                    console.log('called');
+                }
+            console.log($scope.listofproduct);
+        })
         $scope.addnew = function() {
             counter++;
             $scope.datalist.push({
@@ -18,14 +44,51 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
 
         }
         $scope.save = function() {
-            $rootScope.invoiceData ={}
-            $rootScope.invoiceData.invDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
-            $rootScope.invoiceData.address = $scope.address;
-            $rootScope.invoiceData.products = $scope.datalist;
-            console.log($rootScope.invoiceData);
+            $rootScope.invoiceDetails ={}
+            $rootScope.couriername = $scope.courierCenter.name
+            $rootScope.invoiceDetails.toAddress = $scope.address;
+            $rootScope.invoiceDetails.invoiceDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
+            $rootScope.invoiceDetails.courierCenter ={}
+            $rootScope.invoiceDetails.courierCenter.id = $scope.courierCenter.id;
+            $rootScope.products = []
+            $rootScope.dummy = []
+
+            console.log($scope.datalist);
+            for(i in $scope.datalist){
+                console.log($scope.datalist[i]);
+                console.log($scope.datalist[i].selectedproduct);
+                if($scope.datalist[i].selectedproduct != undefined){
+                $rootScope.products[i] = {};
+                $rootScope.products[i].product = {}
+                $rootScope.products[i].product.id = $scope.datalist[i].selectedproduct.id;
+                $rootScope.products[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
+                $rootScope.products[i].invoiceNumber = $scope.datalist[i].invoice;
+                $rootScope.products[i].quantity = $scope.datalist[i].quantity;
+                $rootScope.dummy[i] = {};
+                $rootScope.dummy[i].product = {}
+                $rootScope.dummy[i].product.name = $scope.datalist[i].selectedproduct.name;
+                $rootScope.dummy[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
+                $rootScope.dummy[i].invoiceNumber = $scope.datalist[i].invoice;
+                $rootScope.dummy[i].quantity = $scope.datalist[i].quantity;
+                
+                }
+            } 
+            console.log($rootScope.invoiceDetails);
+            //$location.path('/invoice');
+            var checker = {};
+            checker.invoiceDetails = {};
+            checker.invoiceDetails = $rootScope.invoiceDetails;
+            checker.products = [];
+            checker.products = $rootScope.products;
+            intermediateService.stockDispatch(checker,function(response) {
+            console.log(response.data);
+            $rootScope.invID = response.data.invoiceDetails.id
             $location.path('/invoice');
+            
+        })
 
         }
+        
         $scope.today = function() {
 
             $scope.enterDate = new Date();
@@ -127,7 +190,8 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
 courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout','$filter',
     function($rootScope, $scope, $location, intermediateService, $timeout,$filter) {
 
-       $scope.invdata = $rootScope.invoiceData;
+       $scope.invdata  = $rootScope.invoiceDetails;
+       $scope.prd = $rootScope.dummy
        console.log($scope.invdata);
        
     }

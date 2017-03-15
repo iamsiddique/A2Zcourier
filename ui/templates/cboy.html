@@ -1,14 +1,84 @@
-
-<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div ng-include src="'ui/templates/shared/header.html'">
+</div>
 <div class="margin-t-b clear"></div>
-
 <div class="container">
     <legend>Welcome to A2Z Couriers</legend>
     <div class="col-md-12 margin-t-b clear">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
     </div>
-    <qr-scanner width="400" height="300" ng-success="onSuccess(data)" ng-error="onError(error)"></qr-scanner >
-    <!-- <h2>bc-qr-reader demo</h2>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="firstname">Invoice ID</label>
+            <div class="col-md-8">
+                <input name="inv" type="text" ng-model="invoiceId" placeholder="Enter Invoice ID" class="form-control input-md" required="">
+                <!-- <div ng-messages="empdetailsform.firstName.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 ">
+        <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
+    </div>
+     <div class="col-md-12" style="visibility: hidden">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="firstname">Invoice ID</label>
+                <div class="col-md-8">
+                </div>
+            </div>
+        </div>
+    <div class="col-md-12" ng-if="details">
+    <div class="margin-t-b clear"></div>
+      <div class="margin-t-b clear"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="firstname">Invoice ID</label>
+                <div class="col-md-8" ng-bind="details.invoiceDetails.id">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="firstname">Invoice Date</label>
+                <div class="col-md-8" ng-bind="details.invoiceDetails.invoiceDate | date: 'dd/MM/yyyy'">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="firstname">To Address</label>
+                <div class="col-md-8" ng-bind="details.invoiceDetails.toAddress">
+                </div>
+            </div>
+        </div>
+         <div class="col-md-6">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="firstname">Courier Center</label>
+                <div class="col-md-8" ng-bind="details.invoiceDetails.courierCenter.pincode">
+                </div>
+            </div>
+        </div>
+        <table id="stocktable" class="table table-bordred table-striped">
+                    <thead>
+                        <th class="hideit">Product Name </th>
+                        <th class="hideit">Quantity </th>
+                        <th >Invoice Code </th>
+                        <th>Expiry Date</th>
+                        
+                    </thead>
+                    <tbody>
+
+                        <tr ng-repeat="product in details.products">
+                        <td ng-bind="product.product.name" class="hideit"></td>
+                        <td ng-bind="product.quantity" class="hideit"></td>
+                        <td ng-bind="product.invoiceNumber"></td>
+                        <td ng-bind="product.expiryDate | date: 'dd/MM/yyyy'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+    </div>
+    <!--  <qr-scanner width="400" height="300" ng-success="onSuccess(data)" ng-error="onError(error)"></qr-scanner > -->
+    <!--  <h2>bc-qr-reader demo</h2>
     <button ng-click="start()">Activate scanner</button>
     <p ng-hide="cameraRequested && !cameraIsOn">Your browser should ask for permission to use the camera.</p>
     <div>

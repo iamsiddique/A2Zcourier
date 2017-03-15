@@ -9,6 +9,16 @@ courierApp.controller("cboyController",['$rootScope','$scope','$location','inter
 			$location.path('/courierboy');
 		});		
 	}	
+	$scope.save = function() {
+            $scope.invoiceId;           
+            
+            intermediateService.invDetail($scope.invoiceId,function(response) {
+            console.log(response.data);
+           $scope.details = response.data;
+            
+        })
+
+        }
 	$scope.camActivate = false;
 	$scope.activate = function(){
 		$scope.camActivate = true;
@@ -22,5 +32,12 @@ courierApp.controller("cboyController",['$rootScope','$scope','$location','inter
     $scope.onVideoError = function(error) {
         console.log(error);
     };
- 
+  // $scope.start = function() {
+  //     $scope.cameraRequested = true;
+  // }
+  
+  // $scope.processURLfromQR = function (url) {
+  //   $scope.url = url;
+  //   $scope.cameraRequested = false;
+  // }
 }]);
