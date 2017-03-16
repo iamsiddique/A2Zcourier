@@ -1,5 +1,6 @@
-var courierApp = angular.module("a2zCouriers", ["ngRoute", "ngMessages", 'ngAnimate', 'ngSanitize', 
-    'ui.bootstrap','htmlToPdfSave','monospaced.qrcode',]);
+var courierApp = angular.module("a2zCouriers", ["ngRoute", "ngMessages", 'ngAnimate', 'ngSanitize',
+    'ui.bootstrap', 'htmlToPdfSave', 'monospaced.qrcode',
+]);
 //'webcam','bcQrReader'
 courierApp.config(function($routeProvider) {
     $routeProvider
@@ -10,7 +11,7 @@ courierApp.config(function($routeProvider) {
         .when('/logout', {
             controller: 'LogoutController',
             template: '<h1>hi</h1>' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
-             
+
         })
         .when("/registration", {
             controller: 'registrationController',
@@ -25,18 +26,18 @@ courierApp.config(function($routeProvider) {
             templateUrl: "ui/templates/centerRegistration.html"
         })
 
-       .when('/productEntry', {
+    .when('/productEntry', {
             controller: 'productEntryController',
-            templateUrl: 'ui/templates/productEntry.html' 
+            templateUrl: 'ui/templates/productEntry.html'
 
         })
         .when('/stockEntry', {
             controller: 'stockEntryController',
-            templateUrl: 'ui/templates/stockEntry.html' 
+            templateUrl: 'ui/templates/stockEntry.html'
         })
         .when('/employeeDetails', {
             controller: 'employeeDetailsController',
-            templateUrl: 'ui/templates/employeeDetails.html' 
+            templateUrl: 'ui/templates/employeeDetails.html'
         })
         .when("/centerStock", {
             controller: 'centerStockController',
@@ -54,15 +55,27 @@ courierApp.config(function($routeProvider) {
             controller: 'cboyController',
             templateUrl: "ui/templates/cboy.html"
         })
-         .when("/customer", {
+        .when("/customer", {
             controller: 'customerController',
             templateUrl: "ui/templates/customer.html"
+        })
+        .when("/employeeList", {
+            //controller: 'customerController',
+            //templateUrl: "ui/templates/customer.html"
+        })
+        .when("/serviceAvailability", {
+            //controller: 'customerController',
+            //templateUrl: "ui/templates/customer.html"
+        })
+        .when("/listOfDispatch", {
+            //controller: 'customerController',
+            //templateUrl: "ui/templates/customer.html"
         })
         .when("/", {
             controller: 'authenticationController',
             templateUrl: "ui/templates/login.html"
         });
-        
+
 
 })
 courierApp.run(['logCheck', '$rootScope', function(logCheck, $rootScope) {
