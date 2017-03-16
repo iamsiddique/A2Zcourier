@@ -13,6 +13,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 		else if($scope.emailid == 'customer'){
 			$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
 				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
+				$location.path('/customer');
 		}
 		else{
 			intermediateService.login($scope.emailid, $scope.password, function(response) {

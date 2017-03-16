@@ -54,6 +54,10 @@ courierApp.config(function($routeProvider) {
             controller: 'cboyController',
             templateUrl: "ui/templates/cboy.html"
         })
+         .when("/customer", {
+            controller: 'customerController',
+            templateUrl: "ui/templates/customer.html"
+        })
         .when("/", {
             controller: 'authenticationController',
             templateUrl: "ui/templates/login.html"
