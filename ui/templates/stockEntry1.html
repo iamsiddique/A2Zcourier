@@ -1,0 +1,200 @@
+<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div class="margin-t-b clear"></div>
+<div class="container">
+    <form class="form-horizontal" name="stockform" novalidate>
+        <fieldset>
+            <!-- Form Name -->
+            <legend>Stock Entry</legend>
+            <div class="col-md-12 margin-t-b">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+            </div>
+            <div class="margin-t-b clear"></div>
+            <!-- Select Basic -->
+            <div class="col-md-12 text-center">
+                <p ng-if="regSuccess" class="text-success">Product successfully entered</p>
+                <p ng-if="regError" class="text-danger">Product entry failed</p>
+            </div>
+                    <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productname">Product</label>
+                    <div class="col-md-8">
+                        <input name="productname" type="text" ng-model="searchProduct" uib-typeahead="product as product.name for product in products | filter:{name:$viewValue}" placeholder="Enter product" class="form-control autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0">
+                        <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                 <div class="col-md-12 text-center">
+                <input type="button" class="btn btn-success" name="enter" ng-click="enter();" value="Enter" />
+                
+            </div>
+                </div>
+            </div>
+
+<div class="margin-t-b clear"></div>
+<div ng-show="viewForm">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="warehousename">Ware house</label>
+                    <div class="col-md-8">
+                        <input name="warehousename" type="text" ng-model="stock.courierCenter" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}" placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0">
+                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productname">Product Name</label>
+                    <div class="col-md-8">
+                        <input name="productname" type="text" ng-model="stock.product" ng-disabled="true" uib-typeahead="product as product.name for product in products | filter:{name:$viewValue}" placeholder="Enter product name" class="form-control autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0">
+                        <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="quantity">Quantity</label>
+                    <div class="col-md-8">
+                        <input name="quantity" type="number" ng-model="stock.quantity" placeholder="quantity" class="form-control  input-md" required="">
+                        <div ng-messages="stockform.quantity.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="enterdate">Enter Date</label>
+                    <div class="col-md-8">
+                        <p class="input-group">
+                            <input name="enterdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stock.enterDate" is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="open3()">
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                        <div ng-messages="stockform.enterdate.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="manudate">Manufacture Date</label>
+                    <div class="col-md-8">
+                        <p class="input-group">
+                            <input name="manudate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stock.manuDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="open1()">
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                        <div ng-messages="stockform.manudate.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="expdate">Expiry Date</label>
+                    <div class="col-md-8">
+                        <p class="input-group">
+                            <input name="expdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stock.expDate" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="open2()">
+                                      <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                        <div ng-messages="stockform.expdate.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="quantity">Invoice Number</label>
+                    <div class="col-md-8">
+                        <input name="invoicenumber" type="text" ng-model="stock.invoiceNumber" placeholder="Invoice Number" class="form-control  input-md" required="">
+                        <div ng-messages="stockform.invoicenumber.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="quantity">Shop Name</label>
+                    <div class="col-md-8">
+                        <input name="shopName" type="text" ng-model="stock.shopName" placeholder="Shop Name" class="form-control  input-md" required="">
+                        <div ng-messages="stockform.shopName.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <span ng-bind="dt | date: 'yyyy-MM-dd'"></span> -->
+            <!--
+            <div class="clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="warehousename">Quantity</label>
+                    <div class="col-md-8">
+                        <input  name="warehousename" type="text" ng-model="stock.warehouse" placeholder="Product Name" class="form-control input-md" required="">
+                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                        <p ng-message="required">This field is required</p> 
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productname">Manufacture Date</label>
+                    <div class="col-md-8">
+                        <input  name="productname" type="text" ng-model="stock.product" placeholder="Product Code" class="form-control input-md" required="">
+                        <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
+                        <p ng-message="required">This field is required</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productname">Product Code</label>
+                    <div class="col-md-8">
+                        <input  name="productname" type="text" ng-model="stock.product" placeholder="Product Code" class="form-control input-md" required="">
+                        <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
+                        <p ng-message="required">This field is required</p> 
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="clear"></div>
+            <div class="col-md-12 text-center">
+                <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
+                <a href="#/list" class="btn btn-primary">Cancel</a>
+            </div>
+            
+            </div>
+        </fieldset>
+    </form>
+    <div class="margin-t-b clear"></div>
+</div>

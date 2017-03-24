@@ -35,6 +35,10 @@ courierApp.config(function($routeProvider) {
             controller: 'stockEntryController',
             templateUrl: 'ui/templates/stockEntry.html'
         })
+        .when('/stockEntry1', {
+            controller: 'stockEntryController1',
+            templateUrl: 'ui/templates/stockEntry1.html'
+        })
         .when('/employeeDetails', {
             controller: 'employeeDetailsController',
             templateUrl: 'ui/templates/employeeDetails.html'
