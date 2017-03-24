@@ -3,6 +3,7 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
 
         $scope.courierBoy = {};
         $scope.courierBoy.vehicleType = '2W';
+        $scope.courierBoy.vehicleOwner = 'S';
         $rootScope.loginPage = true;
         $scope.save = function() {
             console.log('save called');

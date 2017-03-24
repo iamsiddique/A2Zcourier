@@ -194,16 +194,29 @@
                     </div>
                 </div>
             </div>
-            <div class="clear"></div>
-            <div class="col-md-6">
+                   <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="vehicleOwner">Vehicle Owner</label>
+                    <div class="col-md-8">
+                        <select id="vehicleOwner" name="vehicleOwner" ng-model="courierBoy.vehicleOwner" class="form-control">
+                            <option value="S">Self</option>
+                            <option value="C">Company</option>
+                        </select>
+                        <div ng-messages="registrationform.vehicleOwner.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>
                     <div class="input-group custom-pad col-md-8">
                         <input type="text" class="form-control" name="dl" ng-model="drivingLicense.name" readonly required="">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;" name="dl" file-upload="drivingLicense" multiple required="">
-							</span>
+                                Browse <input type="file" style="display: none;" name="dl" file-upload="drivingLicense" multiple required="">
+                            </span>
                         </label>
                     </div>
                     <div class="pull-right col-md-8">
@@ -213,15 +226,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+                <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="batchnumber">RC Book</label>
                     <div class="input-group custom-pad col-md-8">
                         <input type="text" class="form-control" name="rc" ng-model="rcdoc.name" readonly required="">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"   file-upload="rcdoc" multiple>
-							</span>
+                                Browse <input type="file" style="display: none;"   file-upload="rcdoc" multiple>
+                            </span>
                         </label>
                     </div>
                     <div class="pull-right col-md-8">
@@ -231,16 +244,15 @@
                     </div>
                 </div>
             </div>
-            <div class="clear"></div>
-            <div class="col-md-6">
+                 <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="batchnumber">Insurance</label>
                     <div class="input-group custom-pad col-md-8">
                         <input type="text" class="form-control" name="ins" ng-model="insurance.name" required="" readonly>
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  file-upload="insurance" multiple>
-							</span>
+                                Browse <input type="file" style="display: none;"  file-upload="insurance" multiple>
+                            </span>
                         </label>
                     </div>
                     <div class="pull-right col-md-8">
@@ -250,6 +262,9 @@
                     </div>
                 </div>
             </div>
+            <div class="clear"></div>
+        
+       
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="batchnumber">Road Tax</label>
@@ -268,16 +283,15 @@
                     </div>
                 </div>
             </div>
-            <div class="clear"></div>
-            <div class="col-md-6">
+                 <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="batchnumber">Photo</label>
                     <div class="input-group custom-pad col-md-8">
                         <input type="text" class="form-control" name="photo" ng-model="photo.name" readonly required="">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
-								Browse <input type="file" style="display: none;"  file-upload="photo" multiple>
-							</span>
+                                Browse <input type="file" style="display: none;"  file-upload="photo" multiple>
+                            </span>
                         </label>
                     </div>
                     
@@ -288,9 +302,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+            
+            </div>
+            
             <div class="col-md-6">
                  <img ng-src="{{ImageSrc || 'ui/images/avatar.jpg'}}" class="pull-right" style="width:145px;height:140px"/>
             </div>
+            <div class="clear"></div>
+       
+            
             <div class="clear"></div>
             <div class="col-md-12 text-center">
                 <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
