@@ -56,6 +56,16 @@ courierApp.config(function($httpProvider) {
 		    return $http.get($rootScope.urlBase + 'couriercenter/delete/' + id, $rootScope.header);		    
 		    
 		};
+		dataFetch.postServiceAvl = function(data) {
+
+		    return $http.post($rootScope.urlBase + 'serviceavailability/save',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.getServiceAvllist = function() {
+
+		    return $http.get($rootScope.urlBase + 'serviceavailability/list', $rootScope.header);		    
+		    
+		};
 		dataFetch.saveProduct= function(data) {
 
 		    return $http.post($rootScope.urlBase + 'product/save',data, $rootScope.uploadheader);		    

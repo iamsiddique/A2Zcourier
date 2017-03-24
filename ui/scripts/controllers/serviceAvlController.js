@@ -10,10 +10,10 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
             pinDetails.pincode = $scope.pinCode;
             
             console.log(pinDetails);
-            intermediateService.postArea(pinDetails, function(response) {
+            intermediateService.postServiceAvl(pinDetails, function(response) {
                 if (response.statusCode == 1) {
                     $scope.regSuccess = true;
-                    intermediateService.centerlist(function(response) {
+                    intermediateService.ServiceAvllist(function(response) {
                         console.log(response);
                         $scope.pinCode = "";
                         $scope.streetAddress = "";
@@ -33,7 +33,7 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
             });
         }
         $scope.listit = function() {
-            intermediateService.centerlist(function(response) {
+            intermediateService.ServiceAvllist(function(response) {
                 $scope.listOfcenter = response.data;
             })
         }
@@ -53,13 +53,7 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
                 });
             });
         }
-        $scope.centerStock = function(cid){
-        	intermediateService.centerStockData(cid, function(response) {
-                console.log(response);
-               
-               	$location.path('/centerStock');
-            });
-        }
+        
 
 
     }

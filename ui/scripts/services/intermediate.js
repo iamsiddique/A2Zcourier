@@ -84,6 +84,21 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.postServiceAvl = function(data, callback) {
+        mainService.postServiceAvl(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.ServiceAvllist = function(callback) {
+        mainService.getServiceAvllist().success(function(response) {
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.saveProduct = function(data, callback) {
         mainService.saveProduct(data).success(function(response) {
             console.log(response);
