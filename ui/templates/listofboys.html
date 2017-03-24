@@ -278,6 +278,20 @@
                                                 </div>
                                             </div>
                                             <div class="clear"></div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="vehicleOwner">Vehicle Owner</label>
+                                                    <div class="col-md-8">
+                                                        <select id="vehicleOwner" name="vehicleOwner" ng-model="courierBoy.vehicleOwner" class="form-control">
+                                                            <option value="S">Self</option>
+                                                            <option value="C">Company</option>
+                                                        </select>
+                                                        <div ng-messages="registrationform.vehicleOwner.$error" ng-if='submitted' class="text-danger">
+                                                            <p ng-message="required">This field is required</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>
@@ -294,6 +308,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">RC Book</label>
@@ -310,7 +325,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Insurance</label>
@@ -327,6 +342,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Road Tax</label>
@@ -343,7 +359,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                           
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">User Photo</label>

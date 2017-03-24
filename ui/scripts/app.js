@@ -64,8 +64,8 @@ courierApp.config(function($routeProvider) {
             //templateUrl: "ui/templates/customer.html"
         })
         .when("/serviceAvailability", {
-            //controller: 'customerController',
-            //templateUrl: "ui/templates/customer.html"
+            controller: 'serviceAvlController',
+            templateUrl: "ui/templates/serviceAvl.html"
         })
         .when("/listOfDispatch", {
             //controller: 'customerController',
