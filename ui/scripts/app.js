@@ -59,6 +59,10 @@ courierApp.config(function($routeProvider) {
             controller: 'cboyController',
             templateUrl: "ui/templates/cboy.html"
         })
+        .when("/mycouriers", {
+            controller: 'myCourierController',
+            templateUrl: "ui/templates/myCourier.html"
+        })
         .when("/customer", {
             controller: 'customerController',
             templateUrl: "ui/templates/customer.html"
