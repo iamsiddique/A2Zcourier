@@ -19,6 +19,10 @@ courierApp.controller("cboyController",['$rootScope','$scope','$location','inter
         })
 
         }
+  $scope.assignMe = function() {
+            $location.path('/mycouriers');
+        }
+
 	$scope.camActivate = false;
 	$scope.activate = function(){
 		$scope.camActivate = true;
