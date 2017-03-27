@@ -69,7 +69,7 @@ courierApp.config(function($routeProvider) {
         })
         .when("/employeeList", {
             //controller: 'customerController',
-            //templateUrl: "ui/templates/customer.html"
+            templateUrl: "ui/templates/employeeList.html"
         })
         .when("/serviceAvailability", {
             controller: 'serviceAvlController',

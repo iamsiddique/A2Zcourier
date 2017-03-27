@@ -4,21 +4,29 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
  	
  	$rootScope.loginPage=false;
 	$scope.login = function (){
-		if($scope.emailid == 'courierboy'){
-			console.log('called');
-			$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
-				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
-				$location.path('/courierboy');
-		}
-		else if($scope.emailid == 'customer'){
-			$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
-				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
-				$location.path('/customer');
-		}
-		else{
+		// if($scope.emailid == 'courierboy'){
+		// 	console.log('called');
+		// 	$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
+		// 		localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
+		// 		$location.path('/courierboy');
+		// }
+		// else if($scope.emailid == 'customer'){
+		// 	$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
+		// 		localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
+		// 		$location.path('/customer');
+		// }
+		// else{
 			intermediateService.login($scope.emailid, $scope.password, function(response) {
+			console.log('role = ' + response.data.seedRole.id);
 			if(response.statusCode == 1){
-				$location.path('/list')
+				if(response.data.seedRole.id == 1){
+
+					$location.path('/list')
+				}
+				else if(response.data.seedRole.id == 2){
+					$location.path('/courierboy');
+				}
+				
 				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
 				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
 				$rootScope.loginPage=true;
@@ -31,7 +39,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 				},2000);
 			}
 		});
-		}
+		//}
 
 				
 	}

@@ -17,17 +17,17 @@ courierApp.config(function($httpProvider) {
 		    
 		};
 		dataFetch.postBoys = function(data) {
-
+			console.log('called boys');
 		    return $http.post($rootScope.urlBase+ 'courierboy/save', data, $rootScope.uploadheader);		    
 		    
 		};
 		dataFetch.postUpdate = function(data) {
-
+			console.log('called update');
 		    return $http.post($rootScope.urlBase+ 'courierboy/update', data, $rootScope.uploadheader);		    
 		    
 		};
 		dataFetch.getBoys = function() {
-
+			console.log('called get boys');
 		    return $http.get($rootScope.urlBase +'courierboy/list', $rootScope.header);		    
 		    
 		};
