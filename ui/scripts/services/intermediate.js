@@ -140,8 +140,25 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.employeelisting = function(callback) {
+        mainService.employeelisting().success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    
     serviceObject.stockDispatch = function(data, callback) {
         mainService.stockDispatch(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.liststockDispatch = function(callback) {
+        mainService.liststockDispatch().success(function(response) {
             console.log(response);
             callback(response);
         }).error(function(response) {

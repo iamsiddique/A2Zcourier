@@ -91,9 +91,19 @@ courierApp.config(function($httpProvider) {
 		    return $http.post($rootScope.urlBase + 'employee/save',data, $rootScope.uploadheader);		    
 		    
 		};
+		dataFetch.employeelisting= function() {
+
+		    return $http.get($rootScope.urlBase + 'employee/list', $rootScope.uploadheader);		    
+		    
+		};
 		dataFetch.stockDispatch= function(data) {
 
 		    return $http.post($rootScope.urlBase + 'stockdispatch/save',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.liststockDispatch= function() {
+
+		    return $http.get($rootScope.urlBase + 'stockdispatch/list', $rootScope.header);		    
 		    
 		};
 		dataFetch.invDetail= function(data) {

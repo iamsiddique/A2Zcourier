@@ -1,0 +1,26 @@
+<div ng-include src="'ui/templates/shared/header.html'"></div>
+<div class="margin-t-b clear"></div>
+<div class="container">
+    <br />
+	<div class="row">
+
+        <div class="dual-list list-left col-md-8 col-md-offset-2">
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <!-- <span class="input-group-addon glyphicon glyphicon-search"></span> -->
+                            <input type="text" name="Search" class="form-control" placeholder="WareHouse" ng-model="warehouseSearch"/>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <ul class="list-group" >
+                    <li class="list-group-item" ng-repeat="data in stockDispatchList | filter : { toAddress : warehouseSearch}:true">Invoice Number - {{data.id}}</li>                    
+                </ul>
+            </div>
+        </div>
+
+	</div>
+</div>

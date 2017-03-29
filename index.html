@@ -15,12 +15,11 @@
     <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
     <!-- Custom styles for this template -->
     <link href="ui/css/style.css" rel="stylesheet">
-   <!--  <style type="text/css">
+    <!--  <style type="text/css">
     
     #qr-canvas { display: none; }
 </style>s -->
     <script src="ui/js/angular.js"></script>
-    
     <script src="ui/js/angular-route.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
@@ -37,6 +36,8 @@
     <script src="ui/scripts/controllers/centerRegController.js"></script>
     <script src="ui/scripts/controllers/centerStockController.js"></script>
     <script src="ui/scripts/controllers/employeeDetailsController.js"></script>
+    <script src="ui/scripts/controllers/employeeListController.js"></script>
+    <script src="ui/scripts/controllers/listofDispatchController.js"></script>    
     <script src="ui/scripts/controllers/stockDispatchController.js"></script>
     <script src="ui/scripts/controllers/cboyController.js"></script>
     <script src="ui/scripts/controllers/customerController.js"></script>
@@ -52,8 +53,8 @@
     <![endif]-->
 </head>
 
-<body ng-app="a2zCouriers">
-    <div ng-view></div>
+<body ng-app="a2zCouriers" ng-view ng-class="{'customerbody':location}">
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -68,7 +69,6 @@
     <script src="ui/js/jsqrcode-combined.min.js"></script> -->
     <!-- <script src="ui/js/bc-qr-reader.js"></script>
     <script src="ui/js/webcam.min.js"></script> -->
-    
     <script src="ui/js/bootstrap.min.js"></script>
     <!-- <script src="ui/js/rememberme.js"></script> -->
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
