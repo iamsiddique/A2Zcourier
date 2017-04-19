@@ -46,6 +46,11 @@ courierApp.config(function($httpProvider) {
 		    return $http.post($rootScope.urlBase + 'couriercenter/save',data, $rootScope.header);		    
 		    
 		};
+		dataFetch.postCenterEdit = function(data) {
+
+		    return $http.post($rootScope.urlBase + 'couriercenter/update',data, $rootScope.header);		    
+		    
+		};
 		dataFetch.getCenterlist = function() {
 
 		    return $http.get($rootScope.urlBase + 'couriercenter/list', $rootScope.header);		    

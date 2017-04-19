@@ -69,6 +69,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+     serviceObject.postCenterEdit = function(data, callback) {
+        mainService.postCenterEdit(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.centerlist = function(callback) {
         mainService.getCenterlist().success(function(response) {
             callback(response);

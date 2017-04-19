@@ -67,5 +67,10 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
 
                 }
             }
+            $scope.productModify = function(data){
+                console.log(data);
+                $scope.productEdit = {};
+                $scope.productEdit = angular.copy(data);
+            }
     }
 ]);

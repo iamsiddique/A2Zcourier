@@ -64,6 +64,37 @@ courierApp.controller("centerRegController", ['$rootScope', '$scope', '$location
                	$location.path('/centerStock');
             });
         }
+        $scope.centerModify = function (data) {
+            $scope.centerEdit  ={};
+            $scope.centerEdit = angular.copy(data);
+            console.log(data);
+            
+        }
+        $scope.centerEditSave = function(data){
+            console.log(data);
+            intermediateService.postCenterEdit(data, function(response) {
+                if (response.statusCode == 1) {
+                    $scope.regSuccess = true;
+                    intermediateService.centerlist(function(response) {
+                        console.log(response);
+                        $scope.pinCode = "";
+                        $scope.streetAddress = "";
+                        $scope.email ="";
+                        $scope.listOfcenter = response.data;
+                    })
+                    $timeout(function() {
+                        $scope.regSuccess = false;
+                    }, 2000);
+
+                } else {
+                    $scope.regError = true;
+                    $timeout(function() {
+                        $scope.regError = false;
+                    }, 2000);
+                }
+
+            });
+        }
 
 
     }

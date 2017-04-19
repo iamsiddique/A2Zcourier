@@ -73,7 +73,7 @@
                 <img class="media-object update-card-MDimentions" ng-src="{{product.photo  ||'ui/images/product.png'}}" >
             </a>
             <div class="media-body update-card-body">
-            
+                <button class="btn btn-primary btn-xs pull-right" data-title="Edit" data-toggle="modal" data-target="#edit" ng-click="productModify(product)"><span class="glyphicon glyphicon-pencil"></span></button>
                 <h4 class="media-heading" ng-bind="product.name"></h4>
                 <p ng-bind="product.code"></p>
             </div>
@@ -82,4 +82,67 @@
         
     </div>
 </div>
+   <div class="margin-t-b clear"></div>
+    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Edit this entry</h4>
+                </div>
+                <div class="modal-body">
+                 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productname">Product Name</label>
+                    <div class="col-md-8">
+                        <input name="productname" type="text" ng-model="productEdit.name" placeholder="Product Name" class="form-control input-md" required="">
+                        <div ng-messages="productform.productname.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Text input-->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productcode">Product Code</label>
+                    <div class="col-md-8">
+                        <input name="productcode" type="text" ng-model="productEdit.code" placeholder="Product Code" class="form-control input-md" required="">
+                        <div ng-messages="productform.productcode.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="productimage">Product Image</label>
+                    <div class="input-group custom-pad col-md-8">
+                        <input type="text" class="form-control" name="productimage" ng-model="productEdit.photoFileName" readonly required="">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Browse <input type="file" style="display: none;"   file-upload="productImage" multiple>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="pull-right col-md-8">
+                        <div ng-messages="productform.productimage.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- <div class="col-md-3">
+            <a href="" class="btn btn-primary" ng-click="addArea()">Add</a>
+        </div> -->
+        <div class="margin-t-b clear"></div>
+                    <!-- <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div> -->
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" class="btn btn-success" ng-click="centerEditSave(centerEdit)"  data-dismiss="modal"><span class="glyphicon glyphicon-ok-sign"></span>Save</button>
+                   <!--  <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
