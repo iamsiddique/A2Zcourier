@@ -31,11 +31,11 @@ courierApp.config(function($routeProvider) {
             templateUrl: 'ui/templates/productEntry.html'
 
         })
-        .when('/stockEntry', {
+        .when('/stockEntry1', {
             controller: 'stockEntryController',
             templateUrl: 'ui/templates/stockEntry.html'
         })
-        .when('/stockEntry1', {
+        .when('/stockEntry', {
             controller: 'stockEntryController1',
             templateUrl: 'ui/templates/stockEntry1.html'
         })
