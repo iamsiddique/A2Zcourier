@@ -5,6 +5,7 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
         $rootScope.loginPage = true;
         $scope.addArea = function() {
             $scope.streetAddress;
+             $scope.loader = true;
             var pinDetails = {};
 
             pinDetails.pincode = $scope.pinCode;
@@ -18,6 +19,7 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
                         $scope.pinCode = "";
                         $scope.streetAddress = "";
                         $scope.listOfcenter = response.data;
+                         $scope.loader = false;
                     })
                     $timeout(function() {
                         $scope.regSuccess = false;
@@ -25,6 +27,7 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
 
                 } else {
                     $scope.regError = true;
+                     $scope.loader = false;
                     $timeout(function() {
                         $scope.regError = false;
                     }, 2000);
@@ -33,8 +36,10 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
             });
         }
         $scope.listit = function() {
+             $scope.loader = true;
             intermediateService.ServiceAvllist(function(response) {
                 $scope.listOfcenter = response.data;
+                 $scope.loader = false;
             })
         }
         $scope.deleteC = function(data) {
