@@ -22,9 +22,11 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 				if(response.data.seedRole.id == 1){
 
 					$location.path('/list')
+					$rootScope.cBoyLogin = false;
 				}
 				else if(response.data.seedRole.id == 2){
 					$location.path('/courierboy');
+					$rootScope.cBoyLogin = true;
 				}
 				$rootScope.seedRole = response.data.seedRole.id;
 				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];

@@ -3,6 +3,8 @@ courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'i
 
 
         $rootScope.loginPage = false;
+        $rootScope.loginPage = false;
+        
         //alert('hi');
         $scope.checking = function() {
             logCheck.checkUser(function(response) {

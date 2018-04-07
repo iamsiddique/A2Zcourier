@@ -8,19 +8,20 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" ng-if="loginPage" href="#/list">A2Z Couriers</a>
-            <a class="navbar-brand" ng-if="!loginPage" href="#/login">A2Z Couriers</a>
+            <a class="navbar-brand" ng-if="!loginPage && !cBoyLogin" href="#/login">A2Z Couriers</a>
+            <a class="navbar-brand" ng-if="!loginPage && cBoyLogin" href="#/courierboy">A2Z Couriers</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active" ng-if="loginPage"><a href="#/center">List of Center</a></li>
                 <li class="active" ng-if="loginPage"><a href="#/productEntry">Product Entry</a></li>
                 <li class="active" ng-if="loginPage"><a href="#/stockEntry">Stock Entry</a></li>
-                <li class="active" ng-if="loginPage"><a href="#/stockDispatch">Stock Dispatch</a></li>
-                <li class="active" ng-if="loginPage"><a href="#/employeeDetails">Employee Details</a></li>
-                <li class="active" ng-if="loginPage"><a href="#/employeeList">Employee List</a></li>
+                <!-- <li class="active" ng-if="loginPage"><a href="#/stockDispatch">Stock Dispatch</a></li> -->
+                <!-- <li class="active" ng-if="loginPage"><a href="#/employeeDetails">Employee Details</a></li> -->
+                <!-- <li class="active" ng-if="loginPage"><a href="#/employeeList">Employee List</a></li> -->
                 <li class="active" ng-if="loginPage"><a href="#/serviceAvailability">Service Availability</a></li>
-                <li class="active" ng-if="!loginPage"><a href="#/customer">Get Quote</a></li> 
-                <li class="active" ng-if="loginPage"><a href="#/logout">Logout</a></li>
+                <!-- <li class="active" ng-if="!loginPage"><a href="#/customer">Get Quote</a></li>  -->
+                <li class="active" ng-if="loginPage || cBoyLogin"><a href="#/logout">Logout</a></li>
             </ul>
         </div>
         <!--/.nav-collapse-->
