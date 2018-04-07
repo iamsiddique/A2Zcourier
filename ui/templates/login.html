@@ -1,7 +1,7 @@
 <div ng-include src="'ui/templates/shared/header.html'"></div>
 <div class="container" ng-init="checking()">
     <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-3 col-md-offset-4">
+        <div  ng-show="!loader" class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-3 col-md-offset-4">
             <form role="form">
                 <fieldset>
                     <h2 class="text-center">Sign In</h2>
@@ -27,6 +27,9 @@
                 </fieldset>
             </form>
         </div>
+         <div ng-show="loader">
+                        <img class="loader-style" src="ui/images/loader.svg">
+                    </div>
     </div>
 </div>
 <!-- /.container -->

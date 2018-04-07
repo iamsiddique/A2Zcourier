@@ -4,6 +4,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
  	
  	$rootScope.loginPage=false;
 	$scope.login = function (){
+		$scope.loader = true;
 		// if($scope.emailid == 'courierboy'){
 		// 	console.log('called');
 		// 	$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
@@ -17,7 +18,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 		// }
 		// else{
 			intermediateService.login($scope.emailid, $scope.password, function(response) {
-			console.log('role = ' + response.data.seedRole.id);
+			
 			if(response.statusCode == 1){
 				if(response.data.seedRole.id == 1){
 
@@ -28,6 +29,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 					$location.path('/courierboy');
 					$rootScope.cBoyLogin = true;
 				}
+				$scope.loader = false;
 				$rootScope.seedRole = response.data.seedRole.id;
 				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
 				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
@@ -35,6 +37,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 				console.log($rootScope.loginPage);
 			}
 			else if (response.statusCode == 0) {
+				$scope.loader = false;
 				$scope.credError = true;
 				$timeout(function(){
 					$scope.credError = false;
