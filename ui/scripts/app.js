@@ -93,4 +93,11 @@ courierApp.run(['logCheck', '$rootScope', function(logCheck, $rootScope) {
     //$rootScope.username = currentUser[0].username;
     //$rootScope.password = currentUser[0].password;
     //$scope.login();
+    // if(response.data.seedRole.id == 1){
+
+    //                 $location.path('/list')
+    //             }
+    //             else if(response.data.seedRole.id == 2){
+    //                 $location.path('/courierboy');
+    //             }
 }]);

@@ -5,6 +5,7 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 		$rootScope.loginPage=true;
 		$scope.totalPages = 0;
 		$scope.listit = function (){
+			$scope.loader = true;
 			intermediateService.listBoys(function(response) {
 				if(response.statusCode == 1){
 					
@@ -32,10 +33,12 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 						$scope.currentPage += (nextPrevMultiplier * 1);
 						$scope.listofBoyss = ($scope.currentPage*$scope.pageSize);
 					}
+					$scope.loader = false;
 
 				}
 				else if (response.statusCode == 0) {
 					$scope.retrivalerr = true;
+					$scope.loader = false;
 					
 				}
 			});		

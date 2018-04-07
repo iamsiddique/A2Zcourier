@@ -30,31 +30,38 @@
     <div class="col-md-12" ng-if="details">
     <div class="margin-t-b clear"></div>
       <div class="margin-t-b clear"></div>
-        <div class="col-md-6">
+        <div class="col-md-6 row">
             <div class="form-group">
                 <label class="col-md-4 control-label" for="firstname">Invoice ID</label>
                 <div class="col-md-8" ng-bind="details.invoiceDetails.id">
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 row">
             <div class="form-group">
                 <label class="col-md-4 control-label" for="firstname">Invoice Date</label>
                 <div class="col-md-8" ng-bind="details.invoiceDetails.invoiceDate | date: 'dd/MM/yyyy'">
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 row">
             <div class="form-group">
                 <label class="col-md-4 control-label" for="firstname">To Address</label>
                 <div class="col-md-8" ng-bind="details.invoiceDetails.toAddress">
                 </div>
             </div>
         </div>
-         <div class="col-md-6">
+         <div class="col-md-6 row">
             <div class="form-group">
                 <label class="col-md-4 control-label" for="firstname">Courier Center</label>
                 <div class="col-md-8" ng-bind="details.invoiceDetails.courierCenter.pincode">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 row">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="firstname">Mode of Payment</label>
+                <div class="col-md-8" ng-bind="details.invoiceDetails.modeOfPayment">
                 </div>
             </div>
         </div>

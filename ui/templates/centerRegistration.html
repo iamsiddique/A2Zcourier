@@ -31,11 +31,11 @@
             <p ng-if="regSuccess" class="text-success">Center successfully added</p>
             <p ng-if="regError" class="text-danger">Center registration failed</p>
         </div>
-        <div class="col-md-3 pull-right">
+        <div class="col-md-3 pull-right" ng-if="!loader">
                 <input name="search" type="text" ng-model="searchCenter" placeholder="Search" class="form-control input-md">
                 <div class="margin-t-b clear"></div>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" ng-if="!loader">
             <div class="thumbnail" ng-repeat="center in listOfcenter | filter:searchCenter">
                 <div class="caption">
                     <h4>{{center.pincode}} <button class="btn btn-primary btn-xs pull-right" data-title="Edit" data-toggle="modal" data-target="#edit" ng-click="centerModify(center)"><span class="glyphicon glyphicon-pencil"></span></button> </h4>
@@ -47,6 +47,9 @@
                 </div>
             </div>
         </div>
+         <div ng-if="loader">
+                        <img class="loader-style" src="ui/images/loader.svg">
+                    </div>
     </div>
     <div class="margin-t-b clear"></div>
     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">

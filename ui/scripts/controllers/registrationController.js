@@ -7,6 +7,7 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
         $rootScope.loginPage = true;
         $scope.save = function() {
             console.log('save called');
+            $scope.loader = true;
             if ($scope.registrationform.$valid) {
                 $scope.submitted = false;
                 console.log('valid called');
@@ -24,6 +25,7 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
                         $timeout(function() {
                             $scope.regSuccess = false;
                             $location.path('/list');
+                            $scope.loader = false;
                         }, 2000);
 
                     } else if (response.statusCode == 0) {
@@ -32,11 +34,14 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
                         $timeout(function() {
                             $scope.regError = false;
                         }, 2000);
+                        $scope.loader = false;
                     }
                 });
             } else {
+                $scope.loader = false;
                 console.log('invalid called');
                 $scope.submitted = true;
+
             }
 
 

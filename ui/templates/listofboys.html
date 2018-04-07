@@ -9,7 +9,7 @@
         <a href="#/registration" class="btn btn-primary pull-right margin-btn">Add new</a>
         <div class="margin-t-b clear"></div>
     </div>
-    <div class="container">
+    <div class="container" ng-if="!loader">
         <div class="col-md-12 text-center">
             <p ng-if="regSuccess" class="text-success">User successfully registered</p>
             <p ng-if="regError" class="text-danger">User registration failed</p>
@@ -74,6 +74,7 @@
                     </ul>
                     </div>
                     </div>
+
                     </div>
                     </div>
                     <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -88,7 +89,7 @@
                                         <fieldset>
                                             <div class="margin-t-b clear"></div>
                                             <!-- Select Basic -->
-                                             <div class="col-md-6"></div>
+                                            <div class="col-md-6"></div>
                                             <div class="col-md-6">
                                                 <img ng-src="{{ImageSrc || photoDownload}}" class="pull-right" style="width:145px;height:140px" />
                                             </div>
@@ -278,7 +279,7 @@
                                                 </div>
                                             </div>
                                             <div class="clear"></div>
-                                             <div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="vehicleOwner">Vehicle Owner</label>
                                                     <div class="col-md-8">
@@ -325,7 +326,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Insurance</label>
@@ -359,7 +359,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">User Photo</label>
@@ -403,4 +402,7 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+                    <div ng-if="loader">
+                        <img class="loader-style" src="ui/images/loader.svg">
                     </div>

@@ -1,0 +1,55 @@
+<svg class="ldt-blank" width="280px"  height="100px"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" style="background: none;"><style type="text/css">path,ellipse,circle,rect,polygon,polyline,line { stroke-width: 0; }
+@keyframes ld-pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  51% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@-webkit-keyframes ld-pulse {
+  0% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  51% {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.ld.ld-pulse {
+  -webkit-animation: ld-pulse 0.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: ld-pulse 0.8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+text { font-family: Courier New }</style><g transform="translate(96.5390625 66.396875)" style="opacity: 1;">
+  <g style="animation-delay: 0s; animation-duration: 1.7s; font-size: 48px; animation-direction: normal; transform-origin: 14.6641px 0px 0px;" class="ld ld-pulse">
+    <text fill="#1d0e0b" style="font-family:Courier New">A</text>
+  </g>
+</g><g transform="translate(125.8671875 66.396875)" style="opacity: 1;">
+  <g style="animation-delay: -0.333333s; animation-duration: 1.7s; font-size: 48px; animation-direction: normal; transform-origin: 14.3984px 0px 0px;" class="ld ld-pulse">
+    <text fill="#1d0e0b" style="font-family:Courier New">2</text>
+  </g>
+</g><g transform="translate(154.6640625 66.396875)" style="opacity: 1;">
+  <g style="animation-delay: -0.666667s; animation-duration: 1.7s; font-size: 48px; animation-direction: normal; transform-origin: 14.3984px 0px 0px;" class="ld ld-pulse">
+    <text fill="#1d0e0b" style="font-family:Courier New">Z</text>
+  </g>
+</g></svg>

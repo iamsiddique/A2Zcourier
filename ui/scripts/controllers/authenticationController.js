@@ -26,7 +26,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 				else if(response.data.seedRole.id == 2){
 					$location.path('/courierboy');
 				}
-				
+				$rootScope.seedRole = response.data.seedRole.id;
 				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
 				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
 				$rootScope.loginPage=true;

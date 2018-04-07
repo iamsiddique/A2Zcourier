@@ -307,3 +307,9 @@ Creating a block for social media buttons
         border-top:0 none;
     }
 }
+
+.loader-style{
+    margin: 0 auto;
+    display: block;
+    height: 110px;
+}

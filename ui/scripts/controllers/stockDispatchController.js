@@ -8,6 +8,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
         }]
         $scope.countries = [];
         $scope.listofproduct = [];
+        $scope.modeOfPayment = 'cash'
         intermediateService.centerlist(function(response) {
             console.log(response);
             for (i in response.data)
@@ -48,6 +49,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             $rootScope.couriername = $scope.courierCenter.name
             $rootScope.invoiceDetails.toAddress = $scope.address;
             $rootScope.invoiceDetails.invoiceDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
+            $rootScope.modeOfPayment = $scope.modeOfPayment;
             $rootScope.invoiceDetails.courierCenter ={}
             $rootScope.invoiceDetails.courierCenter.id = $scope.courierCenter.id;
             $rootScope.products = []

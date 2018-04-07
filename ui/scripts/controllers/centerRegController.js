@@ -4,6 +4,7 @@ courierApp.controller("centerRegController", ['$rootScope', '$scope', '$location
         $scope.pinCode;
         $rootScope.loginPage = true;
         $scope.addArea = function() {
+            $scope.loader = true;
             $scope.streetAddress;
             var pinDetails = {};
 
@@ -13,15 +14,15 @@ courierApp.controller("centerRegController", ['$rootScope', '$scope', '$location
             pinDetails.city = 'Bangalore';
             pinDetails.country = 'India';
             pinDetails.state = 'Karnataka';
-            console.log(pinDetails);
             intermediateService.postArea(pinDetails, function(response) {
                 if (response.statusCode == 1) {
                     $scope.regSuccess = true;
+
                     intermediateService.centerlist(function(response) {
-                        console.log(response);
                         $scope.pinCode = "";
                         $scope.streetAddress = "";
                         $scope.listOfcenter = response.data;
+                        $scope.loader = false;
                     })
                     $timeout(function() {
                         $scope.regSuccess = false;
@@ -29,6 +30,7 @@ courierApp.controller("centerRegController", ['$rootScope', '$scope', '$location
 
                 } else {
                     $scope.regError = true;
+                    $scope.loader = false;
                     $timeout(function() {
                         $scope.regError = false;
                     }, 2000);
@@ -37,49 +39,44 @@ courierApp.controller("centerRegController", ['$rootScope', '$scope', '$location
             });
         }
         $scope.listit = function() {
+            $scope.loader = true;
             intermediateService.centerlist(function(response) {
                 $scope.listOfcenter = response.data;
+                $scope.loader = false;
             })
         }
         $scope.deleteC = function(data) {
 
             $scope.delId = data;
-            console.log($scope.delId);
 
         }
         $scope.deletecenter = function() {
-            console.log('called');
+            $scope.loader = true;
             intermediateService.centerDelete($scope.delId, function(response) {
-                console.log(response);
                 intermediateService.centerlist(function(response) {
-                    console.log(response);
                     $scope.listOfcenter = response.data;
+                    $scope.loader = false;
                 });
             });
         }
-        $scope.centerStock = function(cid){
-        	intermediateService.centerStockData(cid, function(response) {
-                console.log(response);
-               
-               	$location.path('/centerStock');
+        $scope.centerStock = function(cid) {
+            intermediateService.centerStockData(cid, function(response) {
+                $location.path('/centerStock');
             });
         }
-        $scope.centerModify = function (data) {
-            $scope.centerEdit  ={};
+        $scope.centerModify = function(data) {
+            $scope.centerEdit = {};
             $scope.centerEdit = angular.copy(data);
-            console.log(data);
-            
+
         }
-        $scope.centerEditSave = function(data){
-            console.log(data);
+        $scope.centerEditSave = function(data) {
             intermediateService.postCenterEdit(data, function(response) {
                 if (response.statusCode == 1) {
                     $scope.regSuccess = true;
                     intermediateService.centerlist(function(response) {
-                        console.log(response);
                         $scope.pinCode = "";
                         $scope.streetAddress = "";
-                        $scope.email ="";
+                        $scope.email = "";
                         $scope.listOfcenter = response.data;
                     })
                     $timeout(function() {
