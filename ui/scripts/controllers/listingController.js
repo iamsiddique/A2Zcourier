@@ -122,7 +122,7 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 			});		
 		}
 		 $scope.setimage = function() {
-                console.log('called');
+                console.log('setimage');
                 var file = $scope.photo;
                 var reader = new FileReader();
                 reader.readAsDataURL(file);

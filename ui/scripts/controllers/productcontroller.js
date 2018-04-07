@@ -9,7 +9,6 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
             if ($scope.productform.$valid) {
                 $scope.submitted = false;
                 var fd = new FormData();
-
                 fd.append('photo', $scope.productImage);
                 fd.append('product', angular.toJson($scope.product, true));
                 console.log(fd);
@@ -21,6 +20,9 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                             $scope.regSuccess = false;
                             $scope.getproducts();
                         }, 2000);
+                        $scope.product = {};
+                        $scope.productImage = {};
+                        $scope.ImageSrc = '';
 
                     } else if (response.statusCode == 0) {
                         console.log('failed');
@@ -72,9 +74,59 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
             }
         }
         $scope.productModify = function(data) {
-            console.log(data);
-            $scope.productEdit = {};
-            $scope.productEdit = angular.copy(data);
+            $scope.editData = true;
+            $scope.product = angular.copy(data);
+            $scope.productDownload = $rootScope.urlBase + "product/download/photo/" + data.id;
+            // saveEditProduct
+        }
+
+        $scope.saveEditProduct = function() {
+            $scope.loader = true;
+            if ($scope.productform.$valid) {
+                $scope.submitted = false;
+                var fd = new FormData();
+                fd.append('photo', $scope.productImage);
+                var data = {
+                    'name': $scope.product.name,
+                    'code': $scope.product.code,
+                    'id': $scope.product.id
+
+                }
+                fd.append('product', angular.toJson(data, true));
+                console.log(fd);
+                intermediateService.saveEditProduct(fd, function(response) {
+                    if (response.statusCode == 1) {
+                        $scope.regSuccess = true;
+                        $scope.loader = false;
+                        $timeout(function() {
+                            $scope.regSuccess = false;
+                            $scope.getproducts();
+                        }, 2000);
+                        $scope.product = {};
+                        $scope.productImage = {};
+                        $scope.ImageSrc = '';
+                        $scope.productDownload = '';
+
+                    } else if (response.statusCode == 0) {
+                        console.log('failed');
+                        $scope.regError = true;
+                        $scope.loader = false;
+                        $timeout(function() {
+                            $scope.regError = false;
+                        }, 2000);
+                    }
+                });
+            } else {
+                console.log('invalid called');
+                $scope.submitted = true;
+                $scope.loader = false;
+            }
+        }
+        $scope.cancelEdit = function() {
+            $scope.editData = false;
+            $scope.product = {};
+            $scope.productImage = {};
+            $scope.ImageSrc = '';
         }
     }
 ]);

@@ -76,6 +76,11 @@ courierApp.config(function($httpProvider) {
 		    return $http.post($rootScope.urlBase + 'product/save',data, $rootScope.uploadheader);		    
 		    
 		};
+		dataFetch.saveEditProduct= function(data) {
+
+		    return $http.post($rootScope.urlBase + 'product/update',data, $rootScope.uploadheader);		    
+		    
+		};
 		dataFetch.getProduct= function() {
 
 		    return $http.get($rootScope.urlBase + 'product/list', $rootScope.header);		    

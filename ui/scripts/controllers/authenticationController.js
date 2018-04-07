@@ -1,7 +1,7 @@
 courierApp.controller("authenticationController",['$rootScope','$scope','$location','intermediateService','logCheck','$timeout',
  function ($rootScope,$scope,$location,intermediateService,logCheck,$timeout) {
 
- 	
+ 	$scope.loader = false;
  	$rootScope.loginPage=false;
 	$scope.login = function (){
 		$scope.loader = true;

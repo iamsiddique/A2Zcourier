@@ -1,6 +1,6 @@
 courierApp.controller("registrationController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout',
     function($rootScope, $scope, $location, intermediateService, $timeout) {
-
+        $scope.loader = false;
         $scope.courierBoy = {};
         $scope.courierBoy.vehicleType = '2W';
         $scope.courierBoy.vehicleOwner = 'S';
@@ -29,12 +29,14 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
                         }, 2000);
 
                     } else if (response.statusCode == 0) {
+                        $scope.errorMsg =response.description;
                         console.log('failed');
                         $scope.regError = true;
+                        $scope.loader = false;
                         $timeout(function() {
                             $scope.regError = false;
-                        }, 2000);
-                        $scope.loader = false;
+                        }, 5000);
+                        
                     }
                 });
             } else {

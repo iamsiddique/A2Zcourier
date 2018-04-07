@@ -1,5 +1,11 @@
 <div ng-include src="'ui/templates/shared/header.html'"></div>
 <div class="margin-t-b clear"></div>
+<div class="col-md-12 text-center">
+                <p ng-if="regSuccess" class="text-success">User successfully registered</p>
+                <p ng-if="regError" class="text-danger">{{errorMsg}}</p>
+            </div>
+<div class="margin-t-b clear"></div>
+
 <div class="container" ng-show="!loader">
     <form class="form-horizontal" name="registrationform" novalidate>
         <fieldset>
@@ -144,7 +150,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="batchnumber">Batch Number</label>
                     <div class="col-md-8">
-                        <input name="batchNumber" type="text" ng-model="courierBoy.batchNumber" placeholder="Batch Number" class="form-control input-md" required="">
+                        <input name="batchNumber" type="text" ng-model="courierBoy.batchNumber" placeholder="Batch Number" class="form-control input-md">
                     </div>
                 </div>
             </div>
@@ -176,7 +182,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="accountnumber">Account Number</label>
                     <div class="col-md-8">
-                        <input name="accountNumber" type="text" ng-model="courierBoy.bankAccountNumber" placeholder="Bank Name" class="form-control input-md" required="">
+                        <input name="accountNumber" type="text" ng-model="courierBoy.bankAccountNumber" placeholder="Account Number" class="form-control input-md" required="">
                         <div ng-messages="registrationform.accountNumber.$error" ng-if='submitted' class="text-danger">
                             <p ng-message="required">This field is required</p>
                         </div>
@@ -323,11 +329,8 @@
     </form>
     <div class="margin-t-b clear"></div>
 </div>
-<div class="col-md-12 text-center">
-                <p ng-if="regSuccess" class="text-success">User successfully registered</p>
-                <p ng-if="regError" class="text-danger">User registration failed</p>
-            </div>
-            <div ng-if="loader">
+
+            <div ng-show="loader">
                         <img class="loader-style" src="ui/images/loader.svg">
                     </div>
 </div>

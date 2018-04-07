@@ -115,6 +115,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.saveEditProduct = function(data, callback) {
+        mainService.saveEditProduct(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.productlist = function(callback) {
         mainService.getProduct().success(function(response) {
             console.log(response);
