@@ -69,7 +69,6 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 			$scope.insuranceDownload = $rootScope.urlBase +"courierboy/download/insurance/" + data.id;
 			$scope.dlDownload = $rootScope.urlBase +"courierboy/download/dl/" + data.id;
 			$scope.photoDownload = $rootScope.urlBase +"courierboy/download/photo/" + data.id;
-			console.log($scope.courierBoy);
 		}
 		$scope.checkingit = function(data){
 			
@@ -101,11 +100,12 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 			intermediateService.updateBoys(fd, function(response) {
 				if(response.statusCode == 1){
 					$scope.regSuccess = true;
+					$scope.loader = true;
 					intermediateService.listBoys(function(response) {
 						if(response.statusCode == 1){
 							$scope.listofBoys = response.data;
+							$scope.loader = false;
 						}
-						console.log('refreshed');
 					});
 					$timeout(function(){
 						$scope.regSuccess = false;
@@ -122,7 +122,6 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 			});		
 		}
 		 $scope.setimage = function() {
-                console.log('setimage');
                 var file = $scope.photo;
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
@@ -134,4 +133,8 @@ courierApp.controller("listingController",['$scope','$location','$rootScope','in
 
                 }
             }
+        $scope.cancelEdit = function(){
+        	$scope.photoDownload = '';
+        	$scope.ImageSrc = '';
+        }
 	}]);
