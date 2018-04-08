@@ -11,7 +11,6 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                 var fd = new FormData();
                 fd.append('photo', $scope.productImage);
                 fd.append('product', angular.toJson($scope.product, true));
-                console.log(fd);
                 intermediateService.saveProduct(fd, function(response) {
                     if (response.statusCode == 1) {
                         $scope.regSuccess = true;
@@ -23,9 +22,9 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                         $scope.product = {};
                         $scope.productImage = {};
                         $scope.ImageSrc = '';
+                        $scope.productDownload = '';
 
                     } else if (response.statusCode == 0) {
-                        console.log('failed');
                         $scope.regError = true;
                         $scope.loader = false;
                         $timeout(function() {
@@ -34,7 +33,6 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                     }
                 });
             } else {
-                console.log('invalid called');
                 $scope.submitted = true;
                 $scope.loader = false;
             }
@@ -52,28 +50,26 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                     } else {
                         console.log('null')
                     }
-
                 }
-
                 $scope.loader = false;
-                console.log($scope.products);
             })
         }
         $scope.getproducts();
         $scope.setimage = function() {
-            console.log('called');
             var file = $scope.productImage;
             var reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = function(e) {
                 $scope.$apply(function() {
                     $scope.ImageSrc = e.target.result;
-
                 });
-
             }
         }
         $scope.productModify = function(data) {
+            $scope.product = {};
+            $scope.productImage = {};
+            $scope.ImageSrc = '';
+            $scope.productDownload = '';
             $scope.editData = true;
             $scope.product = angular.copy(data);
             $scope.productDownload = $rootScope.urlBase + "product/download/photo/" + data.id;
@@ -82,7 +78,7 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
 
         $scope.saveEditProduct = function() {
             $scope.loader = true;
-            if ($scope.productform.$valid) {
+            if ($scope.product.name && $scope.product.code) {
                 $scope.submitted = false;
                 var fd = new FormData();
                 fd.append('photo', $scope.productImage);
@@ -90,14 +86,11 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                     'name': $scope.product.name,
                     'code': $scope.product.code,
                     'id': $scope.product.id
-
                 }
                 fd.append('product', angular.toJson(data, true));
-                console.log(fd);
                 intermediateService.saveEditProduct(fd, function(response) {
                     if (response.statusCode == 1) {
                         $scope.regSuccess = true;
-                        $scope.loader = false;
                         $timeout(function() {
                             $scope.regSuccess = false;
                             $scope.getproducts();
@@ -106,9 +99,9 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                         $scope.productImage = {};
                         $scope.ImageSrc = '';
                         $scope.productDownload = '';
+                        $scope.editData = false;
 
                     } else if (response.statusCode == 0) {
-                        console.log('failed');
                         $scope.regError = true;
                         $scope.loader = false;
                         $timeout(function() {
@@ -127,6 +120,7 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
             $scope.product = {};
             $scope.productImage = {};
             $scope.ImageSrc = '';
+            $scope.productDownload = '';
         }
     }
 ]);
