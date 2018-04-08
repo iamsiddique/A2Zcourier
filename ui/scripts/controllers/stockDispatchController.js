@@ -26,7 +26,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             for (i in response.data)
                 if (response.data[i].name != null) {
                     var productlist = {}
-                    productlist.name = response.data[i].name;
+                    productlist.name = response.data[i].name+ ' - ' +response.data[i].code;
                     productlist.id = response.data[i].id;
                     $scope.listofproduct.push(productlist);
                     console.log('called');

@@ -7,44 +7,66 @@
     </div>
 </div>
 <div class="container">
-
-    <div class="row">
-            <div class="col-md-3">
-                <input name="search" type="text" ng-model="searchTable" placeholder="Search" class="form-control input-md">
-                <div class="margin-t-b clear"></div>
+    <div class="col-md-12">
+        <div class="panel with-nav-tabs panel-primary">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1primary" data-toggle="tab">Assigned</a></li>
+                    <li><a href="#tab2primary" data-toggle="tab">Delivered</a></li>
+                </ul>
             </div>
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped">
-                        <thead>
-                            <th ng-click="sortData('name')">Invoice Number
-                                <div ng-class="arrowStyle('name')"></div>
-                            </th>
-                            <th ng-click="sortData('name')">Date
-                                <div ng-class="arrowStyle('name')"></div>
-                            </th>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in myCourierList | filter:searchTable
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab1primary">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="search" type="text" ng-model="searchTable" placeholder="Search" class="form-control input-md">
+                                <div class="margin-t-b clear"></div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table id="mytable" class="table table-bordred table-striped">
+                                        <thead>
+                                            <th ng-click="sortData('name')">Invoice Number
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                            <th ng-click="sortData('name')">Date
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                             <th ng-click="sortData('name')">Address
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                             <th>Mode of Payment</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in myCourierList | filter:searchTable
  | limitTo: pageSize : listofBoyss | orderBy:sortColumn:reverseSort  " ng-if="!retrivalerr">
-                                <td>{{item.invoiceId}}</td>
-                                <td>{{item.date}}</td>
-                               
-                            </tr>
-                            <tr ng-if="retrivalerr">
-                                <td colspan="8" class="text-center">Data not available</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="clearfix"></div>
-                    <ul class="pagination pull-right">
-                        <li ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><span class="glyphicon glyphicon-chevron-left"></span></li>
-                        <li ng-class="selectedPage == $index && 'active'" ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage()"><a>{{$index+1}}</a></li>
-                        <li ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><span class="glyphicon glyphicon-chevron-right"></span></li>
-                    </ul>
+                                                <td>{{item.invoiceId}}</td>
+                                                <td>{{item.date}}</td>
+                                                <td>{{item.address}}</td>
+                                                <td>{{item.paymentMode}}</td>
+                                            </tr>
+                                            <tr ng-if="retrivalerr">
+                                                <td colspan="8" class="text-center">Data not available</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                    <ul class="pagination pull-right">
+                                        <li ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><span class="glyphicon glyphicon-chevron-left"></span></li>
+                                        <li ng-class="selectedPage == $index && 'active'" ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage()"><a>{{$index+1}}</a></li>
+                                        <li ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><span class="glyphicon glyphicon-chevron-right"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                           
+                        </div>
                     </div>
-                    </div>
-                    </div>
+                     <div class="tab-pane fade" id="tab2primary">Primary 2</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="margin-t-b clear"></div>
     <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
         <div class="modal-dialog">

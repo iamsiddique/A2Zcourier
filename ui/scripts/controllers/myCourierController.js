@@ -5,7 +5,9 @@ $scope.myCourierList = [];
 for(i=0;i<10;i++){
     var myCourier ={
     "invoiceId":"123456",
-    "date":"12-01-2017"
+    "date":"12-01-2017",
+    "address":"No 3, shaik street, bharati nagar, Bangalore",
+    "paymentMode":"Cash"
 }
 $scope.myCourierList.push(myCourier);
 }
