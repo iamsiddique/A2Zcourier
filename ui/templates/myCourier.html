@@ -5,7 +5,9 @@
     <div class="col-md-12 margin-t-b clear">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
     </div>
+    <div class="col-md-12  margin-t-b clear"><button class="section-to-hide-print btn btn-primary btn-medium" ng-click="printAssigned('sectionToPrint')">Print</button></div>
 </div>
+
 <div class="container">
     <div class="col-md-12">
         <div class="panel with-nav-tabs panel-primary">
@@ -19,32 +21,41 @@
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="tab1primary">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 section-to-hide-print">
                                 <input name="search" type="text" ng-model="searchTable" placeholder="Search" class="form-control input-md">
                                 <div class="margin-t-b clear"></div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="sectionToPrint">
                                 <div class="table-responsive">
                                     <table id="mytable" class="table table-bordred table-striped">
                                         <thead>
                                             <th ng-click="sortData('name')">Invoice Number
                                                 <div ng-class="arrowStyle('name')"></div>
                                             </th>
-                                            <th ng-click="sortData('name')">Date
+                                            <th ng-click="sortData('name')">Invoice Date
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                            <th ng-click="sortData('name')">Assigned  Date
                                                 <div ng-class="arrowStyle('name')"></div>
                                             </th>
                                              <th ng-click="sortData('name')">Address
                                                 <div ng-class="arrowStyle('name')"></div>
                                             </th>
                                              <th>Mode of Payment</th>
+                                             <th class="section-to-hide-print"></th>
+                                             <th class="section-to-view-print">Signature</th>
+
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in myCourierList | filter:searchTable
  | limitTo: pageSize : listofBoyss | orderBy:sortColumn:reverseSort  " ng-if="!retrivalerr">
-                                                <td>{{item.invoiceId}}</td>
-                                                <td>{{item.date}}</td>
-                                                <td>{{item.address}}</td>
-                                                <td>{{item.paymentMode}}</td>
+                                                <td>{{item.stockDispatch.id}}</td>
+                                                <td>{{item.stockDispatch.invoiceDate | date: 'MM/dd/yyyy'}}</td>
+                                                <td>{{item.assignedDate | date: 'MM/dd/yyyy'}}</td>
+                                                <td class="max-width-250">{{item.stockDispatch.toAddress}}</td>
+                                                <td>{{item.stockDispatch.paymentMode}}</td>
+                                                <td class="section-to-hide-print"><button class="btn btn-primary btn-medium" ng-click="markasDelivered(item)">Mark as delivered</button></td>
+                                                <td  class="section-to-view-print"></td>
                                             </tr>
                                             <tr ng-if="retrivalerr">
                                                 <td colspan="8" class="text-center">Data not available</td>
@@ -62,7 +73,60 @@
                            
                         </div>
                     </div>
-                     <div class="tab-pane fade" id="tab2primary">Primary 2</div>
+                     <div class="tab-pane fade" id="tab2primary">
+                          <div class="row">
+                            <div class="col-md-3 section-to-hide-print">
+                                <input name="search" type="text" ng-model="searchTable" placeholder="Search" class="form-control input-md">
+                                <div class="margin-t-b clear"></div>
+                            </div>
+                            <div class="col-md-12" id="sectionToPrint">
+                                <div class="table-responsive">
+                                    <table id="mytable" class="table table-bordred table-striped">
+                                        <thead>
+                                            <th ng-click="sortData('name')">Invoice Number
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                            <th ng-click="sortData('name')">Invoice Date
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                            <th ng-click="sortData('name')">Assigned  Date
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                             <th ng-click="sortData('name')">Address
+                                                <div ng-class="arrowStyle('name')"></div>
+                                            </th>
+                                             <th>Mode of Payment</th>
+                                             
+                                             <th class="section-to-view-print">Signature</th>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in myDeliveredCourierList | filter:searchTable
+ | limitTo: pageSize : listofBoyss | orderBy:sortColumn:reverseSort  " ng-if="!retrivalerr">
+                                                <td>{{item.stockDispatch.id}}</td>
+                                                <td>{{item.stockDispatch.invoiceDate | date: 'MM/dd/yyyy'}}</td>
+                                                <td>{{item.assignedDate | date: 'MM/dd/yyyy'}}</td>
+                                                <td class="max-width-250">{{item.stockDispatch.toAddress}}</td>
+                                                <td>{{item.stockDispatch.paymentMode}}</td>
+                                               
+                                                <td  class="section-to-view-print"></td>
+                                            </tr>
+                                            <tr ng-if="retrivalerr">
+                                                <td colspan="8" class="text-center">Data not available</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="clearfix"></div>
+                                    <ul class="pagination pull-right">
+                                        <li ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><span class="glyphicon glyphicon-chevron-left"></span></li>
+                                        <li ng-class="selectedPage == $index && 'active'" ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage()"><a>{{$index+1}}</a></li>
+                                        <li ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><span class="glyphicon glyphicon-chevron-right"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                           
+                        </div>
+                     </div>
                 </div>
             </div>
         </div>

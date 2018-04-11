@@ -121,6 +121,26 @@ courierApp.config(function($httpProvider) {
 		    return $http.get($rootScope.urlBase + 'stockdispatch/id/'+data, $rootScope.header);		    
 		    
 		};
+		dataFetch.assignMe= function(data) {
+
+		    return $http.post($rootScope.urlBase + 'courierboy/assign',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.markAsDelivered= function(data) {
+
+		    return $http.post($rootScope.urlBase + 'courierboy/updatecourierstatus',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.assignedList= function(id) {
+
+		    return $http.get($rootScope.urlBase + 'courierboy/userid/'+id+'/status/A', $rootScope.header);		    
+		    
+		};
+		dataFetch.deliveredList= function(id) {
+
+		    return $http.get($rootScope.urlBase + 'courierboy/userid/'+id+'/status/D', $rootScope.header);		    
+		    
+		};
 		return dataFetch;
 		
 }])

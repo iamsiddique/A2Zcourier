@@ -1,4 +1,4 @@
-var courierApp = angular.module("a2zCouriers", ["ngRoute", "ngMessages", 'ngAnimate', 'ngSanitize',
+var courierApp = angular.module("a2zCouriers", ["ngRoute","ngStorage", "ngMessages", 'ngAnimate', 'ngSanitize',
     'ui.bootstrap', 'htmlToPdfSave', 'monospaced.qrcode',
 ]);
 //'webcam','bcQrReader'

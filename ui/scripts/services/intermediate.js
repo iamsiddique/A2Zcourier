@@ -189,6 +189,39 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.assignMe = function(data, callback) {
+        mainService.assignMe(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.assignedList = function(data, callback) {
+        mainService.assignedList(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.markAsDelivered = function(data, callback) {
+        mainService.markAsDelivered(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.deliveredList = function(data, callback) {
+        mainService.deliveredList(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    
 
 
 

@@ -1,5 +1,5 @@
-courierApp.controller("authenticationController",['$rootScope','$scope','$location','intermediateService','logCheck','$timeout',
- function ($rootScope,$scope,$location,intermediateService,logCheck,$timeout) {
+courierApp.controller("authenticationController",['$rootScope','$scope','$location','intermediateService','logCheck','$timeout','$sessionStorage',
+ function ($rootScope,$scope,$location,intermediateService,logCheck,$timeout,$sessionStorage) {
 
  	$scope.loader = false;
  	$rootScope.loginPage=false;
@@ -16,7 +16,9 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 					$location.path('/courierboy');
 					$rootScope.cBoyLogin = true;
 					$scope.loader = false;
-				}				
+				}	
+				$sessionStorage.logindetails ={};	
+				$sessionStorage.logindetails.id = response.data.id;
 				$rootScope.seedRole = response.data.seedRole.id;
 				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
 				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));

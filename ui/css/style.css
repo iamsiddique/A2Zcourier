@@ -308,6 +308,10 @@ Creating a block for social media buttons
     }
 }
 
+.max-width-250{
+ max-width:250px;
+}
+
 .loader-style{
     margin: 0 auto;
     display: block;
@@ -325,4 +329,23 @@ Creating a block for social media buttons
     line-height: 1.42857143;
     border: 1px solid transparent;
     border-radius: 4px 4px 0 0;
+}
+
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-nav>li>a {
+    color: #fff;
+    background-color: transparent;
+}
+
+.section-to-view-print {
+    display: none;
+  }
+
+@media print {
+  .section-to-hide-print {
+    display: none;
+  }
+  .section-to-view-print {
+    display: block;
+  }
+  
 }

@@ -1,10 +1,10 @@
-courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'intermediateService', 'logCheck', '$timeout',
-    function($rootScope, $scope, $location, intermediateService, logCheck, $timeout) {
+courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'intermediateService', 'logCheck', '$timeout','$sessionStorage',
+    function($rootScope, $scope, $location, intermediateService, logCheck, $timeout,$sessionStorage) {
 
 
         $rootScope.loginPage = false;
-        $rootScope.loginPage = false;
-        
+        $rootScope.cBoyLogin = true;
+
         //alert('hi');
         $scope.checking = function() {
             logCheck.checkUser(function(response) {
@@ -22,7 +22,28 @@ courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'i
 
         }
         $scope.assignMe = function() {
-            $location.path('/mycouriers');
+            data = {
+                "courierBoy": {
+                    "user":{
+                    "id": $sessionStorage.logindetails.id
+                    } 
+                },
+                "stockDispatch": {
+                    "id": $scope.invoiceId
+                }
+            }
+           
+            intermediateService.assignMe(data, function(response) {
+                if (response.statusCode == 1) {
+                    console.log(response.data);
+                    $location.path('/mycouriers');
+                } else if (response.statusCode == 0) {
+                    console.log(response.data);
+                    //$location.path('/mycouriers');
+                }
+
+            })
+
         }
 
         $scope.camActivate = false;
