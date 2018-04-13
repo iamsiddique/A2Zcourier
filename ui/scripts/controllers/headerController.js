@@ -12,14 +12,14 @@ courierApp.controller("headerController",['$rootScope','$scope','$location',
 		console.log('clicked')
 	}
 }]);
-courierApp.controller("LogoutController",['$location','$rootScope','$scope',
- function ($location,$rootScope,$scope) {
+courierApp.controller("LogoutController",['$location','$rootScope','$scope','$sessionStorage',
+ function ($location,$rootScope,$scope,$sessionStorage) {
  	
 	$rootScope.loginPage = true;	
 	//console.log($rootScope.loginPage);
 	
-	$scope.logout = function () {		
-		localStorage.removeItem('userLoggedin');
+	$scope.logout = function () {
+		$sessionStorage.$reset();	
 		$location.path('/login');
  		$rootScope.loginPage= false;
  		$rootScope.cBoyLogin = false;

@@ -21,6 +21,7 @@
                 <!-- <li class="active" ng-if="loginPage"><a href="#/employeeDetails">Employee Details</a></li> -->
                 <!-- <li class="active" ng-if="loginPage"><a href="#/employeeList">Employee List</a></li> -->
                 <li class="{{serviceAvailability}}" ng-if="loginPage" ng-click="addActive('serviceAvailability')"><a href="#/serviceAvailability">Service Availability</a></li>
+                <li class="{{stockDispatch}}" ng-if="loginPage || cBoyLogin" ><a href="#/mycouriers">My Courier</a></li>
                 <!-- <li class="active" ng-if="!loginPage"><a href="#/customer">Get Quote</a></li>  -->
                 <li class="" ng-if="loginPage || cBoyLogin"><a href="#/logout">Logout</a></li>
             </ul>

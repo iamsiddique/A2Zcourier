@@ -21,7 +21,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 				$sessionStorage.logindetails.id = response.data.id;
 				$rootScope.seedRole = response.data.seedRole.id;
 				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
-				localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
+				$sessionStorage.logindetails.credentials = $scope.credentials;
 				$rootScope.loginPage=true;
 			}
 			else if (response.statusCode == 0) {
