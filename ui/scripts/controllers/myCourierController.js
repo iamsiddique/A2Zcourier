@@ -3,19 +3,21 @@ courierApp.controller("myCourierController", ['$rootScope', '$scope', '$location
         
         
         $rootScope.cBoyLogin = true;
-
+        $scope.retrivalAssignederr = true;
+        $scope.retrivalDeliverederr = true;
+        $scope.retrivalPaiderr = true;
         $scope.getList = function() {  
         $scope.myCourierList = [];         
             var id = $sessionStorage.logindetails.id;
+
             intermediateService.assignedList(id, function(response) {
                 if (response.statusCode == 1) {
-                    console.log(response.data.stockDispatch);
                     for (i in response.data) {
                         $scope.myCourierList.push(response.data[i]);
-                    }
-                    
+                    }                   
+                    $scope.retrivalAssignederr = false; 
                 } else if (response.statusCode == 0) {
-                    console.log(response.data);
+                    $scope.retrivalAssignederr = true;
                 }
 
             })
@@ -47,8 +49,9 @@ courierApp.controller("myCourierController", ['$rootScope', '$scope', '$location
                     for (i in response.data) {
                         $scope.myDeliveredCourierList.push(response.data[i]);
                     }
+                    $scope.retrivalDeliverederr = false;
                 } else if (response.statusCode == 0) {
-                    console.log(response.data);
+                    $scope.retrivalDeliverederr = true;
                 }
 
             })
@@ -61,8 +64,9 @@ courierApp.controller("myCourierController", ['$rootScope', '$scope', '$location
                     for (i in response.data) {
                         $scope.myPaidList.push(response.data[i]);
                     }
+                    $scope.retrivalPaiderr = false;
                 } else if (response.statusCode == 0) {
-                    console.log(response.data);
+                    $scope.retrivalPaiderr = true;
                 }
 
             })

@@ -79,6 +79,10 @@ courierApp.config(function($routeProvider) {
             controller: 'listofDispatchController',
             templateUrl: "ui/templates/listOfStock.html"
         })
+        .when("/Payments", {
+            controller: 'payment',
+            templateUrl: "ui/templates/payment.html"
+        })
         .when("/", {
             controller: 'authenticationController',
             templateUrl: "ui/templates/login.html"
