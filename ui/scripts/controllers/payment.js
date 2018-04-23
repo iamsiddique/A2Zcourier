@@ -3,6 +3,7 @@ courierApp.controller("payment", ['$rootScope', '$scope', '$location', 'intermed
 
 		$scope.loader = false;
 		$scope.paidDetails = false
+        $scope.selectedCourier = {};		
 		$scope.listofBoys;
 		$rootScope.loginPage = true;
 		$scope.totalPages = 0;
@@ -120,6 +121,41 @@ courierApp.controller("payment", ['$rootScope', '$scope', '$location', 'intermed
 				}
 
 			})
+		}
+
+		$scope.markAsPaid = function() {
+			sendData = [];
+            for(i in $scope.myDeliveredCourierList){
+				if($scope.myDeliveredCourierList[i].selected){					
+					var obj = {
+						'id': $scope.myDeliveredCourierList[i].id
+					}
+					sendData.push(obj);
+				}
+			}
+            intermediateService.markAsPaid(sendData, function(response) {
+                if (response.statusCode == 1) {
+                    console.log(response.data);
+                   // $scope.getDeliveredList();
+                    
+                } else if (response.statusCode == 0) {
+                    console.log(response.data);
+                    //$location.path('/mycouriers');
+                }
+
+            })
+		};
+		$scope.calculateTotal = function(){
+			$scope.sendData = [];
+			for(i in $scope.myDeliveredCourierList){
+				if($scope.myDeliveredCourierList[i].selected){					
+					var obj = {
+						'id': $scope.myDeliveredCourierList[i].id
+					}
+					sendData.push(obj);
+				}
+			}
+			$scope.totalCost = $scope.sendData.length * 10;
 		}
 
 	}

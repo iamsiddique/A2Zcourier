@@ -140,6 +140,11 @@ courierApp.config(function ($httpProvider) {
 			return $http.post($rootScope.urlBase + 'courierboy/updatecourierstatus', data, $rootScope.header);
 
 		};
+		dataFetch.markAsPaid = function (data) {
+
+			return $http.post($rootScope.urlBase + 'courierboy/markpaid', data, $rootScope.header);
+
+		};
 		dataFetch.assignedList = function (id) {
 
 			return $http.get($rootScope.urlBase + 'courierboy/userid/' + id + '/status/A', $rootScope.header);
@@ -165,9 +170,12 @@ courierApp.config(function ($httpProvider) {
 
 		credentialFetch.checkUser = function (callback) {
 
-			if (angular.isDefined($sessionStorage.logindetails)) {
+			if(angular.isDefined($sessionStorage.logindetails) && angular.isDefined($sessionStorage.logindetails.credentials) && $sessionStorage.logindetails.credentials){
 				var currentUser = $sessionStorage.logindetails.credentials;
-				callback(currentUser);
+				callback(true);
+			}
+			else{
+				callback(false);
 			}
 
 		};

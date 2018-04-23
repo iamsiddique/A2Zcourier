@@ -1,5 +1,5 @@
-courierApp.controller("productEntryController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout',
-    function($rootScope, $scope, $location, intermediateService, $timeout) {
+courierApp.controller("productEntryController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout','$window',
+    function($rootScope, $scope, $location, intermediateService, $timeout,$window) {
 
         $scope.product = {};
         $scope.products = [];
@@ -66,6 +66,7 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
             }
         }
         $scope.productModify = function(data) {
+            $window.scrollTo(0, 0);
             $scope.product = {};
             $scope.productImage = {};
             $scope.ImageSrc = '';

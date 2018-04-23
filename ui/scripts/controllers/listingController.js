@@ -1,5 +1,5 @@
-courierApp.controller("listingController", ['$scope', '$location', '$rootScope', 'intermediateService', '$timeout',
-	function ($scope, $location, $rootScope, intermediateService, $timeout) {
+courierApp.controller("listingController", ['$scope', '$location', '$rootScope', 'intermediateService', '$timeout','logCheck',
+	function ($scope, $location, $rootScope, intermediateService, $timeout,logCheck) {
 
 		$scope.listofBoys;
 		$rootScope.loginPage = true;
@@ -123,6 +123,6 @@ courierApp.controller("listingController", ['$scope', '$location', '$rootScope',
 		$scope.cancelEdit = function () {
 			$scope.photoDownload = '';
 			$scope.ImageSrc = '';
-		}
+		}		
 	}
 ]);

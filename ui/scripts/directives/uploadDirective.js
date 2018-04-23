@@ -179,6 +179,17 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
         }
     };
 }]);
+courierApp.directive('noCacheSrc', function($window) {
+    return {
+      priority: 99,
+      link: function(scope, element, attrs) {
+        attrs.$observe('noCacheSrc', function(noCacheSrc) {
+          noCacheSrc += '?' + (new Date()).getTime();
+          attrs.$set('src', noCacheSrc);
+        });
+      }
+    }
+  });
 // courierApp.directive('autoComplete', function($timeout) {
 //     return function(scope, iElement, iAttrs) {
 //             iElement.autocomplete({

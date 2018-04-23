@@ -90,18 +90,10 @@ courierApp.config(function($routeProvider) {
 
 
 })
-courierApp.run(['logCheck', '$rootScope', function(logCheck, $rootScope) {
-    /*console.log('first called');
-    var currentUser = logCheck.checkUser();
-    console.log(logCheck.checkUser());*/
-    //$rootScope.username = currentUser[0].username;
-    //$rootScope.password = currentUser[0].password;
-    //$scope.login();
-    // if(response.data.seedRole.id == 1){
-
-    //                 $location.path('/list')
-    //             }
-    //             else if(response.data.seedRole.id == 2){
-    //                 $location.path('/courierboy');
-    //             }
+courierApp.run(['logCheck', '$rootScope','$location', function(logCheck, $rootScope,$location) {
+    logCheck.checkUser(function (response) {
+        if(!response){
+            $location.path('/');
+        }
+    });
 }]);

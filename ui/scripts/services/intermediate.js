@@ -213,6 +213,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.markAsPaid = function(data, callback) {
+        mainService.markAsPaid(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.deliveredList = function(data, callback) {
         mainService.deliveredList(data).success(function(response) {
             console.log(response);

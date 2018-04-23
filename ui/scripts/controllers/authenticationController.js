@@ -33,9 +33,5 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 			}
 		});	
 	}
-	$scope.checking = function(){		
-		logCheck.checkUser(function(response) {
-			$location.path('/list');
-		});		
-	}	
+	
 }]);
