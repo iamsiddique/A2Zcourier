@@ -33,17 +33,33 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
                 }
             console.log($scope.products);
         })
+        // $scope.preEnter = function(){
+        //     if(typeof($scope.searchProduct)=='object'){
+        //         $scope.stock.product = $scope.searchProduct;
+        //         $scope.productImageSrc = $rootScope.urlBase + "product/download/photo/" + $scope.stock.product.id;
+        //         $scope.viewForm = true;
+        //     }else{
+        //         for(ite in $scope.products){
+        //             if($scope.products[ite].code==$scope.searchProduct){
+        //                 $scope.stock.product = $scope.products[ite];
+        //                 $scope.productImageSrc = $rootScope.urlBase + "product/download/photo/" + $scope.stock.product.id;
+        //                flag = true;
+        //                break; 
+        //             }
+        //         }               
+        //     }
+        // }
         $scope.enter = function() {
-            console.log($scope.searchProduct);
-            console.log(typeof($scope.searchProduct));
             if(typeof($scope.searchProduct)=='object'){
                 $scope.stock.product = $scope.searchProduct;
+                $scope.productImageSrc = $rootScope.urlBase + "product/download/photo/" + $scope.stock.product.id;
                 $scope.viewForm = true;
             }else{
                 var flag = false;
                 for(ite in $scope.products){
                     if($scope.products[ite].code==$scope.searchProduct){
                         $scope.stock.product = $scope.products[ite];
+                        $scope.productImageSrc = $rootScope.urlBase + "product/download/photo/" + $scope.stock.product.id;
                        flag = true;
                        break; 
                     }
@@ -210,6 +226,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
 
             return '';
         }
+        
 
 
     }

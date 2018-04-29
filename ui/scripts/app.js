@@ -1,6 +1,7 @@
 var courierApp = angular.module("a2zCouriers", ["ngRoute","ngStorage", "ngMessages", 'ngAnimate', 'ngSanitize',
     'ui.bootstrap', 'htmlToPdfSave', 'monospaced.qrcode',
 ]);
+courierApp.value('THROTTLE_MILLISECONDS', 2000)
 //'webcam','bcQrReader'
 courierApp.config(function($routeProvider) {
     $routeProvider

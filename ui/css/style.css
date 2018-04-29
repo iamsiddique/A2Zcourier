@@ -90,7 +90,7 @@ li[disabled] {
 /*card*/
 
 .block-update-card {
-    height: 100%;
+    /*height: 100%;*/
     border: 1px #efefef solid;
     float: left;
     margin-top: 0;
@@ -348,4 +348,16 @@ Creating a block for social media buttons
     display: block;
   }
   
+}
+.dropdown-menu .divider {
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+.display-flex{
+    display: flex;
+    flex-wrap :wrap;
+    display: -webkit-flex;
+    -webkit-flex-wrap :wrap;
 }
