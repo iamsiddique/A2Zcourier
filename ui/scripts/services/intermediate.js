@@ -148,6 +148,15 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.centerStockEntryList = function(data, callback) {
+        mainService.centerStockEntryList(data).success(function(response) {
+            console.log(response);
+            serviceObject.cstockEntryDetails = response.data
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.employeeAdd = function(data, callback) {
         mainService.employeeAdd(data).success(function(response) {
             console.log(response);

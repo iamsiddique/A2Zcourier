@@ -63,6 +63,9 @@ courierApp.controller("centerRegController", ['$rootScope', '$scope', '$location
             intermediateService.centerStockData(cid, function(response) {
                 $location.path('/centerStock');
             });
+            intermediateService.centerStockEntryList(cid, function(response) {
+                //$location.path('/centerStock');
+            });
         }
         $scope.centerModify = function(data) {
             $scope.centerEdit = {};

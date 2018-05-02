@@ -3,7 +3,8 @@ courierApp.controller("centerStockController", ['$rootScope', '$scope', '$locati
 
        
         $scope.getStockdet = function(){
-        	$scope.centerStockdetails = intermediateService.cstockDetails;
+            $scope.centerStockdetails = intermediateService.cstockDetails;
+            $scope.cstockEntryDetails = intermediateService.cstockEntryDetails;
         }
         $scope.getStockdet();
                 $scope.sortColumn = 'quantity';
