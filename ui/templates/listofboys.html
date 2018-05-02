@@ -49,7 +49,7 @@
                             <tr ng-repeat="list in listofBoys | filter:searchTable
  | limitTo: pageSize : listofBoyss | orderBy:sortColumn:reverseSort  " ng-if="!retrivalerr">
 
-                                <td> <img ng-src="{{ImageSrc || urlBase +'courierboy/download/photo/' + list.id ||'ui/images/product.png'}}" style="width:70px;height:80px" /></td>
+                                <td> <img no-cache-src="{{urlBase +'courierboy/download/photo/' + list.id ||'ui/images/product.png'}}" style="width:70px;height:80px" /></td>
                                 <td>{{list.firstName}}&nbsp;{{list.lastName}}</td>
                                 <td ng-bind="list.mobileNumber"></td>
                                 <td ng-bind="list.currentAddress"></td>

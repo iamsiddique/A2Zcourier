@@ -121,6 +121,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             $scope.viewForm = false;
             $scope.stock = {};
             $scope.searchProduct="";
+            $scope.productImageSrc='';
 
         };
         $scope.today = function() {
