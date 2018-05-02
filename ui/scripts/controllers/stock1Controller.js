@@ -72,6 +72,10 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             }
             }
           }  
+          $scope.cancel = function(){
+            $scope.viewForm = false;
+            $scope.resetForm();
+          }
         $scope.save = function() {
             console.log('save called');
             if ($scope.stockform.$valid) {
@@ -117,7 +121,6 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
 
         }
         $scope.resetForm = function() {
-            console.log('resetting form');
             $scope.viewForm = false;
             $scope.stock = {};
             $scope.searchProduct="";
