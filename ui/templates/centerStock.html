@@ -33,21 +33,23 @@
                                     <div class="table-responsive">
                                         <table id="mytable" class="table table-bordred table-striped">
                                             <thead>
+                                                    <th>Sl.No</th>
                                                 <th ng-click="sortData('product.name')">Product Name
                                                     <div ng-class="arrowStyle('product.name')"></div>
                                                 </th>
                                                 <th ng-click="sortData('product.code')">Product Code
-                                                    <div ng-class="arrowStyle('product.code')" </th>
+                                                    <div ng-class="arrowStyle('product.code')"></div> </th>
                                                         <th ng-click="sortData('quantity')">Quantity
-                                                            <div ng-class="arrowStyle('quantity')" </th>
+                                                            <div ng-class="arrowStyle('quantity')"></div> </th>
                                                                 <th ng-click="sortData('expiryDate')">Expiry Date
-                                                                    <div ng-class="arrowStyle('expiryDate')" </th>
+                                                                    <div ng-class="arrowStyle('expiryDate')"></div> </th>
 
                                                                         <!-- <th>Edit</th>
                                                                     <th>Delete</th> -->
                                             </thead>
                                             <tbody>
                                                 <tr ng-repeat="stock in centerStockdetails | filter:searchStock | orderBy:sortColumn:reverseSort">
+                                                    <td>{{$index+1}}</td>
                                                     <td ng-bind="stock.product.name"></td>
                                                     <td ng-bind="stock.product.code"></td>
                                                     <td ng-bind="stock.quantity"></td>
@@ -90,24 +92,31 @@
                                                 <div class="table-responsive">
                                                     <table id="mytable" class="table table-bordred table-striped">
                                                         <thead>
+                                                            <th>Sl.No</th>
+                                                            <th>Invoice Number</th>
                                                             <th ng-click="sortData('product.name')">Product Name
                                                                 <div ng-class="arrowStyle('product.name')"></div>
                                                             </th>
                                                             <th ng-click="sortData('product.code')">Product Code
-                                                                <div ng-class="arrowStyle('product.code')" </th>
+                                                                <div ng-class="arrowStyle('product.code')"></div> </th>
                                                                     <th ng-click="sortData('quantity')">Quantity
-                                                                        <div ng-class="arrowStyle('quantity')" </th>
-                                                                            <th ng-click="sortData('expiryDate')">Expiry Date
-                                                                                <div ng-class="arrowStyle('expiryDate')" </th>
+                                                                        <div ng-class="arrowStyle('quantity')"></div> </th>
+                                                                            <th ng-click="sortData('entryDate')">Entry Date
+                                                                                <div ng-class="arrowStyle('entryDate')"></div> </th>
+                                                                                <th ng-click="sortData('expiryDate')">Expiry Date
+                                                                                        <div ng-class="arrowStyle('expiryDate')"></div> </th>
 
                                                                                     <!-- <th>Edit</th>
                                                                         <th>Delete</th> -->
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-repeat="stock in centerStockdetails | filter:searchStock | orderBy:sortColumn:reverseSort">
+                                                            <tr ng-repeat="stock in cstockEntryDetails | filter:searchStock | orderBy:sortColumn:reverseSort">
+                                                                <td>{{$index+1}}</td>
+                                                                <td ng-bind="stock.invoiceNumber"></td>
                                                                 <td ng-bind="stock.product.name"></td>
                                                                 <td ng-bind="stock.product.code"></td>
                                                                 <td ng-bind="stock.quantity"></td>
+                                                                <td ng-bind="stock.entryDate | date: 'MM/dd/yyyy'"></td>
                                                                 <td ng-bind="stock.expiryDate | date: 'MM/dd/yyyy'"></td>
 
                                                                 <!--  <td>
