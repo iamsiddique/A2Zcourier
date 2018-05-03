@@ -106,6 +106,8 @@
                                                                                 <th ng-click="sortData('expiryDate')">Expiry Date
                                                                                         <div ng-class="arrowStyle('expiryDate')"></div> </th>
 
+                                                                                    <!-- <th>Edit</th>
+                                                                        <th>Delete</th> -->
                                                         </thead>
                                                         <tbody>
                                                             <tr ng-repeat="stock in cstockEntryDetails | filter:searchStock | orderBy:sortColumn:reverseSort">
