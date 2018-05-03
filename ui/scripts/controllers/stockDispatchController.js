@@ -40,9 +40,12 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             });
         }
         $scope.delete = function(product) {
-            console.log(product.product);
-            console.log($scope.datalist);
-
+            var i =0;
+            for(i in $scope.datalist){
+                if($scope.datalist[i].product === product.product.product){
+                    $scope.datalist.splice(i, 1);
+                }
+            }
         }
         $scope.save = function() {
             $rootScope.invoiceDetails ={}

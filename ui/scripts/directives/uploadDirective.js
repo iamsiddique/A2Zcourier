@@ -71,14 +71,10 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
                     </div>
                 </div>
             </td>
+            
             <td><div class="col-md-12">
                 <div class="form-group">
-                    <button class="primary-btn btn" ng-click="addprod()">+</button>
-                </div>
-            </div></td>
-            <td><div class="col-md-12">
-                <div class="form-group">
-                    <button class="primary-btn btn" ng-click="remprod(stockdispatch)">-</button>
+                    <button type="button" class="primary-btn btn" ng-click="remprod(stockdispatch)">-</button>
                 </div>
             </div></td>
                                

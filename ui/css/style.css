@@ -36,6 +36,10 @@ body {
     margin: 5px;
 }
 
+.margin-15px {
+    margin: 15px;
+}
+
 th {
     cursor: pointer;
 }

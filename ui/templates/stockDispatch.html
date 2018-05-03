@@ -68,6 +68,10 @@
                 </div>
             </div>
             <div class="clear"></div>
+            <div class="col-md-3 pull-right">
+                <a href="" class="btn btn-primary pull-right" ng-click="addnew()">Add</a>
+            </div>
+            <div class="clear  margin-15px"></div>
             <table id="stocktable" class="table table-bordred table-striped">
                 <thead>
                     <th>Product Name </th>
@@ -75,15 +79,15 @@
                     <th>Cost </th>
                     <th>Invoice Code </th>
                     <th>Expiry Date</th>
-                    <th>Add New</th>
                     <th>Delete</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="data in datalist" stockdispatch="data" prodlist="listofproduct" addprod="addnew()" remprod="delete({product:data})">
+                    <tr ng-repeat="data in datalist" stockdispatch="data" prodlist="listofproduct" remprod="delete({product:data})">
                     </tr>
                 </tbody>
             </table>
             <div class="clear"></div>
+            
             <div class="col-md-12 text-center">
                 <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
                 <a href="#/list" class="btn btn-primary">Cancel</a>
