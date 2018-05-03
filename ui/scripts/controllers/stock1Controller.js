@@ -177,7 +177,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             $scope.popup2.opened = true;
         };
         $scope.open3 = function() {
-            $scope.popup2.opened = true;
+            $scope.popup3.opened = true;
         };
 
         $scope.setDate = function(year, month, day) {
