@@ -5,6 +5,8 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
         $scope.stock = {};
         $scope.stock.warehouse = undefined;
         $scope.stock.productname = undefined;
+        
+			$scope.loader = false;
         $rootScope.loginPage = true;
         $scope.countries = [];
         $scope.products = [];
@@ -21,6 +23,8 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             console.log($scope.countries);
         })
         intermediateService.productlist(function(response) {
+            
+			$scope.loader = true;
             console.log(response);
             for (i in response.data)
                 if (response.data[i].name != null) {
@@ -31,6 +35,8 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
                     $scope.products.push(productlist);
                     console.log('called');
                 }
+            
+			$scope.loader = false;
             console.log($scope.products);
         })
         // $scope.preEnter = function(){
@@ -138,7 +144,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
         $scope.clear = function() {
             $scope.stock.manuDate = null;
             $scope.stock.expDate = null;
-             $scope.stock.enterDate = null;
+            $scope.stock.enterDate = null;
         };
 
         $scope.inlineOptions = {
@@ -150,7 +156,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
         $scope.dateOptions = {
             // dateDisabled: disabled,
             formatYear: 'yy',
-            maxDate: new Date(2020, 5, 22),
+            maxDate: new Date(2200, 5, 22),
             minDate: new Date(),
             startingDay: 1
         };
@@ -183,7 +189,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
         $scope.setDate = function(year, month, day) {
             $scope.stock.manuDate = new Date(year, month, day);
             $scope.stock.expDate = new Date(year, month, day);
-             $scope.stock.enterDate = new Date(year, month, day);
+            $scope.stock.enterDate = new Date(year, month, day);
         };
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -230,6 +236,9 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
 
             return '';
         }
+        $scope.disabled = function (date, mode) {
+            return false;
+        };
         
 
 

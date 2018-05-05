@@ -9,7 +9,8 @@
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
                     standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
                     it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                    typesetting</p>
+                    typesetting
+                </p>
             </div>
             <div class="margin-t-b clear"></div>
             <!-- Select Basic -->
@@ -29,24 +30,50 @@
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <div class="col-md-12 text-center">
+                    <div class="col-md-12">
                         <input type="button" class="btn btn-success" name="enter" ng-click="enter();" value="Enter" />
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                        <img ng-src="{{productImageSrc  ||'ui/images/product.png'}}" class="pull-right" style="width:200px;height:140px" />
-                </div>
-                   
-                </div>
+
 
             <div class="margin-t-b clear"></div>
             <div ng-show="viewForm">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="productname">Product Name</label>
+                        <div class="col-md-8">
+                            <input name="productname" type="text" ng-model="stock.product.name" ng-disabled="true"  class="form-control autocomplete input-md">
+                            <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
+                                <p ng-message="required">This field is required</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <img ng-src="{{productImageSrc  ||'ui/images/product.png'}}" class="col-md-offset-4" style="width:200px;height:140px" />
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="productname">Product Code</label>
+                        <div class="col-md-8">
+                            <input name="productcode" type="text" ng-model="stock.product.code" ng-disabled="true" class="form-control autocomplete input-md"
+                                required="">
+                            <div ng-messages="stockform.productcode.$error" ng-if='submitted' class="text-danger">
+                                <p ng-message="required">This field is required</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="warehousename">Ware house</label>
@@ -60,20 +87,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="productname">Product Name</label>
-                        <div class="col-md-8">
-                            <input name="productname" type="text" ng-model="stock.product" ng-disabled="true" uib-typeahead="product as product.name for product in products | filter:{name:$viewValue}"
-                                placeholder="Enter product name" class="form-control autocomplete input-md" required="" typeahead-show-hint="true"
-                                typeahead-min-length="0">
-                            <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
-                                <p ng-message="required">This field is required</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="clear"></div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="quantity">Quantity</label>
@@ -85,6 +100,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="enterdate">Enter Date</label>
@@ -112,7 +128,7 @@
                         <div class="col-md-8">
                             <p class="input-group">
                                 <input name="manudate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stock.manuDate" is-open="popup1.opened"
-                                    datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                    datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
                                 />
                                 <span class="input-group-btn">
                                     <button type="button" class="btn btn-default" ng-click="open1()">
@@ -126,6 +142,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="expdate">Expiry Date</label>
@@ -147,7 +164,7 @@
                     </div>
 
                 </div>
-                <div class="clear margin-15px"></div>
+                <div class="clear"></div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="quantity">Invoice Number</label>
@@ -160,7 +177,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="quantity">Shop Name</label>

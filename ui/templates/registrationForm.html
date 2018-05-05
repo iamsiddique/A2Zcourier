@@ -60,11 +60,42 @@
             </div>
             <div class="clear"></div>
             <div class="col-md-6">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="companynumber">Company Number</label>
+                        <div class="col-md-8">
+                            <input name="companyNumber" type="text" ng-model="courierBoy.companyMobileNo" placeholder="Company Number" class="form-control input-md" required="">
+                            <div ng-messages="registrationform.mobileNumber.$error" ng-if='submitted' class="text-danger">
+                                <p ng-message="required">This field is required</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="issuedate">Issued Date</label>
+                        <div class="col-md-8">
+                                <p class="input-group">
+                                        <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoIssueDate" is-open="popup1.opened"
+                                            datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                        />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open1()">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            <div class="col-md-6">
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="username">User Name</label>
                     <div class="col-md-8">
-                        <input name="userName" type="text" ng-model="courierBoy.user.username" placeholder="User Name" class="form-control input-md" required="">
+                        <input name="userName" type="text" ng-disabled="disabled" ng-model="courierBoy.user.username" placeholder="User Name" class="form-control input-md">
                         <div ng-messages="registrationform.password.$error" ng-if='submitted' class="text-danger">
                             <p ng-message="required">This field is required</p>
                         </div>
@@ -310,7 +341,24 @@
             </div>
 
             <div class="col-md-6">
-            
+                    
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="issuedate">Return Date</label>
+                                <div class="col-md-8">
+                                        <p class="input-group">
+                                                <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoReturnDate" is-open="popup2.opened"
+                                                    datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                                />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-default" ng-click="open2()">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                    </button>
+                                                </span>
+                                            </p>
+                                </div>
+                            </div>
+                       
             </div>
             
             <div class="col-md-6">
