@@ -156,7 +156,7 @@ courierApp.controller("listingController", ['$scope', '$location', '$rootScope',
 
 		$scope.today = function() {
 			$scope.courierBoy.mobileNoIssueDate = new Date();
-			$scope.courierBoy.mobileNoReturnDate = new Date();
+			$scope.courierBoy.mobileNoReturnDate = '';
 
 		};
 		$scope.today();

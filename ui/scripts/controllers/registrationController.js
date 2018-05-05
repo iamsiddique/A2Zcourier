@@ -93,7 +93,7 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
 
             $scope.today = function() {
                 $scope.courierBoy.mobileNoIssueDate = new Date();
-                $scope.courierBoy.mobileNoReturnDate = new Date();
+               // $scope.courierBoy.mobileNoReturnDate = new Date();
     
             };
             $scope.today();
@@ -101,7 +101,7 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
             $scope.clear = function() {
                 $scope.courierBoy.mobileNoIssueDate = null;
                 
-                $scope.courierBoy.mobileNoReturnDate = null;
+               // $scope.courierBoy.mobileNoReturnDate = null;
             };
     
             $scope.inlineOptions = {

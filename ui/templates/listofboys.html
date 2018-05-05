@@ -141,30 +141,7 @@
                                                 </div>
                                             </div>
                                             <div class="clear"></div>
-                                            <div class="col-md-6">
-                                                <!-- Text input-->
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>
-                                                    <div class="col-md-8">
-                                                        <input name="mobileNumber" type="text" ng-model="courierBoy.mobileNumber" placeholder="Mobile Number" class="form-control input-md"
-                                                            required="">
-                                                        <div ng-messages="registrationform.mobileNumber.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <!-- Text input-->
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>
-                                                    <div class="col-md-8">
-                                                        <input name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md"
-                                                            required="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div>
+                                            
                                             <div class="col-md-6">
                                                     <!-- Text input-->
                                                     <div class="form-group">
@@ -202,7 +179,7 @@
                                                     <div class="col-md-6">
                                                         <!-- Text input-->
                                                         <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="issuedate">Issued Date</label>
+                                                            <label class="col-md-4 control-label" for="issuedate">Sim Issued Date</label>
                                                             <div class="col-md-8">
                                                                     <p class="input-group">
                                                                             <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoIssueDate" is-open="popup1.opened"
@@ -218,6 +195,23 @@
                                                         </div>
                                                     </div>
                                                     <div class="clear"></div>
+                                                    <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                    <label class="col-md-4 control-label" for="issuedate">Sim Return Date</label>
+                                                                    <div class="col-md-8">
+                                                                            <p class="input-group">
+                                                                                    <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoReturnDate" is-open="popup2.opened"
+                                                                                        datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                                                                    />
+                                                                                    <span class="input-group-btn">
+                                                                                        <button type="button" class="btn btn-default" ng-click="open2()">
+                                                                                            <i class="glyphicon glyphicon-calendar"></i>
+                                                                                        </button>
+                                                                                    </span>
+                                                                                </p>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
                                             <div class="col-md-6">
                                                 <!-- Text input-->
                                                 <div class="form-group">
@@ -231,6 +225,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <!-- Text input-->
                                                 <div class="form-group">
@@ -244,7 +239,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                            
                                             <div class="col-md-6">
                                                 <!-- Text input-->
                                                 <div class="form-group">
@@ -258,6 +253,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <!-- Text input-->
                                                 <div class="form-group">
@@ -271,7 +267,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                           
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="vtype">Vehicle Type</label>
@@ -286,6 +282,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="vehicleName">Vehicle Name</label>
@@ -298,7 +295,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="dlnumber">DL Number</label>
@@ -310,6 +307,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Batch Number</label>
@@ -319,7 +317,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="bankname">Bank Name</label>
@@ -331,6 +329,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="accntname">Bank Account Holder Name</label>
@@ -343,7 +342,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="accountnumber">Account Number</label>
@@ -356,6 +355,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="ifsccode">IFSC Code</label>
@@ -368,7 +368,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                           
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="vehicleOwner">Vehicle Owner</label>
@@ -383,6 +383,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Driving Licence</label>
@@ -403,7 +404,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                           
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">RC Book</label>
@@ -424,6 +425,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="clear"></div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Insurance</label>
@@ -444,7 +446,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="clear"></div>
+                                           
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Road Tax</label>
@@ -485,23 +487,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                    <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="issuedate">Return Date</label>
-                                                            <div class="col-md-8">
-                                                                    <p class="input-group">
-                                                                            <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoReturnDate" is-open="popup2.opened"
-                                                                                datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                                                            />
-                                                                            <span class="input-group-btn">
-                                                                                <button type="button" class="btn btn-default" ng-click="open2()">
-                                                                                    <i class="glyphicon glyphicon-calendar"></i>
-                                                                                </button>
-                                                                            </span>
-                                                                        </p>
-                                                            </div>
-                                                        </div>
-                                            </div>
+                                            
                                         </fieldset>
                                     </form>
                                 </div>
