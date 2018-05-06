@@ -100,6 +100,11 @@ courierApp.config(function ($httpProvider) {
 			return $http.post($rootScope.urlBase + 'stockentry/save', data, $rootScope.header);
 
 		};
+		dataFetch.stockEntryEdit = function (data) {
+
+			return $http.post($rootScope.urlBase + 'stockentry/update', data, $rootScope.header);
+
+		};
 		dataFetch.centerStockData = function (id) {
 
 			return $http.get($rootScope.urlBase + 'inventory/couriercenterid/' + id, $rootScope.header);

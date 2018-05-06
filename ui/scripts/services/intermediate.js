@@ -139,6 +139,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.stockEntryEdit = function(data, callback) {
+        mainService.stockEntryEdit(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.centerStockData = function(data, callback) {
         mainService.centerStockData(data).success(function(response) {
             console.log(response);

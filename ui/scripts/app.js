@@ -44,7 +44,7 @@ courierApp.config(function($routeProvider) {
             controller: 'employeeDetailsController',
             templateUrl: 'ui/templates/employeeDetails.html'
         })
-        .when("/centerStock", {
+        .when("/centerStock/:id", {
             controller: 'centerStockController',
             templateUrl: "ui/templates/centerStock.html"
         })
