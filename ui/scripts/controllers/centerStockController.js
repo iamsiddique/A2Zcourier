@@ -30,6 +30,7 @@ courierApp.controller("centerStockController", ['$rootScope', '$scope', '$locati
                 intermediateService.stockEntryEdit($scope.stockList, function(response) {
                     if (response.statusCode == 1) {
                         $scope.regSuccess = true;
+                        $scope.getStockdet();
                         $timeout(function() {
                             $scope.regSuccess = false;
                         }, 2000);
