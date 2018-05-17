@@ -253,6 +253,9 @@ Creating a block for social media buttons
  .hideit{
     display: none;
  }
+ .hundred-percent{
+     width: 100% !important;
+ }
 }
 
 .customer-body{

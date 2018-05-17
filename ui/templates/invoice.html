@@ -6,7 +6,7 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
     </div>
     <div class="col-md-12 margin-t-b">
-        <div class="panel panel-default" pdf-save-content="idOne">
+        <div class="panel panel-default" id="idone">
             <div class="panel-body">
                 <div class="margin-t-b clear"></div>
                 <!-- Select Basic -->
@@ -42,17 +42,17 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="col-md-6">
                      
-                <qrcode data="{{invID}}" size="200" class="hideit pull-right"></qrcode>
+                <qrcode data="{{invID}}" size="200" class="pull-right"></qrcode>
                
                 </div>
                 <div class="clear"></div>
-
+                <div class="col-md-12">
                 <table id="stocktable" class="table table-bordred table-striped">
                     <thead>
-                        <th class="hideit">Product Name </th>
-                        <th class="hideit">Quantity </th>
+                        <th>Product Name </th>
+                        <th>Quantity </th>
                         <th >Invoice Code </th>
                         <th >Cost </th>
                         <th>Expiry Date</th>
@@ -61,8 +61,8 @@
                     <tbody>
 
                         <tr ng-repeat="product in prd">
-                        <td ng-bind="product.product.name" class="hideit"></td>
-                        <td ng-bind="product.quantity" class="hideit"></td>
+                        <td ng-bind="product.product.name"></td>
+                        <td ng-bind="product.quantity"></td>
                         <td ng-bind="product.invoiceNumber"></td>
                         <td ng-bind="product.cost"></td>
                         <td ng-bind="product.expiryDate | date: 'dd/MM/yyyy'"></td>
@@ -70,12 +70,12 @@
                         </tr>
                     </tbody>
                 </table>
-              
+            </div>
                 
             </div>
         </div>
         <div class="col-md-12 text-center">
-                <input type="button" class="btn btn-success" name="download"  value="Download" pdf-save-button="idOne" pdf-name="invoice.pdf"/>
+                <input type="button" class="btn btn-success" name="download"  value="Download" ng-click="export()" />
                 <a href="#/invoice" class="btn btn-primary">Cancel</a>
             </div>
     </div>
