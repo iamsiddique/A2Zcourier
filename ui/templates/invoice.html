@@ -54,6 +54,7 @@
                         <th class="hideit">Product Name </th>
                         <th class="hideit">Quantity </th>
                         <th >Invoice Code </th>
+                        <th >Cost </th>
                         <th>Expiry Date</th>
                         
                     </thead>
@@ -63,6 +64,7 @@
                         <td ng-bind="product.product.name" class="hideit"></td>
                         <td ng-bind="product.quantity" class="hideit"></td>
                         <td ng-bind="product.invoiceNumber"></td>
+                        <td ng-bind="product.cost"></td>
                         <td ng-bind="product.expiryDate | date: 'dd/MM/yyyy'"></td>
                         
                         </tr>

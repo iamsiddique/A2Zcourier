@@ -365,3 +365,7 @@ Creating a block for social media buttons
     display: -webkit-flex;
     -webkit-flex-wrap :wrap;
 }
+.total-cost-sty{
+    margin-top: 7px;
+    padding-left: 25px;
+}

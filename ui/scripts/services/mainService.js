@@ -130,6 +130,11 @@ courierApp.config(function ($httpProvider) {
 			return $http.post($rootScope.urlBase + 'stockdispatch/save', data, $rootScope.header);
 
 		};
+		dataFetch.getAddress = function (data) {
+
+			return $http.get($rootScope.urlBase + 'phoneaddress/mobile/'+ data, $rootScope.header);
+
+		};
 		dataFetch.liststockDispatch = function () {
 
 			return $http.get($rootScope.urlBase + 'stockdispatch/list', $rootScope.header);

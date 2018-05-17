@@ -1,15 +1,18 @@
-courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout','$filter',
-    function($rootScope, $scope, $location, intermediateService, $timeout,$filter) {
+courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout', '$filter',
+    function ($rootScope, $scope, $location, intermediateService, $timeout, $filter) {
 
         var counter = 0;
         $rootScope.loginPage = true;
         $scope.datalist = [{
-            product: 'new' + counter
+            product: 'new' + counter,
+            cost:0
         }]
+        
+        $scope.smallLoader = false;
         $scope.countries = [];
         $scope.listofproduct = [];
-        $scope.modeOfPayment = 'cash'
-        intermediateService.centerlist(function(response) {
+        $scope.paymentMode = 'cash';
+        intermediateService.centerlist(function (response) {
             console.log(response);
             for (i in response.data)
                 if (response.data[i].pincode != null) {
@@ -21,88 +24,109 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                 }
             console.log($scope.countries);
         })
-        intermediateService.productlist(function(response) {
+        intermediateService.productlist(function (response) {
             console.log(response);
             for (i in response.data)
                 if (response.data[i].name != null) {
                     var productlist = {}
-                    productlist.name = response.data[i].name+ ' - ' +response.data[i].code;
+                    productlist.name = response.data[i].name + ' - ' + response.data[i].code;
                     productlist.id = response.data[i].id;
                     $scope.listofproduct.push(productlist);
                     console.log('called');
                 }
             console.log($scope.listofproduct);
         })
-        $scope.addnew = function() {
+        $scope.addnew = function () {
             counter++;
             $scope.datalist.push({
-                product: 'new' + counter
+                product: 'new' + counter,
+                cost:0
             });
         }
-        $scope.delete = function(product) {
-            var i =0;
-            for(i in $scope.datalist){
-                if($scope.datalist[i].product === product.product.product){
+        $scope.delete = function (product) {
+            var i = 0;
+            for (i in $scope.datalist) {
+                if ($scope.datalist[i].product === product.product.product) {
                     $scope.datalist.splice(i, 1);
                 }
             }
         }
-        $scope.save = function() {
-            $rootScope.invoiceDetails ={}
-            $rootScope.couriername = $scope.courierCenter.name
-            $rootScope.invoiceDetails.toAddress = $scope.address;
-            $rootScope.invoiceDetails.invoiceDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
-            $rootScope.modeOfPayment = $scope.modeOfPayment;
-            $rootScope.invoiceDetails.courierCenter ={}
-            $rootScope.invoiceDetails.courierCenter.id = $scope.courierCenter.id;
-            $rootScope.products = []
-            $rootScope.dummy = []
-
-            console.log($scope.datalist);
-            for(i in $scope.datalist){
+        $scope.totalAmount = 0;
+        $scope.total = function () {
+            console.log($scope.dataList);
+            var i = 0;
+            $scope.totalAmount = 0;
+            for (i in $scope.datalist) {
+                $scope.totalAmount = $scope.totalAmount + $scope.datalist[i].cost;
+                
+            }
+        }
+        $scope.save = function () {
+            intermediateService.invoiceDetails = {}
+            intermediateService.couriername = $scope.courierCenter.name
+            intermediateService.invoiceDetails.toAddress = $scope.address;
+            intermediateService.invoiceDetails.mobileNo = $scope.phnumber;
+            intermediateService.invoiceDetails.paymentMode = $scope.paymentMode;
+            intermediateService.invoiceDetails.invoiceDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
+            intermediateService.modeOfPayment = $scope.modeOfPayment;
+            intermediateService.invoiceDetails.courierCenter = {}
+            intermediateService.invoiceDetails.courierCenter.id = $scope.courierCenter.id;
+            intermediateService.invoiceDetails.amount = $scope.totalAmount;
+            intermediateService.products = []
+            intermediateService.dummy = []
+            for (i in $scope.datalist) {
                 console.log($scope.datalist[i]);
                 console.log($scope.datalist[i].selectedproduct);
-                if($scope.datalist[i].selectedproduct != undefined){
-                $rootScope.products[i] = {};
-                $rootScope.products[i].product = {}
-                $rootScope.products[i].product.id = $scope.datalist[i].selectedproduct.id;
-                $rootScope.products[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
-                $rootScope.products[i].invoiceNumber = $scope.datalist[i].invoice;
-                $rootScope.products[i].quantity = $scope.datalist[i].quantity;
-                $rootScope.dummy[i] = {};
-                $rootScope.dummy[i].product = {}
-                $rootScope.dummy[i].product.name = $scope.datalist[i].selectedproduct.name;
-                $rootScope.dummy[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
-                $rootScope.dummy[i].invoiceNumber = $scope.datalist[i].invoice;
-                $rootScope.dummy[i].quantity = $scope.datalist[i].quantity;
-                
+                if ($scope.datalist[i].selectedproduct != undefined) {
+                    intermediateService.products[i] = {};
+                    intermediateService.products[i].product = {}
+                    intermediateService.products[i].product.id = $scope.datalist[i].selectedproduct.id;
+                    intermediateService.products[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
+                    intermediateService.products[i].invoiceNumber = $scope.datalist[i].invoice;
+                    intermediateService.products[i].quantity = $scope.datalist[i].quantity;
+                    intermediateService.dummy[i] = {};
+                    intermediateService.dummy[i].product = {}
+                    intermediateService.dummy[i].product.name = $scope.datalist[i].selectedproduct.name;
+                    intermediateService.dummy[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
+                    intermediateService.dummy[i].invoiceNumber = $scope.datalist[i].invoice;
+                    intermediateService.dummy[i].quantity = $scope.datalist[i].quantity;
+                    intermediateService.dummy[i].cost = $scope.datalist[i].cost;
+                    //intermediateService.invoiceDetails.amount = intermediateService.invoiceDetails.amount + $scope.datalist[i].cost;
+
                 }
-            } 
+            }
             console.log($rootScope.invoiceDetails);
             //$location.path('/invoice');
             var checker = {};
             checker.invoiceDetails = {};
-            checker.invoiceDetails = $rootScope.invoiceDetails;
+            checker.invoiceDetails = intermediateService.invoiceDetails;
             checker.products = [];
-            checker.products = $rootScope.products;
-            intermediateService.stockDispatch(checker,function(response) {
-            console.log(response.data);
-            $rootScope.invID = response.data.invoiceDetails.id
-            $location.path('/invoice');
-            
-        })
-
+            checker.products = intermediateService.products;
+            intermediateService.stockDispatch(checker, function (response) {
+                console.log(response.data);
+                $rootScope.invID = response.data.invoiceDetails.id
+                $location.path('/invoice');
+            })
         }
-        
-        $scope.today = function() {
+        $scope.getAddress = function(){
+            $scope.smallLoader = true;
+            intermediateService.getAddress($scope.phnumber, function (response) {
+                if(response.data != null){
+                    $scope.address = angular.copy(response.data.address);
+                }    
+                else{
+                    $scope.address = '';
+                }           
+               $scope.smallLoader = false;
+            })
+        }
 
+        $scope.today = function () {
             $scope.enterDate = new Date();
-
         };
-        $scope.today();
+        
 
-        $scope.clear = function() {
-
+        $scope.clear = function () {
             $scope.enterDate = null;
         };
 
@@ -127,19 +151,16 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
         }
 
-        $scope.toggleMin = function() {
+        $scope.toggleMin = function () {
             $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
             $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
         };
-
-        $scope.toggleMin();
-
-
-        $scope.open3 = function() {
+       
+        $scope.open3 = function () {
             $scope.popup3.opened = true;
         };
 
-        $scope.setDate = function(year, month, day) {
+        $scope.setDate = function (year, month, day) {
             $scope.stock.manuDate = new Date(year, month, day);
             $scope.stock.expDate = new Date(year, month, day);
             $scope.enterDate = new Date(year, month, day);
@@ -186,18 +207,19 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                     }
                 }
             }
-
             return '';
         }
-
+        $scope.today();
+        $scope.toggleMin();
+        
+        
     }
 ]);
-courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout','$filter',
-    function($rootScope, $scope, $location, intermediateService, $timeout,$filter) {
+courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout', '$filter',
+    function ($rootScope, $scope, $location, intermediateService, $timeout, $filter) {
 
-       $scope.invdata  = $rootScope.invoiceDetails;
-       $scope.prd = $rootScope.dummy
-       console.log($scope.invdata);
-       
+        $scope.invdata = intermediateService.invoiceDetails;
+        $scope.prd = intermediateService.dummy
+
     }
 ]);

@@ -44,7 +44,7 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
             <div class="form-group">
                
                 <div class="col-md-12">
-                    <input name="cost" type="text"  placeholder="Cost" class="form-control input-md" required="">
+                    <input name="cost" type="number" ng-model="stockdispatch.cost" placeholder="Cost" class="form-control input-md" ng-blur="calculate()" required="">
                     
                 </div>
             </div>
@@ -87,7 +87,8 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
             stockdispatch:"=",
             prodlist:"=",
             addprod:"&",
-            remprod:'&'
+            remprod:'&',
+            calculate:'&'
             },
         controller:function($scope){
             $scope.today = function() {
@@ -96,6 +97,9 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
 
         };
         $scope.today();
+        // $scope.calculate = function(data){
+        //   $scope.totalAmount = $scope.totalAmount + data;
+        // }
 
         $scope.clear = function() {
             $scope.stockdispatch.expDate = null;

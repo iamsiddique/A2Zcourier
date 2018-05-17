@@ -190,6 +190,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.getAddress = function(data, callback) {
+        mainService.getAddress(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.liststockDispatch = function(callback) {
         mainService.liststockDispatch().success(function(response) {
             console.log(response);

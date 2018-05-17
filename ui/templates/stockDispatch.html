@@ -28,7 +28,7 @@
                 <div class="form-group">
                         <label class="col-md-4 control-label" for="phnumber">Phone number</label>
                         <div class="col-md-8">
-                            <input name="phnumber" class="form-control input-md" ng-model="phnumber"></textarea>
+                            <input name="phnumber" class="form-control input-md" ng-model="phnumber" ng-blur="getAddress()" />
                             <div ng-messages="stockform.phnumber.$error" ng-if='submitted' class="text-danger">
                                 <p ng-message="required">This field is required</p>
                             </div>
@@ -36,11 +36,14 @@
                     </div>
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="Address">To Address</label>
-                    <div class="col-md-8">
-                        <textarea class="form-control input-md" ng-model="address"></textarea>
-                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                    <div class="col-md-8" ng-if="!smallLoader">
+                        <textarea class="form-control input-md" name="toAddress" ng-model="address"></textarea>
+                        <div ng-messages="stockform.toAddress.$error" ng-if='submitted' class="text-danger">
                             <p ng-message="required">This field is required</p>
                         </div>
+                    </div>
+                    <div class="col-md-8" ng-if="smallLoader">
+                        <img class="" src="ui/images/small-loader.gif">
                     </div>
                 </div>
             </div>
@@ -57,13 +60,19 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="modeofpayment">Mode of payment</label>
                     <div class="col-md-8">
-                         <select id="" name="modeofpayment" ng-model="modeOfPayment" class="form-control">
+                         <select id="" name="modeofpayment" ng-model="paymentMode" class="form-control">
                             <option value="cash">Cash</option>
                             <option value="card">Card</option>
                         </select>
                         <div ng-messages="stockform.modeofpayment.$error" ng-if='submitted' class="text-danger">
                             <p ng-message="required">This field is required</p>
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="modeofpayment">Total Cost</label>
+                    <div class="col-md-8">
+                        <p class="total-cost-sty" ng-bind="totalAmount"></p>
                     </div>
                 </div>
             </div>
@@ -82,7 +91,7 @@
                     <th>Delete</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="data in datalist" stockdispatch="data" prodlist="listofproduct" remprod="delete({product:data})">
+                    <tr ng-repeat="data in datalist" stockdispatch="data" prodlist="listofproduct" remprod="delete({product:data})" calculate="total()">
                     </tr>
                 </tbody>
             </table>
