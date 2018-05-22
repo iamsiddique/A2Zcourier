@@ -29,7 +29,7 @@
                         <label class="col-md-4 control-label" for="courierCenter">Courier Center</label>
                         <div class="col-md-8">
                        
-                            <p class="input-group" ng-bind="couriername">
+                            <p class="input-group" ng-bind="invdata.couriername">
                             </p>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="col-md-12 text-center">
-                <input type="button" class="btn btn-success" name="download"  value="Download" ng-click="export()" />
+                <input type="button" class="btn btn-success" name="download"  value="Download" ng-click="printit('idone')" />
                 <a href="#/invoice" class="btn btn-primary">Cancel</a>
             </div>
     </div>

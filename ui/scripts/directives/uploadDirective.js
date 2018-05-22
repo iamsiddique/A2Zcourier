@@ -1,33 +1,31 @@
-courierApp.directive('fileUpload', ['$parse', function($parse) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-            var model = $parse(attrs.fileUpload);
+courierApp.directive('fileUpload', ['$parse', function ($parse) {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attrs) {
+      var model = $parse(attrs.fileUpload);
 
-            var modelSetter = model.assign;
-            element.bind('change', function() {
-                scope.$apply(function() {
-                    modelSetter(scope, element[0].files[0]);
-                    console.log(modelSetter(scope, element[0].files[0]));
-                });
-                scope.setimage();
-            });
-        }
-    };
+      var modelSetter = model.assign;
+      element.bind('change', function () {
+        scope.$apply(function () {
+          modelSetter(scope, element[0].files[0]);
+          console.log(modelSetter(scope, element[0].files[0]));
+        });
+        scope.setimage();
+      });
+    }
+  };
 }]);
-courierApp.directive('stockdispatch', ['$parse', function($parse) {
-    return {
-        restrict: 'AE',
-        template: `
-            
-                        
-                                <td>
+courierApp.directive('stockdispatch', ['$parse', function ($parse) {
+  return {
+    restrict: 'AE',
+    template: `     <td>
                 <div class="form-group">
                     <div class="col-md-12">
-                    
-                         <input name="productname" type="text" ng-model="stockdispatch.selectedproduct" uib-typeahead="product as product.name for product in prodlist | filter:{name:$viewValue}" placeholder="Enter product name" class="form-control
+                         <input name="productname{{index}}" type="text" ng-model="stockdispatch.selectedproduct" uib-typeahead="product as product.name for product in prodlist | filter:{name:$viewValue}" placeholder="Enter product name" class="form-control
                           autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0">
-                    
+                          <div ng-messages="form['productname' + index].$error" ng-if='formsubmitted' class="text-danger">
+                          <p ng-message="required">This field is required</p>
+                      </div>
                     </div>
                 </div>
             </td>
@@ -35,8 +33,10 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
                 <div class="form-group">
                    
                     <div class="col-md-12">
-                        <input name="firstName" type="text" ng-model="stockdispatch.quantity" placeholder="Quantity" class="form-control input-md" required="">
-                        
+                        <input name="quantity{{index}}" type="number" ng-model="stockdispatch.quantity" placeholder="Quantity" class="form-control input-md" required="">
+                        <div ng-messages="form['quantity' + index].$error" ng-if='formsubmitted' class="text-danger">
+                        <p ng-message="required">This field is required</p>
+                    </div>
                     </div>
                 </div>
             </td>
@@ -44,16 +44,20 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
             <div class="form-group">
                
                 <div class="col-md-12">
-                    <input name="cost" type="number" ng-model="stockdispatch.cost" placeholder="Cost" class="form-control input-md" ng-blur="calculate()" required="">
-                    
+                    <input name="cost{{index}}" type="number" ng-model="stockdispatch.cost" placeholder="Cost" class="form-control input-md" ng-blur="calculate()" required="">
+                    <div ng-messages="form['cost' + index].$error" ng-if='formsubmitted' class="text-danger">
+                        <p ng-message="required">This field is required</p>
+                    </div>
                 </div>
             </div>
         </td>
             <td>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input name="firstName" type="text" ng-model="stockdispatch.invoice" placeholder="Invoice Code" class="form-control input-md" required="">
-                        
+                        <input name="invoice{{index}}" type="text" ng-model="stockdispatch.invoice" placeholder="Invoice Code" class="form-control input-md" required="">
+                        <div ng-messages="form['invoice' + index].$error" ng-if='formsubmitted' class="text-danger">
+                        <p ng-message="required">This field is required</p>
+                    </div>
                     </div>
                 </div>
             </td>
@@ -61,13 +65,16 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
                 <div class="form-group">
                     <div class="col-md-12">
                         <p class="input-group">
-                            <input name="expdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockdispatch.expDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                            <input name="expdate{{index}}" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockdispatch.expDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                             <span class="input-group-btn">
                                   <button type="button" class="btn btn-default" ng-click="open1()">
                                       <i class="glyphicon glyphicon-calendar"></i>
                                 </button>
                             </span>
                         </p>
+                        <div ng-messages="form['expdate' + index].$error" ng-if='formsubmitted' class="text-danger">
+                        <p ng-message="required">This field is required</p>
+                    </div>
                     </div>
                 </div>
             </td>
@@ -83,129 +90,132 @@ courierApp.directive('stockdispatch', ['$parse', function($parse) {
             
             
             `,
-        scope:{
-            stockdispatch:"=",
-            prodlist:"=",
-            addprod:"&",
-            remprod:'&',
-            calculate:'&'
-            },
-        controller:function($scope){
-            $scope.today = function() {
-           
-            $scope.stockdispatch.expDate = new Date();
+    scope: {
+      stockdispatch: "=",
+      index:"=",
+      formsubmitted: "=",
+      prodlist: "=",
+      addprod: "&",
+      remprod: '&',
+      form: "=",
+      calculate: '&'
+    },
+    controller: function ($scope) {
+      $scope.today = function () {
 
-        };
-        $scope.today();
-        // $scope.calculate = function(data){
-        //   $scope.totalAmount = $scope.totalAmount + data;
-        // }
+        $scope.stockdispatch.expDate = new Date();
 
-        $scope.clear = function() {
-            $scope.stockdispatch.expDate = null;
-        };
+      };
+      $scope.today();
+      // $scope.calculate = function(data){
+      //   $scope.totalAmount = $scope.totalAmount + data;
+      // }
 
-        $scope.inlineOptions = {
-            customClass: getDayClass,
-            minDate: new Date(),
-            showWeeks: true
-        };
+      $scope.clear = function () {
+        $scope.stockdispatch.expDate = null;
+      };
 
-        $scope.dateOptions = {
-            // dateDisabled: disabled,
-            formatYear: 'yy',
-            maxDate: new Date(2200, 5, 22),
-            minDate: new Date(),
-            startingDay: 1
-        };
+      $scope.inlineOptions = {
+        customClass: getDayClass,
+        minDate: new Date(),
+        showWeeks: true
+      };
 
-        // Disable weekend selection
-        function disabled(data) {
-            var date = data.date,
-                mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        }
+      $scope.dateOptions = {
+        // dateDisabled: disabled,
+        formatYear: 'yy',
+        maxDate: new Date(2200, 5, 22),
+        minDate: new Date(),
+        startingDay: 1
+      };
 
-        $scope.toggleMin = function() {
-            $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
-            $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
-        };
+      // Disable weekend selection
+      function disabled(data) {
+        var date = data.date,
+          mode = data.mode;
+        return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+      }
 
-        $scope.toggleMin();
+      $scope.toggleMin = function () {
+        $scope.inlineOptions.minDate = $scope.inlineOptions.minDate ? null : new Date();
+        $scope.dateOptions.minDate = $scope.inlineOptions.minDate;
+      };
 
-        $scope.open1 = function() {
-            $scope.popup1.opened = true;
-        };
+      $scope.toggleMin();
 
-        
+      $scope.open1 = function () {
+        $scope.popup1.opened = true;
+      };
 
-        $scope.setDate = function(year, month, day) {           
-            $scope.stock.expDate = new Date(year, month, day);
-        };
 
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
 
-        $scope.popup1 = {
-            opened: false
-        };
+      $scope.setDate = function (year, month, day) {
+        $scope.stock.expDate = new Date(year, month, day);
+      };
 
-        
+      $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+      $scope.format = $scope.formats[0];
+      $scope.altInputFormats = ['M!/d!/yyyy'];
 
-        var tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        var afterTomorrow = new Date();
-        afterTomorrow.setDate(tomorrow.getDate() + 1);
-        $scope.events = [{
-            date: tomorrow,
-            status: 'full'
-        }, {
-            date: afterTomorrow,
-            status: 'partially'
-        }];
+      $scope.popup1 = {
+        opened: false
+      };
 
-        function getDayClass(data) {
-            var date = data.date,
-                mode = data.mode;
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
+      var tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      var afterTomorrow = new Date();
+      afterTomorrow.setDate(tomorrow.getDate() + 1);
+      $scope.events = [{
+        date: tomorrow,
+        status: 'full'
+      }, {
+        date: afterTomorrow,
+        status: 'partially'
+      }];
+
+      function getDayClass(data) {
+        var date = data.date,
+          mode = data.mode;
+        if (mode === 'day') {
+          var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+          for (var i = 0; i < $scope.events.length; i++) {
+            var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+            if (dayToCheck === currentDay) {
+              return $scope.events[i].status;
             }
-
-            return '';
+          }
         }
-        },
-        link: function(scope, element, attrs) {
 
-        }
-    };
-}]);
-courierApp.directive('noCacheSrc', function($window) {
-    return {
-      priority: 99,
-      scope: {
-        returnUrl: '=',
-        
-      },
-      controller:function($scope,$attrs){
-        $attrs.$observe('noCacheSrc', function(noCacheSrc) {
-            noCacheSrc += '?' + (new Date()).getTime();
-            console.log(noCacheSrc);
-            $attrs.$set('src', noCacheSrc);
-            $scope.returnUrl = angular.copy(noCacheSrc);
-          });
+        return '';
+      }
+    },
+    link: function (scope, element, attrs) {
 
-      }    
     }
-  });
+  };
+}]);
+courierApp.directive('noCacheSrc', function ($window) {
+  return {
+    priority: 99,
+    scope: {
+      returnUrl: '=',
+
+    },
+    controller: function ($scope, $attrs) {
+      $attrs.$observe('noCacheSrc', function (noCacheSrc) {
+        noCacheSrc += '?' + (new Date()).getTime();
+        console.log(noCacheSrc);
+        $attrs.$set('src', noCacheSrc);
+        $scope.returnUrl = angular.copy(noCacheSrc);
+      });
+
+    }
+  }
+});
 // courierApp.directive('autoComplete', function($timeout) {
 //     return function(scope, iElement, iAttrs) {
 //             iElement.autocomplete({
@@ -220,8 +230,8 @@ courierApp.directive('noCacheSrc', function($window) {
 // });
 
 courierApp.directive('infiniteScroll', [
-    '$rootScope', '$window', '$interval', 'THROTTLE_MILLISECONDS',
-    ($rootScope, $window, $interval, THROTTLE_MILLISECONDS) =>
+  '$rootScope', '$window', '$interval', 'THROTTLE_MILLISECONDS',
+  ($rootScope, $window, $interval, THROTTLE_MILLISECONDS) =>
   ({
     scope: {
       infiniteScroll: '&',
@@ -308,7 +318,9 @@ courierApp.directive('infiniteScroll', [
             }
           }
         } else {
-          if (checkInterval) { $interval.cancel(checkInterval); }
+          if (checkInterval) {
+            $interval.cancel(checkInterval);
+          }
           checkWhenEnabled = false;
         }
       }
@@ -481,4 +493,4 @@ courierApp.directive('infiniteScroll', [
     },
   }),
 
-  ]);
+]);
