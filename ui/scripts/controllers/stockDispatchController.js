@@ -7,34 +7,28 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             product: 'new' + counter,
             cost: 0
         }]
-
+        $scope.loader = false;
         $scope.smallLoader = false;
         $scope.countries = [];
         $scope.listofproduct = [];
         $scope.paymentMode = 'cash';
         intermediateService.centerlist(function (response) {
-            console.log(response);
             for (i in response.data)
                 if (response.data[i].pincode != null) {
                     var pincode = {}
                     pincode.name = response.data[i].pincode;
                     pincode.id = response.data[i].id;
                     $scope.countries.push(pincode);
-                    console.log('called');
                 }
-            console.log($scope.countries);
         })
         intermediateService.productlist(function (response) {
-            console.log(response);
             for (i in response.data)
                 if (response.data[i].name != null) {
                     var productlist = {}
                     productlist.name = response.data[i].name + ' - ' + response.data[i].code;
                     productlist.id = response.data[i].id;
                     $scope.listofproduct.push(productlist);
-                    console.log('called');
                 }
-            console.log($scope.listofproduct);
         })
         $scope.addnew = function () {
             counter++;
@@ -66,7 +60,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
         $scope.save = function () {
             if ($scope.stockform.$valid && formValidator($scope.courierCenter, $scope.datalist)) {
                 $scope.submitted = false;
-
+                $scope.loader = true;
                 intermediateService.invoiceDetails = {}
                 intermediateService.couriername = $scope.courierCenter.name
                 intermediateService.invoiceDetails.toAddress = $scope.address;
@@ -105,8 +99,30 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                 checker.products = [];
                 checker.products = intermediateService.products;
                 intermediateService.stockDispatch(checker, function (response) {
+                    if (response.statusCode == 1) {
                     $rootScope.invID = response.data.invoiceDetails.id
+                    $scope.loader = false;
+                    $.toaster({
+                        priority: 'success',
+                        title: 'Success',
+                        message: 'Invoice generated successfully',
+                        settings : {
+                            'timeout'      : 2500,
+                        }
+                    });
                     $location.path('/invoice');
+                }
+                else{
+                    $scope.loader = false;
+                    $.toaster({
+                        priority: 'danger',
+                        title: 'Error',
+                        message: 'Something went wrong',
+                        settings : {
+                            'timeout'      : 2500,
+                        }
+                    });
+                }
                 })
             } else {
                 $scope.submitted = true;

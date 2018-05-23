@@ -33,18 +33,21 @@
                                     <div class="table-responsive">
                                         <table id="mytable" class="table table-bordred table-striped">
                                             <thead>
-                                                    <th>Sl.No</th>
+                                                <th>Sl.No</th>
                                                 <th ng-click="sortData('product.name')">Product Name
                                                     <div ng-class="arrowStyle('product.name')"></div>
                                                 </th>
                                                 <th ng-click="sortData('product.code')">Product Code
-                                                    <div ng-class="arrowStyle('product.code')"></div> </th>
-                                                        <th ng-click="sortData('quantity')">Quantity
-                                                            <div ng-class="arrowStyle('quantity')"></div> </th>
-                                                                <th ng-click="sortData('expiryDate')">Expiry Date
-                                                                    <div ng-class="arrowStyle('expiryDate')"></div> </th>
+                                                    <div ng-class="arrowStyle('product.code')"></div>
+                                                </th>
+                                                <th ng-click="sortData('quantity')">Quantity
+                                                    <div ng-class="arrowStyle('quantity')"></div>
+                                                </th>
+                                                <th ng-click="sortData('expiryDate')">Expiry Date
+                                                    <div ng-class="arrowStyle('expiryDate')"></div>
+                                                </th>
 
-                                                                        <!-- <th>Edit</th>
+                                                <!-- <th>Edit</th>
                                                                     <th>Delete</th> -->
                                             </thead>
                                             <tbody>
@@ -77,252 +80,259 @@
                         <li ng-class="selectedPage == $index && 'active'" ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage()"><a>{{$index+1}}</a></li>
                         <li ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><span class="glyphicon glyphicon-chevron-right"></span></li>
                     </ul> -->
-                                        </div>
-                                        </div>
-                                        </div>
-
                                     </div>
-                                    <div class="tab-pane fade" id="tab2primary">
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <input name="search" type="text" ng-model="searchStock" placeholder="Search" class="form-control input-md">
-                                                <div class="margin-t-b clear"></div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="table-responsive">
-                                                    <table id="mytable" class="table table-bordred table-striped">
-                                                        <thead>
-                                                            <th>Sl.No</th>
-                                                            <th>Invoice Number</th>
-                                                            <th ng-click="sortData('product.name')">Product Name
-                                                                <div ng-class="arrowStyle('product.name')"></div>
-                                                            </th>
-                                                            <th ng-click="sortData('product.code')">Product Code
-                                                                <div ng-class="arrowStyle('product.code')"></div> </th>
-                                                                    <th ng-click="sortData('quantity')">Quantity
-                                                                        <div ng-class="arrowStyle('quantity')"></div> </th>
-                                                                            <th ng-click="sortData('entryDate')">Entry Date
-                                                                                <div ng-class="arrowStyle('entryDate')"></div> </th>
-                                                                                <th ng-click="sortData('expiryDate')">Expiry Date
-                                                                                        <div ng-class="arrowStyle('expiryDate')"></div> </th>
-                                                                                        <th>Edit</th>
-                                                                                    <!-- <th>Edit</th>
-                                                                        <th>Delete</th> -->
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="stock in cstockEntryDetails | filter:searchStock | orderBy:sortColumn:reverseSort">
-                                                                <td>{{$index+1}}</td>
-                                                                <td ng-bind="stock.invoiceNumber"></td>
-                                                                <td ng-bind="stock.product.name"></td>
-                                                                <td ng-bind="stock.product.code"></td>
-                                                                <td ng-bind="stock.quantity"></td>
-                                                                <td ng-bind="stock.entryDate | date: 'MM/dd/yyyy'"></td>
-                                                                <td ng-bind="stock.expiryDate | date: 'MM/dd/yyyy'"></td>
+                                </div>
+                            </div>
 
-                                                                 <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                            <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ng-click="sendData(stock)"><span class="glyphicon glyphicon-pencil"></span></button>
-                                        </p>
-                                    </td>
-                                    <!-- <td>
+                        </div>
+                        <div class="tab-pane fade" id="tab2primary">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input name="search" type="text" ng-model="searchStock" placeholder="Search" class="form-control input-md">
+                                    <div class="margin-t-b clear"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table id="mytable" class="table table-bordred table-striped">
+                                            <thead>
+                                                <th>Sl.No</th>
+                                                <th>Invoice Number</th>
+                                                <th ng-click="sortData('product.name')">Product Name
+                                                    <div ng-class="arrowStyle('product.name')"></div>
+                                                </th>
+                                                <th ng-click="sortData('product.code')">Product Code
+                                                    <div ng-class="arrowStyle('product.code')"></div>
+                                                </th>
+                                                <th ng-click="sortData('quantity')">Quantity
+                                                    <div ng-class="arrowStyle('quantity')"></div>
+                                                </th>
+                                                <th ng-click="sortData('entryDate')">Entry Date
+                                                    <div ng-class="arrowStyle('entryDate')"></div>
+                                                </th>
+                                                <th ng-click="sortData('expiryDate')">Expiry Date
+                                                    <div ng-class="arrowStyle('expiryDate')"></div>
+                                                </th>
+                                                <th>Edit</th>
+                                                <!-- <th>Edit</th>
+                                                                        <th>Delete</th> -->
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="stock in cstockEntryDetails | filter:searchStock | orderBy:sortColumn:reverseSort">
+                                                    <td>{{$index+1}}</td>
+                                                    <td ng-bind="stock.invoiceNumber"></td>
+                                                    <td ng-bind="stock.product.name"></td>
+                                                    <td ng-bind="stock.product.code"></td>
+                                                    <td ng-bind="stock.quantity"></td>
+                                                    <td ng-bind="stock.entryDate | date: 'MM/dd/yyyy'"></td>
+                                                    <td ng-bind="stock.expiryDate | date: 'MM/dd/yyyy'"></td>
+
+                                                    <td>
+                                                        <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                            <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ng-click="sendData(stock)">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                            </button>
+                                                        </p>
+                                                    </td>
+                                                    <!-- <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
                                             <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ng-click="checkingit(list.id)"><span class="glyphicon glyphicon-trash"></span></button>
                                         </p>
                                     </td> -->
-                                                            </tr>
-                                                            <tr ng-if="retrivalerr">
-                                                                <td colspan="8" class="text-center">Data not available</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="clearfix"></div>
-                                                    <!--  <ul class="pagination pull-right">
+                                                </tr>
+                                                <tr ng-if="retrivalerr">
+                                                    <td colspan="8" class="text-center">Data not available</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="clearfix"></div>
+                                        <!--  <ul class="pagination pull-right">
                             <li ng-disabled="pageButtonDisabled(-1)" ng-click="paginate(-1)"><span class="glyphicon glyphicon-chevron-left"></span></li>
                             <li ng-class="selectedPage == $index && 'active'" ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage()"><a>{{$index+1}}</a></li>
                             <li ng-disabled="pageButtonDisabled(1)" ng-click="paginate(1)"><span class="glyphicon glyphicon-chevron-right"></span></li>
                         </ul> -->
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                                        </button>
-                                        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                            <form class="form-horizontal" name="stockList">
-                                        <div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="productname">Product Name</label>
-                                                    <div class="col-md-8">
-                                                        <input name="productname" type="text" ng-model="stockList.product.name" ng-disabled="true"  class="form-control autocomplete input-md">
-                                                        <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <img ng-src="{{productImageSrc  ||'ui/images/product.png'}}" class="col-md-offset-4" style="width:200px;height:140px" />
-                                                </div>
-                            
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="productname">Product Code</label>
-                                                    <div class="col-md-8">
-                                                        <input name="productcode" type="text" ng-model="stockList.product.code" ng-disabled="true" class="form-control autocomplete input-md"
-                                                            required="">
-                                                        <div ng-messages="stockform.productcode.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="warehousename">Ware house</label>
-                                                    <div class="col-md-8">
-                                                        <input name="warehousename" type="text" ng-model="stockList.courierCenter.pincode" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}"
-                                                            placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required=""
-                                                            typeahead-show-hint="true" typeahead-min-length="0">
-                                                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div>
-                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="quantity">Quantity</label>
-                                                    <div class="col-md-8">
-                                                        <input name="quantity" type="number" ng-model="stockList.quantity" placeholder="quantity" class="form-control  input-md" required="">
-                                                        <div ng-messages="stockform.quantity.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="enterdate">Enter Date</label>
-                                                    <div class="col-md-8">
-                                                        <p class="input-group">
-                                                            <input name="enterdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockList.entryDate" is-open="popup3.opened"
-                                                                datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                                            />
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-default" ng-click="open3()">
-                                                                    <i class="glyphicon glyphicon-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                        </p>
-                                                        <div ng-messages="stockform.enterdate.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="manudate">Manufacture Date</label>
-                                                    <div class="col-md-8">
-                                                        <p class="input-group">
-                                                            <input name="manudate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockList.manufactureDate" is-open="popup1.opened"
-                                                                datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                                            />
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-default" ng-click="open1()">
-                                                                    <i class="glyphicon glyphicon-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                        </p>
-                                                        <div ng-messages="stockform.manudate.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="expdate">Expiry Date</label>
-                                                    <div class="col-md-8">
-                                                        <p class="input-group">
-                                                            <input name="expdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockList.expiryDate" is-open="popup2.opened"
-                                                                datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                                            />
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-default" ng-click="open2()">
-                                                                    <i class="glyphicon glyphicon-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                        </p>
-                                                        <div ng-messages="stockform.expdate.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                            
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="quantity">Invoice Number</label>
-                                                    <div class="col-md-8">
-                                                        <input name="invoicenumber" type="text" ng-model="stockList.invoiceNumber" placeholder="Invoice Number" class="form-control  input-md"
-                                                            required="">
-                                                        <div ng-messages="stockform.invoicenumber.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="quantity">Shop Name</label>
-                                                    <div class="col-md-8">
-                                                        <input name="shopName" type="text" ng-model="stockList.shopName" placeholder="Shop Name" class="form-control  input-md" required="">
-                                                        <div ng-messages="stockform.shopName.$error" ng-if='submitted' class="text-danger">
-                                                            <p ng-message="required">This field is required</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="clear margin-15px"></div>
-                                 
-                                            <div class="clear"></div>
-                                          
-                            
-                                        </div>
-                                    </form>
-                                    </div>
-                                    <div class="modal-footer ">
-                                        <input type="button" class="btn btn-success" ng-click="update()" name="submit" value="Submit" data-dismiss="modal" />
-                                        <a class="btn btn-primary" data-dismiss="modal" ng-click="cancelEdit()">Cancel</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" name="stockList">
+                    <div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="productname">Product Name</label>
+                                <div class="col-md-8">
+                                    <input name="productname" type="text" ng-model="stockList.product.name" ng-disabled="true" class="form-control autocomplete input-md">
+                                    <div ng-messages="stockform.productname.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img ng-src="{{productImageSrc  ||'ui/images/product.png'}}" class="col-md-offset-4" style="width:200px;height:140px" />
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="productname">Product Code</label>
+                                <div class="col-md-8">
+                                    <input name="productcode" type="text" ng-model="stockList.product.code" ng-disabled="true" class="form-control autocomplete input-md"
+                                        required="">
+                                    <div ng-messages="stockform.productcode.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="warehousename">Ware house</label>
+                                <div class="col-md-8">
+                                    <input name="warehousename" type="text" ng-model="stockList.courierCenter.pincode" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}"
+                                        placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required=""
+                                        typeahead-show-hint="true" typeahead-min-length="0">
+                                    <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="quantity">Quantity</label>
+                                <div class="col-md-8">
+                                    <input name="quantity" type="number" ng-model="stockList.quantity" placeholder="quantity" class="form-control  input-md"
+                                        required="">
+                                    <div ng-messages="stockform.quantity.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="enterdate">Enter Date</label>
+                                <div class="col-md-8">
+                                    <p class="input-group">
+                                        <input name="enterdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockList.entryDate"
+                                            is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+                                            alt-input-formats="altInputFormats" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open3()">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </p>
+                                    <div ng-messages="stockform.enterdate.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="manudate">Manufacture Date</label>
+                                <div class="col-md-8">
+                                    <p class="input-group">
+                                        <input name="manudate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockList.manufactureDate"
+                                            is-open="popup1.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                            ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open1()">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </p>
+                                    <div ng-messages="stockform.manudate.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="expdate">Expiry Date</label>
+                                <div class="col-md-8">
+                                    <p class="input-group">
+                                        <input name="expdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="stockList.expiryDate"
+                                            is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+                                            alt-input-formats="altInputFormats" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open2()">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                            </button>
+                                        </span>
+                                    </p>
+                                    <div ng-messages="stockform.expdate.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="quantity">Invoice Number</label>
+                                <div class="col-md-8">
+                                    <input name="invoicenumber" type="text" ng-model="stockList.invoiceNumber" placeholder="Invoice Number" class="form-control  input-md"
+                                        required="">
+                                    <div ng-messages="stockform.invoicenumber.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="quantity">Shop Name</label>
+                                <div class="col-md-8">
+                                    <input name="shopName" type="text" ng-model="stockList.shopName" placeholder="Shop Name" class="form-control  input-md" required="">
+                                    <div ng-messages="stockform.shopName.$error" ng-if='submitted' class="text-danger">
+                                        <p ng-message="required">This field is required</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear margin-15px"></div>
+
+                        <div class="clear"></div>
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer ">
+                <input type="button" class="btn btn-success" ng-click="update()" name="submit" value="Submit" data-dismiss="modal" />
+                <a class="btn btn-primary" data-dismiss="modal" ng-click="cancelEdit()">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

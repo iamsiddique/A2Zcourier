@@ -1,13 +1,16 @@
 <div ng-include src="'ui/templates/shared/header.html'"></div>
 <div class="margin-t-b clear"></div>
-<div class="container">
+<div class="container" >
     <form class="form-horizontal" name="stockform" novalidate>
-        <fieldset>
+        <fieldset >
             <!-- Form Name -->
 
             <legend>Stock Dispatch</legend>
             <div class="col-md-12 margin-t-b">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                    it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                    typesetting</p>
             </div>
             <div class="margin-t-b clear"></div>
             <!-- Select Basic -->
@@ -15,11 +18,13 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="warehousename">Date</label>
                     <div class="col-md-8">
-                       <p class="input-group">
-                            <input name="enterdate" type="text" class="form-control" required="" uib-datepicker-popup="{{format}}" ng-model="enterDate" is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <p class="input-group">
+                            <input name="enterdate" type="text" class="form-control" required="" uib-datepicker-popup="{{format}}" ng-model="enterDate"
+                                is-open="popup3.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close"
+                                alt-input-formats="altInputFormats" />
                             <span class="input-group-btn">
-                                  <button type="button" class="btn btn-default" ng-click="open3()">
-                                      <i class="glyphicon glyphicon-calendar"></i>
+                                <button type="button" class="btn btn-default" ng-click="open3()">
+                                    <i class="glyphicon glyphicon-calendar"></i>
                                 </button>
                             </span>
                         </p>
@@ -28,15 +33,48 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                        <label class="col-md-4 control-label" for="phnumber">Phone number</label>
-                        <div class="col-md-8">
-                            <input name="phnumber" class="form-control input-md" ng-model="phnumber" required="" ng-blur="getAddress()" />
-                            <div ng-messages="stockform.phnumber.$error" ng-if='submitted' class="text-danger">
-                                <p ng-message="required">This field is required</p>
-                            </div>
+                    <label class="col-md-4 control-label" for="warehousename">Ware house</label>
+                    <div class="col-md-8">
+                        <input name="warehousename" type="text" ng-model="courierCenter" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}"
+                            placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required="" typeahead-show-hint="true"
+                            typeahead-min-length="0">
+                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="margin-t-b clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="phnumber">Phone number</label>
+                    <div class="col-md-8">
+                        <input name="phnumber" class="form-control input-md" ng-model="phnumber" required="" ng-blur="getAddress()" />
+                        <div ng-messages="stockform.phnumber.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="modeofpayment">Mode of payment</label>
+                    <div class="col-md-8">
+                        <select id="" name="modeofpayment" ng-model="paymentMode" class="form-control" required="">
+                            <option value="cash">Cash</option>
+                            <option value="card">Card</option>
+                        </select>
+                        <div ng-messages="stockform.modeofpayment.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="margin-t-b clear"></div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="Address">To Address</label>
                     <div class="col-md-8" ng-if="!smallLoader">
@@ -52,33 +90,13 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="warehousename">Ware house</label>
-                    <div class="col-md-8">
-                        <input name="warehousename" type="text" ng-model="courierCenter" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}" placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0">
-                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
-                            <p ng-message="required">This field is required</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="modeofpayment">Mode of payment</label>
-                    <div class="col-md-8">
-                         <select id="" name="modeofpayment" ng-model="paymentMode" class="form-control" required="">
-                            <option value="cash">Cash</option>
-                            <option value="card">Card</option>
-                        </select>
-                        <div ng-messages="stockform.modeofpayment.$error" ng-if='submitted' class="text-danger">
-                            <p ng-message="required">This field is required</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-md-4 control-label" for="modeofpayment">Total Cost</label>
                     <div class="col-md-8">
                         <p class="total-cost-sty" ng-bind="totalAmount"></p>
                     </div>
                 </div>
             </div>
+
             <div class="clear"></div>
             <div class="col-md-3 pull-right">
                 <a href="" class="btn btn-primary pull-right" ng-click="addnew()">Add</a>
@@ -94,22 +112,21 @@
                     <th>Delete</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="data in datalist" form="stockform" stockdispatch="data" prodlist="listofproduct" remprod="delete({product:data})" calculate="total()" formsubmitted="submitted" index="$index"></tr>
+                    <tr ng-repeat="data in datalist" form="stockform" stockdispatch="data" prodlist="listofproduct" remprod="delete({product:data})"
+                        calculate="total()" formsubmitted="submitted" index="$index"></tr>
                 </tbody>
             </table>
             <div class="clear"></div>
-            
+
             <div class="col-md-12 text-center">
                 <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
                 <a href="#/list" class="btn btn-primary">Cancel</a>
             </div>
-            <div class="col-md-12 text-center">
-                <p ng-if="regSuccess" class="text-success">Product successfully entered</p>
-                <p ng-if="regError" class="text-danger">Product entry failed</p>
-            </div>
+           
         </fieldset>
     </form>
     <div class="margin-t-b clear"></div>
 </div>
-<div class="container">
+<div class="overlay" ng-if="loader">
+    <img class="loader-style-stock" src="ui/images/loader.svg">
 </div>
