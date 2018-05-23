@@ -3,6 +3,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
 
         $scope.viewForm = false;
         $scope.stock = {};
+        $scope.loader = false;
         $scope.stock.warehouse = undefined;
         $scope.stock.productname = undefined;
         
@@ -11,21 +12,17 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
         $scope.countries = [];
         $scope.products = [];
         intermediateService.centerlist(function(response) {
-            console.log(response);
             for (i in response.data)
                 if (response.data[i].pincode != null) {
                     var pincode = {}
                     pincode.name = response.data[i].pincode;
                     pincode.id = response.data[i].id;
                     $scope.countries.push(pincode);
-                    console.log('called');
                 }
-            console.log($scope.countries);
         })
         intermediateService.productlist(function(response) {
             
 			$scope.loader = true;
-            console.log(response);
             for (i in response.data)
                 if (response.data[i].name != null) {
                     var productlist = {}
@@ -33,28 +30,11 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
                     productlist.id = response.data[i].id;
                     productlist.code = response.data[i].code;
                     $scope.products.push(productlist);
-                    console.log('called');
                 }
             
 			$scope.loader = false;
-            console.log($scope.products);
         })
-        // $scope.preEnter = function(){
-        //     if(typeof($scope.searchProduct)=='object'){
-        //         $scope.stock.product = $scope.searchProduct;
-        //         $scope.productImageSrc = $rootScope.urlBase + "product/download/photo/" + $scope.stock.product.id;
-        //         $scope.viewForm = true;
-        //     }else{
-        //         for(ite in $scope.products){
-        //             if($scope.products[ite].code==$scope.searchProduct){
-        //                 $scope.stock.product = $scope.products[ite];
-        //                 $scope.productImageSrc = $rootScope.urlBase + "product/download/photo/" + $scope.stock.product.id;
-        //                flag = true;
-        //                break; 
-        //             }
-        //         }               
-        //     }
-        // }
+        
         $scope.enter = function() {
             if(typeof($scope.searchProduct)=='object'){
                 $scope.stock.product = $scope.searchProduct;
@@ -69,7 +49,6 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
                        flag = true;
                        break; 
                     }
-                    console.log($scope.products[ite].code);
                 }
                 if(flag){
                 $scope.viewForm = true;
@@ -83,44 +62,50 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             $scope.resetForm();
           }
         $scope.save = function() {
-            console.log('save called');
             if ($scope.stockform.$valid) {
                 $scope.submitted = false;
-                console.log($scope.stock);
+                $scope.loader = true;
                 var data = {};
                 data.product = {}
                 data.courierCenter = {};
                 data.entryDate = $filter('date')($scope.stock.enterDate, "yyyy-MM-dd");
                 data.expiryDate = $filter('date')($scope.stock.expDate, "yyyy-MM-dd");
                 data.manufactureDate = $filter('date')($scope.stock.manuDate, "yyyy-MM-dd");
-                console.log($scope.stock.quantity);
                 data.quantity = $scope.stock.quantity;
                 data.product.id = $scope.stock.product.id;
                 data.courierCenter.id = $scope.stock.courierCenter.id;
                 data.invoiceNumber = $scope.stock.invoiceNumber;
                 data.shopName = $scope.stock.shopName;
-                console.log(data);
-                console.log(JSON.stringify(data));
 
                 intermediateService.stockEntry(data, function(response) {
-                    if (response.statusCode == 1) {
-                        $scope.regSuccess = true;
+                    if (response.statusCode === '1') {
                         $scope.resetForm();
-                        $timeout(function() {
-                            $scope.regSuccess = false;
-                            //$location.path('/list');
-                        }, 2000);
-
-                    } else if (response.statusCode == 0) {
-                        console.log('failed');
-                        $scope.regError = true;
-                        $timeout(function() {
-                            $scope.regError = false;
-                        }, 2000);
+                        $scope.today();
+                        $scope.loader = false;
+                        $.toaster({
+                            priority: 'success',
+                            title: 'Success',
+                            message: 'Stock added successfully',
+                            settings : {
+                                'timeout'      : 2500,
+                            }
+                        });
+                       
+                    } else if (response.statusCode === '0' || response.statusCode === '2') {
+                        var desc = response.description;
+                        $scope.loader = false;
+                        $.toaster({
+                            priority: 'danger',
+                            title: 'Error',
+                            message: desc,
+                            settings : {
+                                'timeout'      : 2500,
+                            }
+                        });
+                        
                     }
                 });
             } else {
-                console.log('invalid called');
                 $scope.submitted = true;
             }
 
@@ -137,9 +122,8 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             $scope.stock.manuDate = new Date();
             $scope.stock.expDate = new Date();
             $scope.stock.enterDate = new Date();
-
         };
-        $scope.today();
+        
 
         $scope.clear = function() {
             $scope.stock.manuDate = null;
@@ -239,6 +223,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
         $scope.disabled = function (date, mode) {
             return false;
         };
+        $scope.today();
         
 
 
