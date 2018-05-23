@@ -62,7 +62,7 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             $scope.resetForm();
           }
         $scope.save = function() {
-            if ($scope.stockform.$valid) {
+            if ($scope.stockform.$valid && formValidator($scope.stock.courierCenter)) {
                 $scope.submitted = false;
                 $scope.loader = true;
                 var data = {};
@@ -108,7 +108,21 @@ courierApp.controller("stockEntryController1", ['$rootScope', '$scope', '$locati
             } else {
                 $scope.submitted = true;
             }
-
+        }
+        function formValidator(ccdata) {
+            if (typeof (ccdata) === 'object' && Object.keys(ccdata).length !== 0) {
+               return true;                
+            } else {
+                $.toaster({
+                    priority: 'danger',
+                    title: 'Error',
+                    message: 'Select a valid courier center',
+                    settings : {
+                        'timeout'      : 2500,
+                    }
+                });
+                return false
+            }
 
         }
         $scope.resetForm = function() {
