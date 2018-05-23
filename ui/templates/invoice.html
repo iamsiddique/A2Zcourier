@@ -1,8 +1,8 @@
 <div ng-include src="'ui/templates/shared/header.html'"></div>
 <div class="container">
     <div class="margin-t-b clear"></div>
-    <legend>Invoice</legend>
-    <div class="col-md-12 margin-t-b">
+    <legend class="hideit-print">Invoice</legend>
+    <div class="col-md-12 margin-t-b hideit-print">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
     </div>
     <div class="col-md-12 margin-t-b">
@@ -10,7 +10,7 @@
             <div class="panel-body">
                 <div class="margin-t-b clear"></div>
                 <!-- Select Basic -->
-                <div class="col-md-6">
+                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="date">Date</label>
                         <div class="col-md-8">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6  col-lg-6 col-sm-6 col-xs-6">
                      
                 <qrcode data="{{invID}}" size="200" class="pull-right"></qrcode>
                
@@ -74,8 +74,8 @@
                 
             </div>
         </div>
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center hideit-print">
                 <input type="button" class="btn btn-success" name="download"  value="Download" ng-click="printit('idone')" />
-                <a href="#/invoice" class="btn btn-primary">Cancel</a>
+                <a href="#/stockDispatch" class="btn btn-primary">Back</a>
             </div>
     </div>

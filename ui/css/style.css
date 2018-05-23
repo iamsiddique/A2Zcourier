@@ -256,6 +256,12 @@ Creating a block for social media buttons
  .hundred-percent{
      width: 100% !important;
  }
+ .hideit-print{
+    display: none;
+ }
+ @page {
+    size: auto;
+    margin: 0;
 }
 
 .customer-body{

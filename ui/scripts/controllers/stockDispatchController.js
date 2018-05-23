@@ -280,19 +280,23 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
 courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location', 'intermediateService', '$timeout', '$filter',
     function ($rootScope, $scope, $location, intermediateService, $timeout, $filter) {
 
+        if( intermediateService.invoiceDetails === undefined || intermediateService.invoiceDetails === null){
+            $location.path('/stockDispatch');
+        }
+
         $scope.invdata = intermediateService.invoiceDetails;
         $scope.invdata.couriername = intermediateService.couriername;
         $scope.prd = intermediateService.dummy
 
         $scope.printit =  function(divName){
-            var printContents = document.getElementById(divName).innerHTML;
-            var originalContents = document.body.innerHTML;
+            // var printContents = document.getElementById(divName).innerHTML;
+            // var originalContents = document.body.innerHTML;
        
-            document.body.innerHTML = printContents;
+            // document.body.innerHTML = printContents;
        
             window.print();
        
-            document.body.innerHTML = originalContents;
+           // document.body.innerHTML = originalContents;
         }
         $scope.demoFromHTML = function () {
             var pdf = new jsPDF('p', 'pt', 'letter');
