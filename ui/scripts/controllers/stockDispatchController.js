@@ -92,7 +92,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
 
                     }
                 }
-                //$location.path('/invoice');
+                
                 var checker = {};
                 checker.invoiceDetails = {};
                 checker.invoiceDetails = intermediateService.invoiceDetails;
@@ -101,15 +101,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                 intermediateService.stockDispatch(checker, function (response) {
                     if (response.statusCode == 1) {
                     $rootScope.invID = response.data.invoiceDetails.id
-                    $scope.loader = false;
-                    $.toaster({
-                        priority: 'success',
-                        title: 'Success',
-                        message: 'Invoice generated successfully',
-                        settings : {
-                            'timeout'      : 2500,
-                        }
-                    });
+                    $scope.loader = false;                   
                     $location.path('/invoice');
                 }
                 else{
@@ -304,6 +296,14 @@ courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location',
         $scope.invdata = intermediateService.invoiceDetails;
         $scope.invdata.couriername = intermediateService.couriername;
         $scope.prd = intermediateService.dummy
+        $.toaster({
+            priority: 'success',
+            title: 'Success',
+            message: 'Invoice generated successfully',
+            settings : {
+                'timeout'      : 2500,
+            }
+        });
         }
 
         $scope.printit =  function(){           
