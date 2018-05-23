@@ -39,6 +39,9 @@ body {
 .margin-15px {
     margin: 15px;
 }
+.margin-30px {
+    margin: 30px;
+}
 
 th {
     cursor: pointer;
@@ -397,4 +400,7 @@ Creating a block for social media buttons
 }
 .text-danger {
     margin-top: 5px;
+}
+.hr-custom{
+    margin: 10px 0 35px 0;
 }
