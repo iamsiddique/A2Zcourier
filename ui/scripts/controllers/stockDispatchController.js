@@ -170,7 +170,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                 $.toaster({
                     priority: 'danger',
                     title: 'Error',
-                    message: 'Select a valid courier center',
+                    message: 'Select a valid warehouse',
                     settings : {
                         'timeout'      : 2500,
                     }

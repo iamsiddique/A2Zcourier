@@ -82,7 +82,7 @@
     <div class="margin-t-b clear"></div>
            
         <div class="col-md-12" ng-if="!loader">
-                <div class="display-flex" infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='7'>
+                <!-- <div class="display-flex" infinite-scroll='' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='7'> -->
                        
         <div class="media block-update-card col-md-4" ng-repeat="product in reddit.items">
             <a class="pull-left" href>
@@ -94,7 +94,10 @@
                 <p ng-bind="product.code"></p>
             </div>
         </div>
+        <div class="margin-t-b clear"></div>
+        <div class="col-md-12"><p class="text-center font-size-17px"><a href ng-click="reddit.nextPage()">Show More....</a></p></div>
         </div>
+        
     </div>
     <div ng-if="loader">
         <img class="loader-style" src="ui/images/loader.svg">

@@ -20,7 +20,7 @@ courierApp.controller("authenticationController",['$rootScope','$scope','$locati
 				$sessionStorage.logindetails ={};	
 				$sessionStorage.logindetails.id = response.data.id;
 				$rootScope.seedRole = response.data.seedRole.id;
-				$scope.credentials = [{username:$scope.emailid ,password:$scope.password}];
+				$scope.credentials = [{username:$scope.emailid}];
 				$sessionStorage.logindetails.credentials = $scope.credentials;
 				$rootScope.loginPage=true;
 			}

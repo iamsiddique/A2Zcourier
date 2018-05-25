@@ -59,6 +59,7 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                     }
                 }
                 $scope.duplicateProduct = angular.copy($scope.products);
+                $scope.reddit.nextPage();
                 $scope.loader = false;
             })
         }
@@ -179,5 +180,6 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
             //   this.busy = false;
             // }.bind(this));
           };
+         
     }
 ]);
