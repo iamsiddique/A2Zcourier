@@ -69,7 +69,6 @@ courierApp.controller("payment", ['$rootScope', '$scope', '$location', 'intermed
 		}
 
 		$scope.checkIndex = function (data) {
-			console.log(data);
 			$scope.courierBoy = data;
 			$scope.rtDownload = $rootScope.urlBase + "courierboy/download/rt/" + data.id;
 			$scope.rcDownload = $rootScope.urlBase + "courierboy/download/rc/" + data.id;
@@ -135,11 +134,8 @@ courierApp.controller("payment", ['$rootScope', '$scope', '$location', 'intermed
 			}
             intermediateService.markAsPaid(sendData, function(response) {
                 if (response.statusCode == 1) {
-                    console.log(response.data);
-                   // $scope.getDeliveredList();
                     
                 } else if (response.statusCode == 0) {
-                    console.log(response.data);
                     //$location.path('/mycouriers');
                 }
 

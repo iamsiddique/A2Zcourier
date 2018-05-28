@@ -61,33 +61,61 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             if ($scope.stockform.$valid && formValidator($scope.courierCenter, $scope.datalist)) {
                 $scope.submitted = false;
                 $scope.loader = true;
-                intermediateService.invoiceDetails = {}
+                
                 intermediateService.couriername = $scope.courierCenter.name
-                intermediateService.invoiceDetails.toAddress = $scope.address;
-                intermediateService.invoiceDetails.mobileNo = $scope.phnumber;
-                intermediateService.invoiceDetails.paymentMode = $scope.paymentMode;
-                intermediateService.invoiceDetails.invoiceDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
-                intermediateService.modeOfPayment = $scope.modeOfPayment;
-                intermediateService.invoiceDetails.courierCenter = {}
-                intermediateService.invoiceDetails.courierCenter.id = $scope.courierCenter.id;
-                intermediateService.invoiceDetails.amount = $scope.totalAmount;
+                intermediateService.invoiceDetails = {
+                    'toAddress': $scope.address,
+                    'mobileNo': $scope.phnumber,
+                    'paymentMode': $scope.paymentMode,
+                    'invoiceDate': $filter('date')($scope.enterDate, "yyyy-MM-dd"),
+                    'modeOfPayment': $scope.modeOfPayment,
+                    'courierCenter': {
+                        'id':$scope.courierCenter.id,
+
+                    },
+                    'amount' : $scope.totalAmount
+                }
+                // intermediateService.invoiceDetails.toAddress = $scope.address;
+                // intermediateService.invoiceDetails.mobileNo = $scope.phnumber;
+                // intermediateService.invoiceDetails.paymentMode = $scope.paymentMode;
+                // intermediateService.invoiceDetails.invoiceDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
+                // intermediateService.modeOfPayment = $scope.modeOfPayment;
+                // intermediateService.invoiceDetails.courierCenter = {}
+                // intermediateService.invoiceDetails.courierCenter.id = $scope.courierCenter.id;
+                // intermediateService.invoiceDetails.amount = $scope.totalAmount;
                 intermediateService.products = []
                 intermediateService.dummy = []
                 for (i in $scope.datalist) {
                     if ($scope.datalist[i].selectedproduct != undefined) {
-                        intermediateService.products[i] = {};
-                        intermediateService.products[i].product = {}
-                        intermediateService.products[i].product.id = $scope.datalist[i].selectedproduct.id;
-                        intermediateService.products[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
-                        intermediateService.products[i].invoiceNumber = $scope.datalist[i].invoice;
-                        intermediateService.products[i].quantity = $scope.datalist[i].quantity;
-                        intermediateService.dummy[i] = {};
-                        intermediateService.dummy[i].product = {}
-                        intermediateService.dummy[i].product.name = $scope.datalist[i].selectedproduct.name;
-                        intermediateService.dummy[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
-                        intermediateService.dummy[i].invoiceNumber = $scope.datalist[i].invoice;
-                        intermediateService.dummy[i].quantity = $scope.datalist[i].quantity;
-                        intermediateService.dummy[i].cost = $scope.datalist[i].cost;
+                        intermediateService.products[i] = {
+                            'product':{
+                                'id': $scope.datalist[i].selectedproduct.id
+                            },
+                            'expiryDate': $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd"),
+                            'invoiceNumber': $scope.datalist[i].invoice,
+                            'quantity': $scope.datalist[i].quantity,
+
+                        };
+                        // intermediateService.products[i].product = {}
+                        // intermediateService.products[i].product.id = $scope.datalist[i].selectedproduct.id;
+                        // intermediateService.products[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
+                        // intermediateService.products[i].invoiceNumber = $scope.datalist[i].invoice;
+                        // intermediateService.products[i].quantity = $scope.datalist[i].quantity;
+                        intermediateService.dummy[i] = {
+                            'product':{
+                                'name': $scope.datalist[i].selectedproduct.name
+                            },
+                            'expiryDate': $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd"),
+                            'invoiceNumber': $scope.datalist[i].invoice,
+                            'quantity': $scope.datalist[i].quantity,
+                            'cost': $scope.datalist[i].cost
+                        };
+                        // intermediateService.dummy[i].product = {}
+                        // intermediateService.dummy[i].product.name = $scope.datalist[i].selectedproduct.name;
+                        // intermediateService.dummy[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
+                        // intermediateService.dummy[i].invoiceNumber = $scope.datalist[i].invoice;
+                        // intermediateService.dummy[i].quantity = $scope.datalist[i].quantity;
+                        // intermediateService.dummy[i].cost = $scope.datalist[i].cost;
                         //intermediateService.invoiceDetails.amount = intermediateService.invoiceDetails.amount + $scope.datalist[i].cost;
 
                     }

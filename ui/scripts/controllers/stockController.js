@@ -8,48 +8,37 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
         $scope.countries = [];
         $scope.products = [];
         intermediateService.centerlist(function(response) {
-            console.log(response);
             for (i in response.data)
                 if (response.data[i].pincode != null) {
                     var pincode = {}
                     pincode.name = response.data[i].pincode;
                     pincode.id = response.data[i].id;
                     $scope.countries.push(pincode);
-                    console.log('called');
                 }
-            console.log($scope.countries);
         })
         intermediateService.productlist(function(response) {
-            console.log(response);
             for (i in response.data)
                 if (response.data[i].name != null) {
                     var productlist = {}
                     productlist.name = response.data[i].name;
                     productlist.id = response.data[i].id;
                     $scope.products.push(productlist);
-                    console.log('called');
                 }
-            console.log($scope.products);
         })
         $scope.save = function() {
-            console.log('save called');
             if ($scope.stockform.$valid) {
                 $scope.submitted = false;
-                console.log($scope.stock);
                 var data = {};
                 data.product = {}
                 data.courierCenter = {};
                 data.entryDate = $filter('date')($scope.stock.enterDate, "yyyy-MM-dd");
                 data.expiryDate = $filter('date')($scope.stock.expDate, "yyyy-MM-dd");
                 data.manufactureDate = $filter('date')($scope.stock.manuDate, "yyyy-MM-dd");
-                console.log($scope.stock.quantity);
                 data.quantity = $scope.stock.quantity;
                 data.product.id = $scope.stock.product.id;
                 data.courierCenter.id = $scope.stock.courierCenter.id;
                 data.invoiceNumber = $scope.stock.invoiceNumber;
                 data.shopName = $scope.stock.shopName;
-                console.log(data);
-                console.log(JSON.stringify(data));
 
                 intermediateService.stockEntry(data, function(response) {
                     if (response.statusCode == 1) {
@@ -60,7 +49,6 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
                         }, 2000);
 
                     } else if (response.statusCode == 0) {
-                        console.log('failed');
                         $scope.regError = true;
                         $timeout(function() {
                             $scope.regError = false;
@@ -68,7 +56,6 @@ courierApp.controller("stockEntryController", ['$rootScope', '$scope', '$locatio
                     }
                 });
             } else {
-                console.log('invalid called');
                 $scope.submitted = true;
             }
 

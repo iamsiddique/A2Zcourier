@@ -15,8 +15,7 @@ courierApp.controller("headerController",['$rootScope','$scope','$location',
 courierApp.controller("LogoutController",['$location','$rootScope','$scope','$sessionStorage',
  function ($location,$rootScope,$scope,$sessionStorage) {
  	
-	$rootScope.loginPage = true;	
-	//console.log($rootScope.loginPage);
+	$rootScope.loginPage = true;
 	
 	$scope.logout = function () {
 		$sessionStorage.$reset();	

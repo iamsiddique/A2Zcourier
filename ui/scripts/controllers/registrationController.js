@@ -6,11 +6,9 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
         $scope.courierBoy.vehicleOwner = 'S';
         $rootScope.loginPage = true;
         $scope.save = function() {
-            console.log('save called');
             $scope.loader = true;
             if ($scope.registrationform.$valid) {
                 $scope.submitted = false;
-                console.log('valid called');
                 $scope.courierBoy.user.username = $scope.courierBoy.mobileNumber;
                 var fd = new FormData();
                 fd.append('dl', $scope.drivingLicense);
@@ -19,7 +17,6 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
                 fd.append('rt', $scope.roadTax);
                 fd.append('photo', $scope.photo);
                 fd.append('user', angular.toJson($scope.courierBoy, true));
-                console.log(fd);
                 intermediateService.saveBoys(fd, function(response) {
                     if (response.statusCode == 1) {
                         $scope.regSuccess = true;
@@ -31,7 +28,6 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
 
                     } else if (response.statusCode == 0) {
                         $scope.errorMsg =response.description;
-                        console.log('failed');
                         $scope.regError = true;
                         $scope.loader = false;
                         $timeout(function() {
@@ -42,7 +38,6 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
                 });
             } else {
                 $scope.loader = false;
-                console.log('invalid called');
                 $scope.submitted = true;
 
             }
@@ -50,14 +45,12 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
 
         }
         $scope.setimage = function() {
-                console.log('called');
                 var file = $scope.photo;
                 var reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = function(e) {
                     $scope.$apply(function() {
                         $scope.ImageSrc = e.target.result;
-                        console.log($scope.ImageSrc);
                     });
 
                 }
@@ -148,13 +141,5 @@ courierApp.controller("registrationController", ['$rootScope', '$scope', '$locat
     
             $scope.toggleMin();
             $scope.disabled = true;
-            //$scope.courierBoy.user.username = $scope.courierBoy.mobileNumber;           
-            /*$scope.loadit = function(){
-                var filename = event.target.files[0].name;
-                console.log(filename);
-                $scope.rddoc = event.target.files[0];
-                console.log(event.target.files[0]);
-            }*/
-
     }
 ]);

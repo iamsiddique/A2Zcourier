@@ -57,7 +57,6 @@ courierApp.controller("listingController", ['$scope', '$location', '$rootScope',
 		}
 		
 		$scope.checkIndex = function (data) {
-			console.log(data);
 			$scope.courierBoy = data;
 			$scope.rtDownload = $rootScope.urlBase + "courierboy/download/rt/" + data.id;
 			$scope.rcDownload = $rootScope.urlBase + "courierboy/download/rc/" + data.id;
@@ -70,12 +69,10 @@ courierApp.controller("listingController", ['$scope', '$location', '$rootScope',
 		}
 		$scope.delete = function () {
 			intermediateService.deleteBoys($scope.delId, function (response) {
-				console.log('success');
 				intermediateService.listBoys(function (response) {
 					if (response.statusCode == 1) {
 						$scope.listofBoys = response.data;
 					}
-					console.log('refreshed');
 				});
 			});
 		}
@@ -101,7 +98,6 @@ courierApp.controller("listingController", ['$scope', '$location', '$rootScope',
 						$scope.regSuccess = false;
 					}, 2000);
 				} else if (response.statusCode == 0) {
-					console.log('failed');
 					$scope.regError = true;
 					$timeout(function () {
 						$scope.regError = false;

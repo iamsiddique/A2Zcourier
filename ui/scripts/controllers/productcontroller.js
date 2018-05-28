@@ -60,14 +60,11 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
         $scope.getproducts = function() {
             $scope.loader = true;
             intermediateService.productlist(function(response) {
-                console.log(response);
                 $scope.products = response.data;
                 for (i in response.data) {
                     if (response.data[i].photoFileName != null) {
                         $scope.products[i].photo = $rootScope.urlBase + "product/download/photo/" + response.data[i].id;
                         
-                    } else {
-                        console.log('null')
                     }
                 }
                 $scope.duplicateProduct = angular.copy($scope.products);

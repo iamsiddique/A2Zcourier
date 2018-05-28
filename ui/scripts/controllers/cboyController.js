@@ -5,7 +5,6 @@ courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'i
         $rootScope.loginPage = false;
         $rootScope.cBoyLogin = true;
 
-        //alert('hi');
         $scope.checking = function() {
             logCheck.checkUser(function(response) {
                 $location.path('/courierboy');
@@ -15,7 +14,6 @@ courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'i
             $scope.invoiceId;
 
             intermediateService.invDetail($scope.invoiceId, function(response) {
-                console.log(response.data);
                 $scope.details = response.data;
 
             })
@@ -35,11 +33,8 @@ courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'i
            
             intermediateService.assignMe(data, function(response) {
                 if (response.statusCode == 1) {
-                    console.log(response.data);
                     $location.path('/mycouriers');
                 } else if (response.statusCode == 0) {
-                    console.log(response.data);
-                    //$location.path('/mycouriers');
                 }
 
             })
@@ -59,13 +54,6 @@ courierApp.controller("cboyController", ['$rootScope', '$scope', '$location', 'i
         $scope.onVideoError = function(error) {
             console.log(error);
         };
-        // $scope.start = function() {
-        //     $scope.cameraRequested = true;
-        // }
-
-        // $scope.processURLfromQR = function (url) {
-        //   $scope.url = url;
-        //   $scope.cameraRequested = false;
-        // }
+        
     }
 ]);

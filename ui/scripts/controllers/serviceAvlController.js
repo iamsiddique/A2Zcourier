@@ -10,12 +10,10 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
 
             pinDetails.pincode = $scope.pinCode;
             
-            console.log(pinDetails);
             intermediateService.postServiceAvl(pinDetails, function(response) {
                 if (response.statusCode == 1) {
                     $scope.regSuccess = true;
                     intermediateService.ServiceAvllist(function(response) {
-                        console.log(response);
                         $scope.pinCode = "";
                         $scope.streetAddress = "";
                         $scope.listOfcenter = response.data;
@@ -45,15 +43,11 @@ courierApp.controller("serviceAvlController", ['$rootScope', '$scope', '$locatio
         $scope.deleteC = function(data) {
 
             $scope.delId = data;
-            console.log($scope.delId);
 
         }
         $scope.deletecenter = function() {
-            console.log('called');
             intermediateService.centerDelete($scope.delId, function(response) {
-                console.log(response);
                 intermediateService.centerlist(function(response) {
-                    console.log(response);
                     $scope.listOfcenter = response.data;
                 });
             });

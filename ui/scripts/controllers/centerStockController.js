@@ -25,8 +25,6 @@ courierApp.controller("centerStockController", ['$rootScope', '$scope', '$locati
         }
         $scope.update = function () {
             $scope.submitted = false;
-            console.log($scope.stockList);
-
             $scope.stockList.entryDate = $filter('date')($scope.stockList.entryDate, "yyyy-MM-dd");
             $scope.stockList.expiryDate = $filter('date')($scope.stockList.expiryDate, "yyyy-MM-dd");
             $scope.stockList.manufactureDate = $filter('date')($scope.stockList.manufactureDate, "yyyy-MM-dd");
@@ -40,7 +38,6 @@ courierApp.controller("centerStockController", ['$rootScope', '$scope', '$locati
                     }, 2000);
 
                 } else if (response.statusCode == 0) {
-                    console.log('failed');
                     $scope.regError = true;
                     $timeout(function () {
                         $scope.regError = false;

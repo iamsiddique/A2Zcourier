@@ -3,7 +3,6 @@ courierApp.controller("listofDispatchController", ['$rootScope', '$scope', '$loc
 
       $rootScope.loginPage = true;
        intermediateService.liststockDispatch(function(response) {
-            console.log(response);
             $scope.stockDispatchList= response.data;
            
         });

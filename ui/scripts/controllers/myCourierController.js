@@ -30,11 +30,9 @@ courierApp.controller("myCourierController", ['$rootScope', '$scope', '$location
             }
             intermediateService.markAsDelivered(sendData, function(response) {
                 if (response.statusCode == 1) {
-                    console.log(response.data);
                     $scope.getList();
                     
                 } else if (response.statusCode == 0) {
-                    console.log(response.data);
                     //$location.path('/mycouriers');
                 }
 
