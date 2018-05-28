@@ -63,7 +63,7 @@ courierApp.controller("listingController", ['$scope', '$location', '$rootScope',
 			$scope.rcDownload = $rootScope.urlBase + "courierboy/download/rc/" + data.id;
 			$scope.insuranceDownload = $rootScope.urlBase + "courierboy/download/insurance/" + data.id;
 			$scope.dlDownload = $rootScope.urlBase + "courierboy/download/dl/" + data.id;
-			$scope.photoDownload = $rootScope.urlBase + "courierboy/download/photo/" + data.id;
+			$scope.photoDownload = data.newurl;
 		}
 		$scope.checkingit = function (data) {
 			$scope.delId = data;

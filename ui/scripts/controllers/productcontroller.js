@@ -19,10 +19,16 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                 fd.append('product', angular.toJson($scope.product, true));
                 intermediateService.saveProduct(fd, function(response) {
                     if (response.statusCode == 1) {
-                        $scope.regSuccess = true;
+                        $.toaster({
+                            priority: 'success',
+                            title: 'Success',
+                            message: 'Product Added successfully',
+                            settings : {
+                                'timeout'      : 2500,
+                            }
+                        });
                         $scope.loader = false;
                         $timeout(function() {
-                            $scope.regSuccess = false;
                             $scope.getproducts();
                         }, 2000);
                         $scope.product = {};
@@ -31,11 +37,17 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                         $scope.productDownload = '';
 
                     } else if (response.statusCode == 0) {
-                        $scope.regError = true;
+                        var desc = response.description;
+                        $.toaster({
+                            priority: 'danger',
+                            title: 'Error',
+                            message: desc,
+                            settings : {
+                                'timeout'      : 2500,
+                            }
+                        });
                         $scope.loader = false;
-                        $timeout(function() {
-                            $scope.regError = false;
-                        }, 2000);
+                       
                     }
                 });
             } else {
@@ -95,14 +107,23 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                 var data = {
                     'name': $scope.product.name,
                     'code': $scope.product.code,
-                    'id': $scope.product.id
+                    'id': $scope.product.id,
+                    'cost': $scope.product.cost,
+                    'cgst': $scope.product.cgst,
+                    'sgst': $scope.product.sgst
                 }
                 fd.append('product', angular.toJson(data, true));
                 intermediateService.saveEditProduct(fd, function(response) {
                     if (response.statusCode == 1) {
-                        $scope.regSuccess = true;
+                        $.toaster({
+                            priority: 'success',
+                            title: 'Success',
+                            message: 'Product Edited successfully',
+                            settings : {
+                                'timeout'      : 2500,
+                            }
+                        });
                         $timeout(function() {
-                            $scope.regSuccess = false;
                             $scope.getproducts();
                         }, 2000);
                         $scope.product = {};
@@ -112,15 +133,20 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                         $scope.editData = false;
 
                     } else if (response.statusCode == 0) {
-                        $scope.regError = true;
+                        var desc = response.description;
+                        $.toaster({
+                            priority: 'danger',
+                            title: 'Error',
+                            message: desc,
+                            settings : {
+                                'timeout'      : 2500,
+                            }
+                        });
                         $scope.loader = false;
-                        $timeout(function() {
-                            $scope.regError = false;
-                        }, 2000);
+                       
                     }
                 });
             } else {
-                console.log('invalid called');
                 $scope.submitted = true;
                 $scope.loader = false;
             }

@@ -137,7 +137,7 @@ li[disabled] {
 
 .block-update-card .update-card-body p {
     color: #737373;
-    font-size: 12px;
+    font-size: 12px; 
 }
 
 .block-update-card .card-action-pellet {
@@ -170,7 +170,9 @@ li[disabled] {
     cursor: pointer;
 }
 
-
+.padding-left-15px{
+    padding-left:15px;
+}
 /*
 Creating a block for social media buttons
 */
@@ -406,4 +408,14 @@ Creating a block for social media buttons
 }
 .font-size-17px{
     font-size:17px;
+}
+.show-more{
+    background-color: white; 
+    color: black !important; 
+    border: 2px solid #008CBA;
+    margin: 30px 0px;
+    padding: 10px;
+}
+.margin-0 {
+    margin:0 !important;
 }

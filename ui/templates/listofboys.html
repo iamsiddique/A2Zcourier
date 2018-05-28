@@ -53,7 +53,7 @@
 
                                 <td>
                                     <img no-cache-src="{{urlBase +'courierboy/download/photo/' + list.id ||'ui/images/product.png'}}"
-                                        style="width:70px;height:80px" />
+                                        style="width:70px;height:80px" return-url="list.newurl"/>
                                 </td>
                                 <td>{{list.firstName}}&nbsp;{{list.lastName}}</td>
                                 <td ng-bind="list.mobileNumber"></td>
