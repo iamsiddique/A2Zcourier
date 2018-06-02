@@ -22,7 +22,7 @@ courierApp.directive('stockdispatch', ['$parse', function ($parse) {
                 <div class="form-group">
                     <div class="col-md-12">
                          <input name="productname{{index}}" type="text" ng-model="stockdispatch.selectedproduct" uib-typeahead="product as product.name for product in prodlist | filter:{name:$viewValue}" placeholder="Enter product name" class="form-control
-                          autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0">
+                          autocomplete input-md" required="" typeahead-show-hint="true" typeahead-min-length="0" >
                           <div ng-messages="form['productname' + index].$error" ng-if='formsubmitted' class="text-danger">
                           <p ng-message="required">This field is required</p>
                       </div>
@@ -33,24 +33,23 @@ courierApp.directive('stockdispatch', ['$parse', function ($parse) {
                 <div class="form-group">
                    
                     <div class="col-md-12">
-                        <input name="quantity{{index}}" type="number" ng-model="stockdispatch.quantity" placeholder="Quantity" class="form-control input-md" required="">
+                        <input name="quantity{{index}}" type="number" ng-model="stockdispatch.quantity" ng-disabled="!stockdispatch.selectedproduct" ng-change="addCost()" placeholder="Quantity" class="form-control input-md" required="">
                         <div ng-messages="form['quantity' + index].$error" ng-if='formsubmitted' class="text-danger">
                         <p ng-message="required">This field is required</p>
                     </div>
                     </div>
                 </div>
             </td>
-            <td>
-            <div class="form-group">
-               
-                <div class="col-md-12">
-                    <input name="cost{{index}}" type="number" ng-model="stockdispatch.cost" placeholder="Cost" class="form-control input-md" ng-blur="calculate()" required="">
-                    <div ng-messages="form['cost' + index].$error" ng-if='formsubmitted' class="text-danger">
-                        <p ng-message="required">This field is required</p>
-                    </div>
-                </div>
-            </div>
-        </td>
+<td>
+<div class="form-group">               
+    <div class="col-md-12">
+        <input name="totalcost{{index}}" type="number" ng-model="stockdispatch.totalCost" placeholder="Cost" readonly class="form-control input-md"  required="">
+        <div ng-messages="form['totalcost' + index].$error" ng-if='formsubmitted' class="text-danger">
+            <p ng-message="required">This field is required</p>
+        </div>
+    </div>
+</div>
+</td>
             <td>
                 <div class="form-group">
                     <div class="col-md-12">
@@ -92,7 +91,7 @@ courierApp.directive('stockdispatch', ['$parse', function ($parse) {
             `,
     scope: {
       stockdispatch: "=",
-      index:"=",
+      index: "=",
       formsubmitted: "=",
       prodlist: "=",
       addprod: "&",
@@ -107,9 +106,10 @@ courierApp.directive('stockdispatch', ['$parse', function ($parse) {
 
       };
       $scope.today();
-      // $scope.calculate = function(data){
-      //   $scope.totalAmount = $scope.totalAmount + data;
-      // }
+      $scope.addCost = function(){
+        $scope.stockdispatch.totalCost = $scope.stockdispatch.selectedproduct.totalCost * $scope.stockdispatch.quantity;
+        $scope.calculate();
+      }
 
       $scope.clear = function () {
         $scope.stockdispatch.expDate = null;

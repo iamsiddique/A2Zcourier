@@ -77,20 +77,20 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="Address">To Address</label>
-                    <div class="col-md-8" ng-if="!smallLoader">
+                    <div class="col-md-8" ng-show="!smallLoader">
                         <textarea class="form-control input-md" name="toAddress" ng-model="address" required=""></textarea>
                         <div ng-messages="stockform.toAddress.$error" ng-if='submitted' class="text-danger">
                             <p ng-message="required">This field is required</p>
                         </div>
                     </div>
-                    <div class="col-md-8" ng-if="smallLoader">
+                    <div class="col-md-8" ng-show="smallLoader">
                         <img class="width-35px" src="ui/images/small-loader.gif">
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="modeofpayment">Total Cost</label>
+                    <label class="col-md-4 control-label" for="modeofpayment">Grand Total</label>
                     <div class="col-md-8">
                         <p class="total-cost-sty" ng-bind="totalAmount"></p>
                     </div>
@@ -106,6 +106,7 @@
                 <thead>
                     <th>Product Name </th>
                     <th>Quantity </th>
+                   
                     <th>Cost </th>
                     <th>Invoice Code </th>
                     <th>Expiry Date</th>

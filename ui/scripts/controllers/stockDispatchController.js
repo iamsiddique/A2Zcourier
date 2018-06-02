@@ -27,6 +27,10 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                     var productlist = {}
                     productlist.name = response.data[i].name + ' - ' + response.data[i].code;
                     productlist.id = response.data[i].id;
+                    productlist.cost = response.data[i].cost;
+                    productlist.sgst = response.data[i].sgst;
+                    productlist.cgst = response.data[i].cgst;
+                    productlist.totalCost = response.data[i].totalCost;
                     $scope.listofproduct.push(productlist);
                 }
         })
@@ -50,8 +54,8 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             var i = 0;
             $scope.totalAmount = 0;
             for (i in $scope.datalist) {
-                if ($scope.datalist[i].cost !== undefined) {
-                    $scope.totalAmount = $scope.totalAmount + $scope.datalist[i].cost;
+                if ($scope.datalist[i].totalCost !== undefined) {
+                    $scope.totalAmount = $scope.totalAmount + $scope.datalist[i].totalCost;
                 }
 
 
@@ -75,49 +79,33 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                     },
                     'amount' : $scope.totalAmount
                 }
-                // intermediateService.invoiceDetails.toAddress = $scope.address;
-                // intermediateService.invoiceDetails.mobileNo = $scope.phnumber;
-                // intermediateService.invoiceDetails.paymentMode = $scope.paymentMode;
-                // intermediateService.invoiceDetails.invoiceDate = $filter('date')($scope.enterDate, "yyyy-MM-dd");
-                // intermediateService.modeOfPayment = $scope.modeOfPayment;
-                // intermediateService.invoiceDetails.courierCenter = {}
-                // intermediateService.invoiceDetails.courierCenter.id = $scope.courierCenter.id;
-                // intermediateService.invoiceDetails.amount = $scope.totalAmount;
                 intermediateService.products = []
                 intermediateService.dummy = []
                 for (i in $scope.datalist) {
                     if ($scope.datalist[i].selectedproduct != undefined) {
                         intermediateService.products[i] = {
                             'product':{
-                                'id': $scope.datalist[i].selectedproduct.id
+                                'id': $scope.datalist[i].selectedproduct.id,
+                                'totalCost' : $scope.datalist[i].selectedproduct.totalCost
                             },
                             'expiryDate': $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd"),
                             'invoiceNumber': $scope.datalist[i].invoice,
                             'quantity': $scope.datalist[i].quantity,
 
                         };
-                        // intermediateService.products[i].product = {}
-                        // intermediateService.products[i].product.id = $scope.datalist[i].selectedproduct.id;
-                        // intermediateService.products[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
-                        // intermediateService.products[i].invoiceNumber = $scope.datalist[i].invoice;
-                        // intermediateService.products[i].quantity = $scope.datalist[i].quantity;
                         intermediateService.dummy[i] = {
                             'product':{
-                                'name': $scope.datalist[i].selectedproduct.name
+                                'name': $scope.datalist[i].selectedproduct.name,
+                                'cost' : $scope.datalist[i].selectedproduct.cost,
+                                'cgst' : $scope.datalist[i].selectedproduct.cgst,
+                                'sgst' : $scope.datalist[i].selectedproduct.sgst,
+                                'totalCost' : $scope.datalist[i].selectedproduct.totalCost
                             },
                             'expiryDate': $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd"),
                             'invoiceNumber': $scope.datalist[i].invoice,
                             'quantity': $scope.datalist[i].quantity,
                             'cost': $scope.datalist[i].cost
                         };
-                        // intermediateService.dummy[i].product = {}
-                        // intermediateService.dummy[i].product.name = $scope.datalist[i].selectedproduct.name;
-                        // intermediateService.dummy[i].expiryDate = $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd");
-                        // intermediateService.dummy[i].invoiceNumber = $scope.datalist[i].invoice;
-                        // intermediateService.dummy[i].quantity = $scope.datalist[i].quantity;
-                        // intermediateService.dummy[i].cost = $scope.datalist[i].cost;
-                        //intermediateService.invoiceDetails.amount = intermediateService.invoiceDetails.amount + $scope.datalist[i].cost;
-
                     }
                 }
                 
