@@ -68,6 +68,8 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
                     }
                 }
                 $scope.duplicateProduct = angular.copy($scope.products);
+                $scope.reddit.after = 0;
+                $scope.reddit.items = [];
                 $scope.reddit.nextPage();
                 $scope.loader = false;
             })
@@ -186,7 +188,7 @@ courierApp.controller("productEntryController", ['$rootScope', '$scope', '$locat
             var endLimit = this.after+10;
             if(endLimit  >= $scope.duplicateProduct.length){
                 endLimit = $scope.duplicateProduct.length;
-            }
+            }            
             for (var i = this.after; i < endLimit; i++){
                 this.items.push($scope.duplicateProduct[i]);
             }
