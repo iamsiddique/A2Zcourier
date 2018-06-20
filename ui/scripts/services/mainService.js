@@ -4,7 +4,7 @@ courierApp.config(function ($httpProvider) {
 	})
 	.factory('mainService', ['$http', '$rootScope', function ($http, $rootScope) {
 
-		$rootScope.urlBase = 'http://13.126.125.11:8080/SpringRestCrud/';//http://13.126.43.82:8080/SpringRestCrud/
+		$rootScope.urlBase = 'http://localhost:8080/SpringRestCrud/';//http://13.126.43.82:8080/SpringRestCrud/
 		//$rootScope.urlBase = 'http://13.127.112.205:8080/SpringRestCrud/';
 		$rootScope.header = {
 			header: {
@@ -95,6 +95,11 @@ courierApp.config(function ($httpProvider) {
 			return $http.get($rootScope.urlBase + 'product/list', $rootScope.header);
 
 		};
+		dataFetch.getProductWarehouse = function (id) {
+
+			return $http.get($rootScope.urlBase + 'product/list/couriercenter/'+id, $rootScope.header);
+
+		};
 		dataFetch.stockEntry = function (data) {
 
 			return $http.post($rootScope.urlBase + 'stockentry/save', data, $rootScope.header);
@@ -113,6 +118,11 @@ courierApp.config(function ($httpProvider) {
 		dataFetch.centerStockEntryList = function (id) {
 
 			return $http.get($rootScope.urlBase + 'stockentry/couriercenterid/' + id, $rootScope.header);
+
+		};
+		dataFetch.centerStockDispatchList = function (id) {
+
+			return $http.get($rootScope.urlBase + 'stockdispatch/list/couriercenter/' + id, $rootScope.header);
 
 		};
 		dataFetch.employeeAdd = function (data) {

@@ -131,6 +131,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.productlistWarehouse = function(id,callback) {
+        mainService.getProductWarehouse(id).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.stockEntry = function(data, callback) {
         mainService.stockEntry(data).success(function(response) {
             console.log(response);
@@ -160,6 +168,15 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
         mainService.centerStockEntryList(data).success(function(response) {
             console.log(response);
             serviceObject.cstockEntryDetails = response.data
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.centerStockDispatchList = function(data, callback) {
+        mainService.centerStockDispatchList(data).success(function(response) {
+            console.log(response);
+            serviceObject.cstockDispatchDetails = response.data
             callback(response);
         }).error(function(response) {
             callback(response);

@@ -11,10 +11,12 @@ courierApp.controller("centerStockController", ['$rootScope', '$scope', '$locati
                 $scope.centerStockdetails = response.data;
                 intermediateService.centerStockEntryList(id, function (response) {
                     $scope.cstockEntryDetails = response.data;
-                    $scope.loader = false;
+                    intermediateService.centerStockDispatchList(id, function (response) {
+                        $scope.cstockDispatchDetails = response.data;
+                        $scope.loader = false;
+                    });
                 });
-            });
-           
+            });           
         }
         $scope.getStockdet();
         $scope.sortColumn = 'quantity';

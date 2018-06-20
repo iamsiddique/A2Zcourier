@@ -13,7 +13,30 @@
                     typesetting</p>
             </div>
             <div class="margin-t-b clear"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="warehousename">Ware house</label>
+                    <div class="col-md-8">
+                        <input name="warehousename" type="text" ng-model="courierCenter" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}"
+                            placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required="" typeahead-show-hint="true"
+                            typeahead-min-length="0">
+                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="button" class="btn btn-success" name="enter" ng-click="getProduct(courierCenter);" value="Enter" />
+
+                    </div>
+                </div>
+            </div>
+             <div class="margin-t-b clear"></div>
             <!-- Select Basic -->
+            <div ng-show="viewForm">
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="warehousename">Date</label>
@@ -34,19 +57,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="warehousename">Ware house</label>
-                    <div class="col-md-8">
-                        <input name="warehousename" type="text" ng-model="courierCenter" uib-typeahead="country as country.name for country in countries | filter:{name:$viewValue}"
-                            placeholder="Enter Warehouse Pincode" class="form-control autocomplete input-md" required="" typeahead-show-hint="true"
-                            typeahead-min-length="0">
-                        <div ng-messages="stockform.warehousename.$error" ng-if='submitted' class="text-danger">
-                            <p ng-message="required">This field is required</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="margin-t-b clear"></div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -123,7 +134,7 @@
                 <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
                 <a href="#/list" class="btn btn-primary">Cancel</a>
             </div>
-           
+           </div>
         </fieldset>
     </form>
     <div class="margin-t-b clear"></div>

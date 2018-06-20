@@ -21,7 +21,9 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                     $scope.countries.push(pincode);
                 }
         })
-        intermediateService.productlist(function (response) {
+        $scope.viewForm = false;
+        $scope.getProduct = function (data){
+            intermediateService.productlistWarehouse(data.id,function (response) {
             for (i in response.data)
                 if (response.data[i].name != null) {
                     var productlist = {}
@@ -32,8 +34,11 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                     productlist.cgst = response.data[i].cgst;
                     productlist.totalCost = response.data[i].totalCost;
                     $scope.listofproduct.push(productlist);
+                    $scope.viewForm = true;
                 }
         })
+        }
+        
         $scope.addnew = function () {
             counter++;
             $scope.datalist.push({
@@ -54,11 +59,9 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
             var i = 0;
             $scope.totalAmount = 0;
             for (i in $scope.datalist) {
-                if ($scope.datalist[i].totalCost !== undefined) {
-                    $scope.totalAmount = $scope.totalAmount + $scope.datalist[i].totalCost;
+                if ($scope.datalist[i].totalCostProduct !== undefined) {
+                    $scope.totalAmount = $scope.totalAmount + $scope.datalist[i].totalCostProduct;
                 }
-
-
             }
         }
         $scope.save = function () {
@@ -72,7 +75,6 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                     'mobileNo': $scope.phnumber,
                     'paymentMode': $scope.paymentMode,
                     'invoiceDate': $filter('date')($scope.enterDate, "yyyy-MM-dd"),
-                    'modeOfPayment': $scope.modeOfPayment,
                     'courierCenter': {
                         'id':$scope.courierCenter.id,
 
@@ -99,6 +101,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                                 'cost' : $scope.datalist[i].selectedproduct.cost,
                                 'cgst' : $scope.datalist[i].selectedproduct.cgst,
                                 'sgst' : $scope.datalist[i].selectedproduct.sgst,
+                                'totalCostProduct' : $scope.datalist[i].totalCostProduct,
                                 'totalCost' : $scope.datalist[i].selectedproduct.totalCost
                             },
                             'expiryDate': $filter('date')($scope.datalist[i].expDate, "yyyy-MM-dd"),
@@ -312,6 +315,8 @@ courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location',
         $scope.invdata = intermediateService.invoiceDetails;
         $scope.invdata.couriername = intermediateService.couriername;
         $scope.prd = intermediateService.dummy
+        console.log($scope.invdata);
+        console.log($scope.prd);
         $.toaster({
             priority: 'success',
             title: 'Success',

@@ -43,7 +43,7 @@ courierApp.directive('stockdispatch', ['$parse', function ($parse) {
 <td>
 <div class="form-group">               
     <div class="col-md-12">
-        <input name="totalcost{{index}}" type="number" ng-model="stockdispatch.totalCost" placeholder="Cost" readonly class="form-control input-md"  required="">
+        <input name="totalcost{{index}}" type="number" ng-model="stockdispatch.totalCostProduct" placeholder="Cost" readonly class="form-control input-md"  required="">
         <div ng-messages="form['totalcost' + index].$error" ng-if='formsubmitted' class="text-danger">
             <p ng-message="required">This field is required</p>
         </div>
@@ -107,7 +107,12 @@ courierApp.directive('stockdispatch', ['$parse', function ($parse) {
       };
       $scope.today();
       $scope.addCost = function(){
-        $scope.stockdispatch.totalCost = $scope.stockdispatch.selectedproduct.totalCost * $scope.stockdispatch.quantity;
+        if($scope.stockdispatch.quantity !== null && $scope.stockdispatch.quantity !== undefined){
+          $scope.stockdispatch.totalCostProduct = $scope.stockdispatch.selectedproduct.totalCost * $scope.stockdispatch.quantity;
+        }        
+        else{
+          $scope.stockdispatch.totalCostProduct = 0;
+        }        
         $scope.calculate();
       }
 
