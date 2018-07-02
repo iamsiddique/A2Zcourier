@@ -419,3 +419,7 @@ Creating a block for social media buttons
 .margin-0 {
     margin:0 !important;
 }
+.dropdown-menu.min-width-250{
+    min-width:250px;    
+    padding: 10px;
+}

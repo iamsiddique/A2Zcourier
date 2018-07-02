@@ -75,6 +75,8 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
                     'mobileNo': $scope.phnumber,
                     'paymentMode': $scope.paymentMode,
                     'invoiceDate': $filter('date')($scope.enterDate, "yyyy-MM-dd"),
+                    'dispatchType': $scope.weightofparcel,
+                    'dispatchWeight':$scope.parcelWeight,
                     'courierCenter': {
                         'id':$scope.courierCenter.id,
 
@@ -326,6 +328,8 @@ courierApp.controller("invoiceController", ['$rootScope', '$scope', '$location',
             }
         });
         }
+
+        $scope.backUrl = $rootScope.lastUrl;
 
         $scope.printit =  function(){           
             window.print();       

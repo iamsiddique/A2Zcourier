@@ -247,6 +247,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
             callback(response);
         });
     };
+    serviceObject.ccProductDetails = function(data, callback) {
+        mainService.ccProductDetails(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
     serviceObject.markAsDelivered = function(data, callback) {
         mainService.markAsDelivered(data).success(function(response) {
             console.log(response);
@@ -257,6 +265,14 @@ courierApp.factory('intermediateService', ['$rootScope', 'mainService', function
     };
     serviceObject.markAsPaid = function(data, callback) {
         mainService.markAsPaid(data).success(function(response) {
+            console.log(response);
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.resetPassword = function(data, callback) {
+        mainService.resetPassword(data).success(function(response) {
             console.log(response);
             callback(response);
         }).error(function(response) {

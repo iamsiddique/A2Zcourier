@@ -91,10 +91,56 @@ courierApp.config(function($routeProvider) {
 
 
 })
-courierApp.run(['logCheck', '$rootScope','$location', function(logCheck, $rootScope,$location) {
+courierApp.run(['logCheck', '$rootScope','$location','intermediateService','$sessionStorage', function(logCheck, $rootScope,$location,intermediateService,$sessionStorage) {
     logCheck.checkUser(function (response) {
         if(!response){
             $location.path('/');
         }
     });
+    $rootScope.resetPassword = function(old,newpass,newConfPass){
+        var username = $sessionStorage.logindetails.credentials[0].username;
+        var data = {
+            'userName':username,
+            'existingPassword':old,
+            'newPassword':newConfPass
+        }
+        intermediateService.resetPassword(data, function (response) {
+            if (response.statusCode == 1) {
+                $location.path('/logout');
+                $.toaster({
+                    priority: 'success',
+                    title: 'Success',
+                    message: 'Password reseted successfully',
+                    settings : {
+                        'timeout'      : 2500,
+                    }
+                });
+                
+        }
+        else if(response.statusCode == 2){
+            $.toaster({
+                priority: 'danger',
+                title: 'Error',
+                message: 'Old password is wrong',
+                settings : {
+                    'timeout'      : 2500,
+                }
+            });
+        }
+        else{
+            $.toaster({
+                priority: 'danger',
+                title: 'Error',
+                message: 'Something went wrong',
+                settings : {
+                    'timeout'      : 2500,
+                }
+            });
+        }
+        })
+    }
+    $rootScope.$on('$locationChangeSuccess',function(evt, absNewUrl, absOldUrl) {
+        console.log('success', evt, absNewUrl, absOldUrl);
+        $rootScope.lastUrl = absOldUrl;
+     });
 }]);

@@ -16,7 +16,7 @@ courierApp.controller("centerStockController", ['$rootScope', '$scope', '$locati
                         $scope.loader = false;
                     });
                 });
-            });           
+            });
         }
         $scope.getStockdet();
         $scope.sortColumn = 'quantity';
@@ -46,9 +46,46 @@ courierApp.controller("centerStockController", ['$rootScope', '$scope', '$locati
                     }, 2000);
                 }
             });
+        }
+        $scope.viewInvoice = function (data) {
 
+            intermediateService.ccProductDetails(data.id, function (response) {
+                if (response.statusCode == 1) {
+                    console.log(response.data)
+                    intermediateService.invoiceDetails = {
+                        'amount': response.data[0].stockDispatch.amount,
+                        'courierCenter': {
+                            'id': response.data[0].stockDispatch.courierCenter.id
+                        },
+                        'invoiceDate': response.data[0].stockDispatch.invoiceDate,
+                        'mobileNo': response.data[0].stockDispatch.mobileNo,
+                        'paymentMode': response.data[0].stockDispatch.paymentMode,
+                        'toAddress': response.data[0].stockDispatch.toAddress
 
+                    }
+                    intermediateService.couriername = response.data[0].stockDispatch.courierCenter.pincode;
+                    $rootScope.invID = response.data[0].stockDispatch.id
+                    intermediateService.dummy = [];
+                    for (i in response.data) {
+                        intermediateService.dummy[i] = {
+                            'product': {
+                                'name': response.data[i].product.name,
+                                'cost': response.data[i].product.cost,
+                                'cgst': response.data[i].product.cgst,
+                                'sgst': response.data[i].product.sgst,
+                                'totalCost': response.data[i].product.totalCost
+                            },
+                            'expiryDate': $filter('date')(response.data[i].expiryDate, "yyyy-MM-dd"),
+                            'invoiceNumber': response.data[i].invoiceNumber,
+                            'quantity': response.data[i].quantity
+                        };
+                        intermediateService.dummy[i].product.totalCostProduct = response.data[i].product.totalCost * response.data[i].quantity;
+                    }
+                    $location.path('/invoice');
+                } else if (response.statusCode == 0) {
 
+                }
+            });
         }
 
         $scope.arrowStyle = function (column) {

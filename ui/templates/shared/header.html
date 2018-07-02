@@ -1,4 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="headerController">
+    
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -67,6 +68,30 @@
                 </li>
                 <li class="active" ng-if="!loginPage && !cBoyLogin">
                     <a href="#/customer">Get Quote</a>
+                </li>
+                <li class="dropdown" ng-if="loginPage">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Reset Password
+                        <ul class="dropdown-menu min-width-250">
+                            <li><a>
+                            <form class="form-horizontal" role="form">                               
+                                <div class="form-group">
+                                  <label for="contain">Old Password</label>
+                                  <input class="form-control" type="password" ng-model="oldPassword"/>
+                                </div>
+                                <div class="form-group">
+                                  <label for="contain">New Password</label>
+                                  <input class="form-control" type="password" ng-model="newPassword"/>
+                                </div>
+                                <div class="form-group">
+                                        <label for="contain">Confirm New Password</label>
+                                        <input class="form-control" type="password" ng-model="newConfirmPassword"/>
+                                      </div>
+                                <button type="submit" class="btn btn-primary pull-right" ng-disabled="newPassword != newConfirmPassword" ng-click="resetPassword(oldPassword,newPassword,newConfirmPassword)">Reset</button>
+                              </form>
+                            </a></li>
+                            </ul>
+                    </a>
                 </li>
                 <li ng-if="loginPage || cBoyLogin">
                     <a href="#/logout">Logout</a>

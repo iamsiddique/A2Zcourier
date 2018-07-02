@@ -4,7 +4,7 @@ courierApp.config(function ($httpProvider) {
 	})
 	.factory('mainService', ['$http', '$rootScope', function ($http, $rootScope) {
 
-		$rootScope.urlBase = 'http://localhost:8080/SpringRestCrud/';//http://13.126.43.82:8080/SpringRestCrud/
+		$rootScope.urlBase = 'http://192.168.43.189:8080/SpringRestCrud/';//http://13.126.43.82:8080/SpringRestCrud/
 		//$rootScope.urlBase = 'http://13.127.112.205:8080/SpringRestCrud/';
 		$rootScope.header = {
 			header: {
@@ -170,9 +170,19 @@ courierApp.config(function ($httpProvider) {
 			return $http.post($rootScope.urlBase + 'courierboy/markpaid', data, $rootScope.header);
 
 		};
+		dataFetch.resetPassword = function (data) {
+
+			return $http.post($rootScope.urlBase + 'user/changePassword', data, $rootScope.header);
+
+		};
 		dataFetch.assignedList = function (id) {
 
 			return $http.get($rootScope.urlBase + 'courierboy/userid/' + id + '/status/A', $rootScope.header);
+
+		};
+		dataFetch.ccProductDetails = function (id) {
+
+			return $http.get($rootScope.urlBase + 'stockdispatch/list/couriercenter/product/' + id , $rootScope.header);
 
 		};
 		dataFetch.deliveredList = function (id) {
