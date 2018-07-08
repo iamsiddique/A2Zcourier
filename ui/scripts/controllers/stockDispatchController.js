@@ -12,6 +12,7 @@ courierApp.controller("stockDispatchController", ['$rootScope', '$scope', '$loca
         $scope.countries = [];
         $scope.listofproduct = [];
         $scope.paymentMode = 'cash';
+        $scope.weightofparcel = 'L';
         intermediateService.centerlist(function (response) {
             for (i in response.data)
                 if (response.data[i].pincode != null) {

@@ -98,7 +98,28 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="checkheavy"></label>
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="checkheavy"  ng-model="checkHeavy">Heavy Weight</label>
+                          </div>
+                    </div>
+                </div>
+            </div>
             <div class="clear"></div>
+            <div class="col-md-6" ng-show="checkHeavy">
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="weightkgs">Weight In Kgs</label>
+                    <div class="col-md-8">
+                        <input name="weightkgs" type="number" ng-model="weightInKgs" placeholder="Weight in Kgs" class="form-control input-md" >
+                        <div ng-messages="productform.weightkgs.$error" ng-if='submitted' class="text-danger">
+                            <p ng-message="required">This field is required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="clear"></div>
             <div class="col-md-12 text-center" ng-hide="editData">
                 <input type="submit" class="btn btn-success" name="submit" ng-click="save();" value="Submit" />
