@@ -60,8 +60,21 @@
 
                
                
-                <li ng-if="loginPage">
-                    <a href="#/serviceAvailability">Service Availability</a>
+                <li class="dropdown" ng-if="loginPage">
+                    
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Configure
+                            <ul class="dropdown-menu">
+                                    <li ng-if="loginPage">
+                                            <a href="#/serviceAvailability">Service Availability</a>
+                                        </li>
+                                <li class="divider"></li>
+                                <li ng-if="loginPage">
+                                        <a href="#/courierCost">Courier Cost</a>
+                                    </li>
+                                <li class="divider"></li>
+                            </ul>
+                        </a>
                 </li>
                 <li ng-if="!loginPage && cBoyLogin">
                     <a href="#/mycouriers">My Courier</a>

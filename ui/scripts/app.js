@@ -76,6 +76,10 @@ courierApp.config(function($routeProvider) {
             controller: 'serviceAvlController',
             templateUrl: "ui/templates/serviceAvl.html"
         })
+        .when("/courierCost", {
+            controller: 'courierCostController',
+            templateUrl: "ui/templates/courierCost.html"
+        })
         .when("/listOfDispatch", {
             controller: 'listofDispatchController',
             templateUrl: "ui/templates/listOfStock.html"

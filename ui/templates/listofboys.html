@@ -52,8 +52,8 @@
  | limitTo: pageSize : listofBoyss | orderBy:sortColumn:reverseSort  " ng-if="!retrivalerr">
 
                                 <td>
-                                    <img no-cache-src="{{urlBase +'courierboy/download/photo/' + list.id ||'ui/images/product.png'}}"
-                                        style="width:70px;height:80px" return-url="list.newurl"/>
+                                    <img no-cache-src="{{urlBase +'courierboy/download/photo/' + list.id ||'ui/images/product.png'}}" style="width:70px;height:80px"
+                                        return-url="list.newurl" />
                                 </td>
                                 <td>{{list.firstName}}&nbsp;{{list.lastName}}</td>
                                 <td ng-bind="list.mobileNumber"></td>
@@ -141,77 +141,81 @@
                                                 </div>
                                             </div>
                                             <div class="clear"></div>
-                                            
+
                                             <div class="col-md-6">
-                                                    <!-- Text input-->
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>
-                                                        <div class="col-md-8">
-                                                            <input name="mobileNumber" type="text" ng-model="courierBoy.mobileNumber" placeholder="Mobile Number" class="form-control input-md" required="">
-                                                            <div ng-messages="registrationform.mobileNumber.$error" ng-if='submitted' class="text-danger">
-                                                                <p ng-message="required">This field is required</p>
-                                                            </div>
+                                                <!-- Text input-->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="mobilenumber">Mobile Number</label>
+                                                    <div class="col-md-8">
+                                                        <input name="mobileNumber" type="text" ng-model="courierBoy.mobileNumber" placeholder="Mobile Number" class="form-control input-md"
+                                                            required="">
+                                                        <div ng-messages="registrationform.mobileNumber.$error" ng-if='submitted' class="text-danger">
+                                                            <p ng-message="required">This field is required</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <!-- Text input-->
-                                                    <div class="form-group">
-                                                        <label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>
-                                                        <div class="col-md-8">
-                                                            <input name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <!-- Text input-->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="alternatenumber">Alternate Number</label>
+                                                    <div class="col-md-8">
+                                                        <input name="alternateNumber" type="text" ng-model="courierBoy.alternateNumber" placeholder="Alternate Number" class="form-control input-md">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="col-md-6">
+                                                <!-- Text input-->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="companynumber">Company Number</label>
+                                                    <div class="col-md-8">
+                                                        <input name="companyNumber" type="text" ng-model="courierBoy.companyMobileNo" placeholder="Company Number" class="form-control input-md"
+                                                            required="">
+                                                        <div ng-messages="registrationform.mobileNumber.$error" ng-if='submitted' class="text-danger">
+                                                            <p ng-message="required">This field is required</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="clear"></div>
-                                                <div class="col-md-6">
-                                                        <!-- Text input-->
-                                                        <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="companynumber">Company Number</label>
-                                                            <div class="col-md-8">
-                                                                <input name="companyNumber" type="text" ng-model="courierBoy.companyMobileNo" placeholder="Company Number" class="form-control input-md" required="">
-                                                                <div ng-messages="registrationform.mobileNumber.$error" ng-if='submitted' class="text-danger">
-                                                                    <p ng-message="required">This field is required</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <!-- Text input-->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="issuedate">Sim Issued Date</label>
+                                                    <div class="col-md-8">
+                                                        <p class="input-group">
+                                                            <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoIssueDate"
+                                                                is-open="popup1.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                                                ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                                            />
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-default" ng-click="open1()">
+                                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </p>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <!-- Text input-->
-                                                        <div class="form-group">
-                                                            <label class="col-md-4 control-label" for="issuedate">Sim Issued Date</label>
-                                                            <div class="col-md-8">
-                                                                    <p class="input-group">
-                                                                            <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoIssueDate" is-open="popup1.opened"
-                                                                                datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                                                            />
-                                                                            <span class="input-group-btn">
-                                                                                <button type="button" class="btn btn-default" ng-click="open1()">
-                                                                                    <i class="glyphicon glyphicon-calendar"></i>
-                                                                                </button>
-                                                                            </span>
-                                                                        </p>
-                                                            </div>
-                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="issuedate">Sim Return Date</label>
+                                                    <div class="col-md-8">
+                                                        <p class="input-group">
+                                                            <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoReturnDate"
+                                                                is-open="popup2.opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                                                                ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                                            />
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-default" ng-click="open2()">
+                                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                                </button>
+                                                            </span>
+                                                        </p>
                                                     </div>
-                                                    <div class="clear"></div>
-                                                    <div class="col-md-6">
-                                                            <div class="form-group">
-                                                                    <label class="col-md-4 control-label" for="issuedate">Sim Return Date</label>
-                                                                    <div class="col-md-8">
-                                                                            <p class="input-group">
-                                                                                    <input name="issuedate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="courierBoy.mobileNoReturnDate" is-open="popup2.opened"
-                                                                                        datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
-                                                                                    />
-                                                                                    <span class="input-group-btn">
-                                                                                        <button type="button" class="btn btn-default" ng-click="open2()">
-                                                                                            <i class="glyphicon glyphicon-calendar"></i>
-                                                                                        </button>
-                                                                                    </span>
-                                                                                </p>
-                                                                    </div>
-                                                                </div>
-                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-md-6">
                                                 <!-- Text input-->
                                                 <div class="form-group">
@@ -239,7 +243,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-6">
                                                 <!-- Text input-->
                                                 <div class="form-group">
@@ -267,7 +271,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="vtype">Vehicle Type</label>
@@ -295,7 +299,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="dlnumber">DL Number</label>
@@ -317,7 +321,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="bankname">Bank Name</label>
@@ -342,7 +346,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="accountnumber">Account Number</label>
@@ -368,7 +372,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="vehicleOwner">Vehicle Owner</label>
@@ -392,8 +396,7 @@
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
                                                                 Browse
-                                                                <input type="file" style="display: none;" file-upload="drivingLicense"
-                                                                    multiple>
+                                                                <input type="file" style="display: none;" file-upload="drivingLicense" multiple>
                                                             </span>
                                                         </label>
                                                     </div>
@@ -404,7 +407,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">RC Book</label>
@@ -413,8 +416,7 @@
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
                                                                 Browse
-                                                                <input type="file" style="display: none;" file-upload="rcdoc"
-                                                                    multiple>
+                                                                <input type="file" style="display: none;" file-upload="rcdoc" multiple>
                                                             </span>
                                                         </label>
                                                     </div>
@@ -434,8 +436,7 @@
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
                                                                 Browse
-                                                                <input type="file" style="display: none;" file-upload="insurance"
-                                                                    multiple>
+                                                                <input type="file" style="display: none;" file-upload="insurance" multiple>
                                                             </span>
                                                         </label>
                                                     </div>
@@ -446,7 +447,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                           
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="batchnumber">Road Tax</label>
@@ -455,8 +456,7 @@
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
                                                                 Browse
-                                                                <input type="file" style="display: none;" file-upload="roadTax"
-                                                                    multiple>
+                                                                <input type="file" style="display: none;" file-upload="roadTax" multiple>
                                                             </span>
                                                         </label>
                                                     </div>
@@ -475,8 +475,7 @@
                                                         <label class="input-group-btn">
                                                             <span class="btn btn-primary">
                                                                 Browse
-                                                                <input type="file" style="display: none;" file-upload="photo"
-                                                                    multiple>
+                                                                <input type="file" style="display: none;" file-upload="photo" multiple>
                                                             </span>
                                                         </label>
                                                     </div>
@@ -487,7 +486,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                         </fieldset>
                                     </form>
                                 </div>
