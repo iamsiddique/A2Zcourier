@@ -43,6 +43,7 @@
                             </p>
                         </div>
                     </div>
+                   
                 </div>
                 <div class="col-md-6  col-lg-6 col-sm-6 col-xs-6">
                      
@@ -54,25 +55,40 @@
                 <table id="stocktable" class="table table-bordred table-striped">
                     <thead>
                         <th>Product Name</th>
-                        <th>Quantity</th>
                         <th>Invoice Code</th>
+                        <th>Quantity</th>
+                        <th>Cost</th>                        
                         <th>CGST %</th>
                         <th>SGST %</th>
                         <th>Total Cost</th>
-                        <th>Expiry Date</th>                        
+                        <!-- <th>Expiry Date</th>                         -->
                     </thead>
                     <tbody>
                         <tr ng-repeat="product in prd">
                         <td ng-bind="product.product.name"></td>
-                        <td ng-bind="product.quantity"></td>
                         <td ng-bind="product.invoiceNumber"></td>
+                        <td ng-bind="product.quantity"></td>
+                        <td >{{product.quantity * product.product.cost}}</td>
+                        
                         <td ng-bind="product.product.cgst"></td>
                         <td ng-bind="product.product.sgst"></td>
                         <td ng-bind="product.product.totalCostProduct"></td>
-                        <td ng-bind="product.expiryDate | date: 'dd/MM/yyyy'"></td>                        
+                        <!-- <td ng-bind="product.expiryDate | date: 'dd/MM/yyyy'"></td>                         -->
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="clear margin-15px"></div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6"></div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
+            <div class="form-group">
+                <label class="col-md-8 text-right control-label" for="courierCenter">Total Invoice Amount</label>
+                <div class="col-md-3">
+               
+                    <p class="input-group" ng-bind="invdata.amount">
+                    </p>
+                </div>
+            </div>
             </div>
             <div class="clear margin-15px"></div>
             </div>
